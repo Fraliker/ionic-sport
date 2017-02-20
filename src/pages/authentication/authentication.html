@@ -1,0 +1,13 @@
+<ion-content>
+    <img class="logo" src="assets/images/logo.png" />
+
+    <h1>Делаем спорт доступным</h1>
+
+    <input placeholder="Введите имя" type="text" />
+    <input #phoneInput [(ngModel)]="phone" placeholder="Введите телефон" type="tel" (input)="setMask(phone)" (focus)="showMask()" />
+
+    <div class="sticky-footer">
+        <button ion-button full>Продолжить</button>
+    </div>
+</ion-content>
+
