@@ -1,13 +1,18 @@
 <ion-content>
-    <img class="logo" src="assets/images/logo.png" />
+  <img class="logo" src="assets/images/logo.png"/>
 
-    <h1>Делаем спорт доступным</h1>
+  <h1>Делаем спорт доступным</h1>
 
-    <input placeholder="Введите имя" type="text" />
-    <input #phoneInput [(ngModel)]="phone" placeholder="Введите телефон" type="tel" (input)="setMask(phone)" (focus)="showMask()" />
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
 
-    <div class="sticky-footer">
-        <button ion-button full>Продолжить</button>
+    <input placeholder="Введите имя" type="text" [formControl]="complexForm.controls['name']"/>
+
+    <input [textMask]="{mask: mask}" placeholder="Введите телефон" type="text"
+           [formControl]="complexForm.controls['phone']"/>
+
+    <div class=" sticky-footer">
+      <button ion-button full>Продолжить</button>
     </div>
+  </form>
 </ion-content>
 
