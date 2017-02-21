@@ -7,10 +7,11 @@
 
     <input placeholder="Введите имя" type="text" [formControl]="complexForm.controls['name']"/>
 
-    <input [textMask]="{mask: mask}" placeholder="Введите телефон" type="text"
+    <input class="phone-input" [textMask]="{mask: mask}" placeholder="Введите телефон" type="tel"
            [formControl]="complexForm.controls['phone']"/>
-
-    <div class=" sticky-footer">
+    <label class="phone-label">
+    </label>
+    <div class=" sticky-footer" *ngIf="!lockNextButton">
       <button ion-button full>Продолжить</button>
     </div>
   </form>

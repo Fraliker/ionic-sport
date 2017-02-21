@@ -9,9 +9,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 /**
  * pages import
  */
-import { AuthenticationPage } from '../pages/authentication/authentication.page';
-import { Page2 } from '../pages/page2/page2';
-
+import {SmsVerifyPage, AuthenticationPage} from '../pages/pages';
 /**
  * import services
  */
@@ -21,7 +19,7 @@ import {AuthService} from "../pages/authentication/authentication.service";
   declarations: [
     MyApp,
     AuthenticationPage,
-    Page2
+    SmsVerifyPage
   ],
   imports: [
     FormsModule,
@@ -32,7 +30,7 @@ import {AuthService} from "../pages/authentication/authentication.service";
   entryComponents: [
     MyApp,
     AuthenticationPage,
-    Page2
+    SmsVerifyPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -1,0 +1,18 @@
+<ion-content padding>
+
+  <div class="content-logo">
+    <img class="logo" src="assets/images/logo.png"/>
+  </div>
+
+  <div class="content-info">
+    <h4>{{name}}, мы отправили проверочный код Вам на номер</h4>
+    <h2>+{{phone}}</h2>
+
+    <input #input placeholder="Введите код" type="number" (input)="verifyCode(input.value)">
+
+    <div class="controls">
+      <p (click)="goBackToAuth()">Изменить номер телефона</p>
+      <p (click)="goBackToAuth()">Отправить код повторно</p>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,56 @@
+sms-code {
+  text-align: center;
+  font-family: 'Circe', sans-serif;
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  .logo {
+    margin-top: 5%;
+    max-width: 40%;
+  }
+
+  .scroll-content {
+    padding-bottom: 100px;
+  }
+
+  .content-logo {
+    height: 15%;
+    img {
+      max-height: 100%;
+    }
+  }
+
+  .content-info {
+    transition: all 0.3s;
+    height: 80%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="number"] {
+    width: 80%;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    background: #f1f1f1;
+    color: #202020;
+    text-align: center;
+    border: 0;
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+
+  .controls {
+    color: #3ea3dd;
+    padding-top: 10%;
+  }
+}
