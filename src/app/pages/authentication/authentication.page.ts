@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {AuthService} from './authentication.service';
+import {AuthService} from '../../services/auth.service';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {NavController, ToastController} from 'ionic-angular';
+import {NavController, ToastController, LoadingController} from 'ionic-angular';
 import {SmsVerifyPage} from '../pages';
 
 @Component({
@@ -14,13 +14,14 @@ export class AuthenticationPage {
   lockNextButton: boolean;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public auth: AuthService,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
 
     this.lockNextButton = false;
     this.complexForm = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'phone': ['', Validators.compose([Validators.required, this.customValidator])]
     });
+
   }
 
   /**
@@ -58,10 +59,17 @@ export class AuthenticationPage {
    * login
    */
   login(name: string, phone: string) {
+    let loading = this.loadingCtrl.create({
+      content: "Sending email..."
+    });
+    loading.present();
+
     this.auth.login(name, phone)
       .subscribe((data) => {
         console.log(data);
+        loading.dismissAll();
       }, (err) => {
+        loading.dismissAll();
         this.showToast("Что-то пошло не так, обратитесть к администратору");
         this.lockNextButton = false;
       });
