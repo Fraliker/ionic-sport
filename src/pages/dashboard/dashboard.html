@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Личный кибинет</ion-title>
+
+    <ion-buttons end>
+      <button (click)="goToDashboard()" ion-button icon-only>
+        <ion-icon ios="ios-contact" md="md-contact" right></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content *ngIf="!booked">
+  <section>
+
+  </section>
+</ion-content>
+
+<ion-content padding *ngIf="booked">
+  <ion-list no-lines>
+    <ion-item *ngFor="let item of booked" (click)="goToBookInfo(item)">
+
+      <h2 class="club-head">{{item}}</h2>
+      <p>{{place}}</p>
+      <p>{{date}}</p>
+      <p class="club-price">Общая стоимость: {{price}}</p>
+
+      <a class="club-button">Перейти к бронированию</a>
+    </ion-item>
+  </ion-list>
+</ion-content>

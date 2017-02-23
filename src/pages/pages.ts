@@ -4,4 +4,5 @@ export * from './dashboard/dashboard';
 export * from './book-info/book-info';
 export * from './main-sport-choose/main-sport-choose';
 export * from './time-select/time-select';
+export * from './place-choose/place-choose';
 
