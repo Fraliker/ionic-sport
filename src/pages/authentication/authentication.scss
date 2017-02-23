@@ -13,6 +13,10 @@ page-authentication {
 
   .scroll-content {
     padding-bottom: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
   }
 
   input[type="text"], input[type="tel"] {
