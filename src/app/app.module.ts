@@ -16,6 +16,7 @@ import {SmsVerifyPage, AuthenticationPage, DashboardPage,
  * import services
  */
 import {AuthService} from '../app/services/auth.service';
+import {YandexMap} from "../pages/place-choose/map/map.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AuthService} from '../app/services/auth.service';
     BookInfoPage,
     MainSportChoosePage,
     TimeSelectPage,
-    PlaceChoosePage
+    PlaceChoosePage,
+    YandexMap
   ],
   imports: [
     FormsModule,
