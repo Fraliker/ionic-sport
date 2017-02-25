@@ -1,0 +1,47 @@
+page-time-select {
+  .header-logo {
+    padding: 5px;
+    max-height: 40px;
+  }
+
+  .date {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+
+    &__date {
+      //width: 60%;
+    }
+
+    &__date {
+      //width: 30%;
+    }
+  }
+
+  .time-content {
+    height: 100%;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__head {
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    &__text {
+      text-align: center;
+    }
+
+    &__button {
+      margin-top: 10px;
+    }
+  }
+  ion-datetime {
+    position: relative;
+    width: 100%;
+  }
+}
