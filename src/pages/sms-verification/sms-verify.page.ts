@@ -17,12 +17,15 @@ export class SmsVerifyPage {
   name: string;
   phone: string;
   inputMaxLength: number = codeLength;
+  testCode : string;
   inputCode;
+  validCode : boolean = true;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: AuthService,
-              private loadCtrl: LoadingController) {
+              private loadingCtrl: LoadingController) {
     this.name = navParams.get('name');
     this.phone = navParams.get('phone');
+    this.testCode = navParams.get('code');
   }
 
   goBackToAuth() {
@@ -30,18 +33,41 @@ export class SmsVerifyPage {
   }
 
   verifyCode() {
+    if (this.inputCode.length === this.testCode.length && this.inputCode === this.testCode) {
 
-    if (this.inputCode.length === this.inputMaxLength) {
-      this.navCtrl.setRoot(MainSportChoosePage);
-      this.navCtrl.push(DashboardPage);
+      let loading = this.loadingCtrl.create({
+        content: "Sending email..."
+      });
+      loading.present();
+
+      this.auth.checkSMSCode(this.inputCode).subscribe((res)=> {
+
+        this.navCtrl.setRoot(MainSportChoosePage);
+        this.navCtrl.push(DashboardPage);
+
+        loading.dismissAll();
+
+      }, (err)=> {
+        loading.dismissAll();
+      });
+
+    } else if (this.inputCode.length === this.testCode.length && this.inputCode !== this.testCode) {
+      this.validCode = false;
     }
   }
 
   sendNewCode() {
-    let loading = this.loadCtrl.create({content: 'Новое сообщение отправляется'});
+
+    let loading = this.loadingCtrl.create({content: 'Новое сообщение отправляется'});
     loading.present();
-    setTimeout(() => {
+
+    this.auth.login(this.name, this.phone).subscribe((res)=> {
       loading.dismiss();
-    }, 4000);
+      this.testCode= res;
+
+    }, (err)=> {
+      loading.dismiss();
+      console.log(err);
+    });
   }
 }

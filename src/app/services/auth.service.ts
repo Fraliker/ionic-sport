@@ -25,17 +25,21 @@ export class AuthService {
    * @param phone
    * @return {Observable<boolean>}
    */
-  public login(name: string, phone: string): Observable<boolean> {
+  public login(name: string, phone: string): Observable<string> {
 
-    return this.http.post((this.API_URL + "auth/signin"), JSON.stringify({name: name, phone: phone}))
+    return this.http.post((this.API_URL + "auth/registration"), {name: name, phone: phone})
       .map((res) => {
-        console.log(res);
-        return true;
+        let code = res.json();
+        return code;
       });
   }
 
-  public checkSMSCode(code): Observable<boolean> {
-    return this.http.get(this.API_URL, ).map(res => {
+  public checkSMSCode(code: string): Observable<boolean> {
+
+    return this.http.post(`${this.API_URL}auth/signin`, {code : code}).map((res) => {
+      console.log(res.json());
+      //TO DO save token to ionic storage
+
       return true;
     });
   }

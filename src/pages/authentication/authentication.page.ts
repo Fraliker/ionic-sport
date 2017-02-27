@@ -21,7 +21,6 @@ export class AuthenticationPage {
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'phone': ['', Validators.compose([Validators.required, this.customValidator])]
     });
-
   }
 
   /**
@@ -38,21 +37,17 @@ export class AuthenticationPage {
 
   submitForm(form: FormGroup) {
 
-    let phone = form.value.phone.replace(/\D+/g, '');
-    let name = form.value.name;
-    this.navCtrl.push(SmsVerifyPage, {name: name, phone: phone});
+    if (form.valid) {
+      this.lockNextButton= true;
 
-    // if (form.valid) {
-    //   this.lockNextButton= true;
-    //
-    //   let phone = form.value.phone.replace(/\D+/g, '');
-    //   let name = form.value.name;
-    //
-    //   this.login(name, phone);
-    //
-    // } else {
-    //   this.showToast('Проверьте данные');
-    // }
+      let phone = form.value.phone.replace(/\D+/g, '');
+      let name = form.value.name;
+
+      this.login(name, phone);
+
+    } else {
+      this.showToast('Проверьте данные');
+    }
   }
 
   /**
@@ -66,8 +61,11 @@ export class AuthenticationPage {
 
     this.auth.login(name, phone)
       .subscribe((data) => {
-        console.log(data);
+
         loading.dismissAll();
+        this.lockNextButton = false;
+        this.navCtrl.push(SmsVerifyPage, {name: name, phone: phone, code : data});
+
       }, (err) => {
         loading.dismissAll();
         this.showToast("Что-то пошло не так, обратитесть к администратору");

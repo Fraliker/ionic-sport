@@ -7,9 +7,13 @@
     <h4>{{name}}, мы отправили проверочный код Вам на номер</h4>
     <h2>+{{phone}}</h2>
 
-    <input #input placeholder="Введите код" type="text" [attr.maxlength]="inputMaxLength" pattern="\d*"
-           [(ngModel)]="inputCode"
-           (input)="verifyCode(input.value)">
+    <div class="input-wrap">
+    <input placeholder="Введите код" type="text" [ngClass]="{'invalid' : !validCode}"
+           [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="verifyCode()">
+
+      <p class="input-wrap__code">{{testCode}}</p>
+
+    </div>
 
     <div class="controls">
       <p (click)="goBackToAuth()">Изменить номер телефона</p>

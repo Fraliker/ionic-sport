@@ -44,6 +44,11 @@ sms-code {
     text-align: center;
     border: 0;
 
+    invalid {
+      color: red;
+      border: 1px solid red;
+    }
+
     &::placeholder {
       color: #000;
     }
@@ -52,5 +57,20 @@ sms-code {
   .controls {
     color: #3ea3dd;
     padding-top: 10%;
+  }
+
+
+  .input-wrap {
+    width: 100%;
+    position: relative;
+    padding-bottom: 20px;
+
+    &__code {
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      width: 100%;
+      color: red;
+    }
   }
 }
