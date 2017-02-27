@@ -11,7 +11,7 @@ import { TextMaskModule } from 'angular2-text-mask';
  */
 import {SmsVerifyPage, AuthenticationPage, DashboardPage,
         BookInfoPage, MainSportChoosePage, TimeSelectPage,
-        PlaceChoosePage} from '../pages/pages';
+        PlaceChoosePage, PlacePage} from '../pages/pages';
 /**
  * import services
  */
@@ -28,7 +28,8 @@ import {YandexMap} from "../pages/place-choose/map/map.component";
     MainSportChoosePage,
     TimeSelectPage,
     PlaceChoosePage,
-    YandexMap
+    YandexMap,
+    PlacePage
   ],
   imports: [
     FormsModule,
@@ -44,7 +45,8 @@ import {YandexMap} from "../pages/place-choose/map/map.component";
     BookInfoPage,
     MainSportChoosePage,
     TimeSelectPage,
-    PlaceChoosePage
+    PlaceChoosePage,
+    PlacePage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

@@ -1,3 +1,3 @@
 export default {
-  'API_PATH' : 'localhost'
+  'API_PATH' : 'http://letmesport.dev.rgt.by/api/'
 }

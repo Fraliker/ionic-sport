@@ -1,18 +1,29 @@
-<!--
-  Generated template for the Place page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Place</ion-title>
+    <ion-title cetnet>Выберите услуги</ion-title>
+    <ion-buttons end>
+      <button (click)="goToDashboard()" ion-button icon-only>
+        <ion-icon class="white" ios="ios-contact" md="md-contact" right></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      {{place.adress}}
+    </ion-item>
+    <ion-item>
+      {{place.type}}
+    </ion-item>
+    <ion-item>
+      {{place.name}}
+    </ion-item>
+  </ion-list>
 </ion-content>
