@@ -14,7 +14,6 @@ export class PlaceChoosePage {
   map: any;
   places: Place[] = [];
   counter: number = 1;
-  // isAndroid: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.places.push(new Place({}));
@@ -34,9 +33,12 @@ export class PlaceChoosePage {
     return this.segment === 'list';
   }
 
+  /**
+   * adding new place to map, updates Array reference
+   */
   addNewPlace() {
-    this.places = [];
-    this.places.push(new Place({latitude: 55+ this.counter, longitude: 32+ this.counter}));
-    // this.places =
+    let newPlaces = Array.from(this.places);
+    newPlaces.push(new Place({latitude: 55+ this.counter, longitude: 32+ this.counter}));
+    this.places = newPlaces;
   }
 }

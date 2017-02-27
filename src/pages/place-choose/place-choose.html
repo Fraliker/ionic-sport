@@ -1,11 +1,4 @@
-<!--
-  Generated template for the PlaceChoose page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title center>PlaceChoose</ion-title>
   </ion-navbar>
@@ -27,7 +20,11 @@
   <div class="place-choose__content">
     <ion-list [ngClass]="{hide: !isList()}">
       <button ion-button (click)="addNewPlace()">Добавить место</button>
-
+      <ion-item *ngFor="let place of places">
+        <ion-grid>
+          {{place}}
+        </ion-grid>
+      </ion-item>
     </ion-list>
 
     <ion-list class="map-tab" [ngClass]="{hide: isList()}">
