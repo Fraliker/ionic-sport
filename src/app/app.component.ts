@@ -4,6 +4,8 @@ import {StatusBar, Splashscreen} from 'ionic-native';
 
 import {AuthenticationPage, DashboardPage} from "../pages/pages";
 import {AuthService} from './services/auth.service';
+import {User} from "./models/user.model";
+import {MainSportChoosePage} from "../pages/main-sport-choose/main-sport-choose";
 
 @Component({
   templateUrl: 'app.html',
@@ -17,21 +19,28 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public auth: AuthService) {
-    this.initializeApp(this.auth.isAuthentificated());
+    this.initializeApp();
   }
 
-  initializeApp(auth: boolean) {
+  initializeApp() {
     this.platform.ready().then(() => {
+
+      this.auth.isAuthentificated().then((user: User) => {
+        if (user.token != null) {
+          this.rootPage = MainSportChoosePage;
+        } else {
+          this.rootPage = AuthenticationPage;
+        }
+      }).catch((err) => {
+        console.log(err);
+        this.rootPage = AuthenticationPage;
+      });
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      StatusBar.styleDefault();io
       Splashscreen.hide();
 
-      if (auth) {
-        this.rootPage = DashboardPage;
-      } else {
-        this.rootPage = AuthenticationPage;
-      }
     });
   }
 

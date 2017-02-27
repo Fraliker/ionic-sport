@@ -68,7 +68,7 @@ export class AuthenticationPage {
 
       }, (err) => {
         loading.dismissAll();
-        this.showToast("Что-то пошло не так, обратитесть к администратору");
+        this.showToast("Что-то пошло не так, обратитесть к администратору. Ошибка: "+ err);
         this.lockNextButton = false;
       });
   }

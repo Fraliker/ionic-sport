@@ -2,11 +2,14 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import * as config from '../../config/prod.config';
 import {Http} from "@angular/http";
+import {Storage} from '@ionic/storage';
 import 'rxjs';
+import {User} from "../models/user.model";
 
 @Injectable()
 export class AuthService {
   private API_URL: string = config.default.API_PATH;
+  storage = new Storage(['localstorage']);
 
   constructor(private http: Http) {
   }
@@ -15,9 +18,8 @@ export class AuthService {
    * If token exist, user is logged
    * @return {boolean}
    */
-  isAuthentificated(): boolean {
-    let user = localStorage.getItem('user');
-    return !!user;
+  isAuthentificated(): Promise<User> {
+    return this.storage.get("currentUser");
   }
 
   /**
@@ -34,13 +36,21 @@ export class AuthService {
       });
   }
 
-  public checkSMSCode(code: string): Observable<boolean> {
+  public checkSMSCode(user: User): Observable<boolean> {
 
-    return this.http.post(`${this.API_URL}auth/signin`, {code : code}).map((res) => {
+    return this.http.post(`${this.API_URL}auth/signin`, {code: user.code}).map((res) => {
       console.log(res.json());
-      //TO DO save token to ionic storage
+      user.setToken(res.json());
+      this.saveUser(user);
 
       return true;
+    });
+  }
+
+  saveUser(user: User) {
+    this.storage.set('currentUser', user);
+    this.storage.get('currentUser').then((data) => {
+      console.log(data);
     });
   }
 }
