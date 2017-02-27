@@ -9,5 +9,28 @@ page-place-choose {
   .place-choose__content {
     height: 100%;
   }
+
+  .place {
+
+    position: relative;
+
+    &__img {
+
+    }
+
+    &__logo {
+      height : 33%;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+    }
+
+    &__button {
+      height: 100%;
+      color: white;
+    }
+  }
+
 }
 
