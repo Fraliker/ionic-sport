@@ -6,6 +6,7 @@ import {AuthenticationPage, DashboardPage} from "../pages/pages";
 import {AuthService} from './services/auth.service';
 import {User} from "./models/user.model";
 import {MainSportChoosePage} from "../pages/main-sport-choose/main-sport-choose";
+import {TimeSelectPage} from "../pages/time-select/time-select";
 
 @Component({
   templateUrl: 'app.html',
@@ -27,7 +28,7 @@ export class MyApp {
 
       this.auth.isAuthentificated().then((user: User) => {
         if (user.token != null) {
-          this.rootPage = MainSportChoosePage;
+          this.rootPage = TimeSelectPage;
         } else {
           this.rootPage = AuthenticationPage;
         }
