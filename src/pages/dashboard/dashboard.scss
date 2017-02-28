@@ -16,4 +16,22 @@ page-dashboard {
     font-weight: bold;
     color: black;
   }
+
+  .booked__none-text {
+    height: 100%;
+    display: flex;
+    justify-self: center;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .button {
+
+    text-align: center;
+
+    &__blue {
+      color: #007aff;
+    }
+  }
 }

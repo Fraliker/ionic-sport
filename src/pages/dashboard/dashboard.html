@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Личный кибинет</ion-title>
 
@@ -9,12 +8,13 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-<ion-content *ngIf="!booked">
-  <section>
-
+<ion-content *ngIf="!booked" class="booked__none">
+  <section class="booked__none-text">
+    <h3>Здравствуйте, {{user.name}}!</h3>
+    <p>Здесь будут отображены ваши бронирования</p>
+    <p class="button button__blue">Связаться со службой поддержки</p>
   </section>
 </ion-content>
 
