@@ -27,7 +27,10 @@
     <ion-grid class="date">
       <ion-row class="inputs-background">
         <ion-col width-75 class="ion-datetime-wrap">
-          <ion-datetime class="date__date" displayFormat="DDD. DD, MMMM" [(ngModel)]="day"></ion-datetime>
+          <ion-datetime class="date__date" displayFormat="DDD. DD, MMMM"
+                        monthNames="январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь"
+                        dayShortNames="Пн, Вт, Ср, Чт, Пт, Сб, Вс"
+                        [(ngModel)]="day"></ion-datetime>
           <ion-icon name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
         </ion-col>
         <ion-col width-25 class="ion-datetime-wrap">
