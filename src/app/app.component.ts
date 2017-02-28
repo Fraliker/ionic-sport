@@ -25,24 +25,23 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-
-      this.auth.isAuthentificated().then((user: User) => {
-        if (user.token != null) {
-          this.rootPage = TimeSelectPage;
-        } else {
-          this.rootPage = AuthenticationPage;
-        }
-      }).catch((err) => {
-        console.log(err);
-        this.rootPage = AuthenticationPage;
-      });
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
 
+      return this.auth.isAuthentificated();
+    }).then((user: User) => {
+      if (user.token != null) {
+        this.rootPage = TimeSelectPage;
+      } else {
+        this.rootPage = AuthenticationPage;
+      }
+    }).catch((err) => {
+      console.log(err);
+      this.rootPage = AuthenticationPage;
     });
+
   }
 
   openPage(page) {
