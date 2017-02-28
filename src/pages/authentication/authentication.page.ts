@@ -9,17 +9,20 @@ import {SmsVerifyPage} from '../pages';
   templateUrl: 'authentication.html'
 })
 export class AuthenticationPage {
-  mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  mask = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private complexForm: FormGroup;
   lockNextButton: boolean;
 
-  constructor(private fb: FormBuilder, public navCtrl: NavController, public auth: AuthService,
-              public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+  constructor(private fb: FormBuilder,
+              public navCtrl: NavController,
+              public auth: AuthService,
+              public toastCtrl: ToastController,
+              public loadingCtrl: LoadingController) {
 
-    this.lockNextButton = false;
+    this.lockNextButton = true;
     this.complexForm = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'phone': ['', Validators.compose([Validators.required, this.customValidator])]
+      'phone': ['', this.customValidator]
     });
   }
 
@@ -30,9 +33,12 @@ export class AuthenticationPage {
    */
   customValidator(control: FormControl): {[s: string]: boolean} {
     if (!control.value)
-      if (control.value.replace(/\D+|\s/g, '').length !== 10) {
+      return {invalidPhone: true};
+    else {
+      if (control.value.replace(/\D+|\s/g, '').length !== 11) {
         return {invalidPhone: true};
       }
+    }
   }
 
   submitForm(form: FormGroup) {

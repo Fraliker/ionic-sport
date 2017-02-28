@@ -11,9 +11,8 @@
            [formControl]="complexForm.controls['phone']"/>
     <label class="phone-label">
     </label>
-    <div class=" sticky-footer" *ngIf="!lockNextButton">
+    <div class=" sticky-footer" *ngIf="complexForm.valid">
       <button ion-button full>Продолжить</button>
     </div>
   </form>
 </ion-content>
-
