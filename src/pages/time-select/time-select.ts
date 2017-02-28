@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {MainSportChoosePage} from "../main-sport-choose/main-sport-choose";
 import {PlaceChoosePage} from "../place-choose/place-choose";
 import * as moment  from 'moment';
+import {DashboardPage} from "../dashboard/dashboard";
 /*
   Generated class for the TimeSelect page.
 
@@ -22,6 +23,10 @@ export class TimeSelectPage {
   }
 
   ionViewDidLoad() {
+  }
+
+  goToDashboard() {
+    this.navCtrl.push(DashboardPage);
   }
 
   goToPlaceChoose() {

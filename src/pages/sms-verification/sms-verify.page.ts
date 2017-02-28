@@ -3,6 +3,7 @@ import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import {DashboardPage, MainSportChoosePage} from '../pages';
 import {AuthService} from '../../app/services/auth.service';
 import {User} from "../../app/models/user.model";
+import {TimeSelectPage} from "../time-select/time-select";
 
 /*
  Check sms code
@@ -44,9 +45,7 @@ export class SmsVerifyPage {
       this.auth.checkSMSCode(new User({code: this.inputCode, name: this.name, phone: this.phone}))
         .subscribe((res) => {
 
-          this.navCtrl.setRoot(MainSportChoosePage);
-          this.navCtrl.push(DashboardPage);
-
+          this.navCtrl.setRoot(TimeSelectPage);
           loading.dismissAll();
 
         }, (err) => {

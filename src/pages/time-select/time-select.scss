@@ -4,6 +4,10 @@ page-time-select {
     max-height: 40px;
   }
 
+  .header::after {
+    display: none;
+  }
+
   .date {
     display: flex;
     flex-flow: row wrap;
@@ -20,6 +24,18 @@ page-time-select {
     }
   }
 
+  .border-left {
+    border-left: 1px solid #cfcfcf;
+  }
+
+  .toolbar-background {
+    background: #f5f5f5 !important;
+  }
+
+  .scroll-content {
+    background: #f5f5f5 !important;
+  }
+
   .time-content {
     height: 100%;
     display: flex;
@@ -30,18 +46,43 @@ page-time-select {
     &__head {
       text-align: center;
       padding: 15px 0;
+      font-weight: 600;
+      font-size: 24px;
+      margin: 0;
     }
 
     &__text {
       text-align: center;
+      font-weight: 600;
     }
 
     &__button {
       margin-top: 10px;
+      min-height: 45px;
     }
   }
   ion-datetime {
     position: relative;
     width: 100%;
+  }
+
+  .ion-datetime-wrap {
+    position: relative;
+
+    &__arrow {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: #364f66;
+    }
+  }
+
+  .toolbar-title {
+    text-align: center;
+  }
+
+  .inputs-background {
+    background: #f1f1f1;
   }
 }
