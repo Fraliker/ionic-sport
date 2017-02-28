@@ -14,7 +14,7 @@ import {MainSportChoosePage} from "../pages/main-sport-choose/main-sport-choose"
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AuthenticationPage;
+  rootPage: any;// = AuthenticationPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -38,7 +38,7 @@ export class MyApp {
 
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();io
+      StatusBar.styleDefault();
       Splashscreen.hide();
 
     });
