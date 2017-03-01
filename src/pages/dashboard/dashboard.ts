@@ -15,7 +15,6 @@ import {AuthService} from "../../app/services/auth.service";
 })
 export class DashboardPage implements OnInit {
 
-  private booked; //= ['Jane', 'Stan', 'Genry', 'Margaret'];
   place: string = 'Корт с грунтовым покрытием';
   date: string = '19 января 2017 в 18:00';
   price: number = 9900;

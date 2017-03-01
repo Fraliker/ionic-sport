@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {MainSportChoosePage} from "../main-sport-choose/main-sport-choose";
 import {PlaceChoosePage} from "../place-choose/place-choose";
-import * as moment  from 'moment';
 import {DashboardPage} from "../dashboard/dashboard";
 
 @Component({

@@ -2,10 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
 
-import {AuthenticationPage, DashboardPage} from "../pages/pages";
+import {AuthenticationPage} from "../pages/pages";
 import {AuthService} from './services/auth.service';
 import {User} from "./models/user.model";
-import {MainSportChoosePage} from "../pages/main-sport-choose/main-sport-choose";
 import {TimeSelectPage} from "../pages/time-select/time-select";
 
 @Component({
@@ -15,7 +14,7 @@ import {TimeSelectPage} from "../pages/time-select/time-select";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;// = AuthenticationPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 

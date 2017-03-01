@@ -1,14 +1,8 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, LoadingController} from 'ionic-angular';
-import {DashboardPage, MainSportChoosePage} from '../pages';
 import {AuthService} from '../../app/services/auth.service';
 import {User} from "../../app/models/user.model";
 import {TimeSelectPage} from "../time-select/time-select";
-
-/*
- Check sms code
- */
-const codeLength: number = 5;
 
 @Component({
   templateUrl: 'sms-verify.page.html',
@@ -18,7 +12,6 @@ export class SmsVerifyPage {
 
   name: string;
   phone: string;
-  inputMaxLength: number = codeLength;
   testCode: string;
   inputCode;
   validCode: boolean = true;
