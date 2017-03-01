@@ -6,8 +6,8 @@
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
 
     <input placeholder="Введите имя" type="text" [formControl]="complexForm.controls['name']"/>
-    <input class="phone-input" [textMask]="{mask: mask}" placeholder="Введите телефон" type="tel"
-           [formControl]="complexForm.controls['phone']"/>
+    <input #phoneInput class="phone-input" [textMask]="{mask: mask}" placeholder="Введите телефон" type="tel"
+           [formControl]="complexForm.controls['phone']" (focus)="setPlaceholder(phoneInput)"/>
     <label class="phone-label">
     </label>
     <div class=" sticky-footer" *ngIf="complexForm.valid">
