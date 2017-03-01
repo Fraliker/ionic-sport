@@ -62,7 +62,7 @@ export class AuthenticationPage {
    */
   login(name: string, phone: string) {
     let loading = this.loadingCtrl.create({
-      content: "Sending email..."
+      content: "Отправка сообщения..."
     });
     loading.present();
 
