@@ -31,7 +31,7 @@ export class SmsVerifyPage {
     if (this.inputCode.length === this.testCode.length && this.inputCode === this.testCode) {
 
       let loading = this.loadingCtrl.create({
-        content: "Sending email..."
+        content: "Пожалуйста, подождите..."
       });
       loading.present();
 
