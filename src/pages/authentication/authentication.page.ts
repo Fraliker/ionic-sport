@@ -12,7 +12,7 @@ export class AuthenticationPage {
   mask = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private complexForm: FormGroup;
   lockNextButton: boolean;
-  phonePlaceholder : string = '+7(___) ___-____';
+  phonePlaceholder: string = '+7(___) ___-____';
 
   constructor(private fb: FormBuilder,
               public navCtrl: NavController,
@@ -45,7 +45,7 @@ export class AuthenticationPage {
   submitForm(form: FormGroup) {
 
     if (form.valid) {
-      this.lockNextButton= true;
+      this.lockNextButton = true;
 
       let phone = form.value.phone.replace(/\D+/g, '');
       let name = form.value.name;
@@ -71,11 +71,11 @@ export class AuthenticationPage {
 
         loading.dismissAll();
         this.lockNextButton = false;
-        this.navCtrl.push(SmsVerifyPage, {name: name, phone: phone, code : data});
+        this.navCtrl.push(SmsVerifyPage, {name: name, phone: phone, code: data});
 
       }, (err) => {
         loading.dismissAll();
-        this.showToast("Что-то пошло не так, обратитесть к администратору. Ошибка: "+ err);
+        this.showToast("Что-то пошло не так, обратитесть к администратору. Ошибка: " + err);
         this.lockNextButton = false;
       });
   }
@@ -94,7 +94,11 @@ export class AuthenticationPage {
     toast.present();
   }
 
-  setPlaceholder(input : HTMLInputElement) {
+  setPlaceholder(input: HTMLInputElement) {
     input.placeholder = this.phonePlaceholder;
+  }
+
+  setNamePlaceholer(input: HTMLInputElement) {
+    input.placeholder = "";
   }
 }
