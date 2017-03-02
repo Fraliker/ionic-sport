@@ -13,7 +13,7 @@ export class SmsVerifyPage {
   name: string;
   phone: string;
   testCode: string;
-  inputCode;
+  inputCode: string;
   validCode: boolean = true;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: AuthService,
@@ -28,6 +28,7 @@ export class SmsVerifyPage {
   }
 
   verifyCode() {
+
     if (this.inputCode.length === this.testCode.length && this.inputCode === this.testCode) {
 
       let loading = this.loadingCtrl.create({
