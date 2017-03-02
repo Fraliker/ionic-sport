@@ -29,9 +29,7 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
 
-      return this.auth.isAuthentificated();
-    }).then((user: User) => {
-      if (user.token != null) {
+      if (AuthService.isAuthentificated()) {
         this.rootPage = TimeSelectPage;
       } else {
         this.rootPage = AuthenticationPage;
@@ -40,7 +38,6 @@ export class MyApp {
       console.log(err);
       this.rootPage = AuthenticationPage;
     });
-
   }
 
   openPage(page) {

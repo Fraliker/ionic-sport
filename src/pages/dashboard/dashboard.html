@@ -11,24 +11,24 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="!booked" class="booked__none">
-  <section class="booked__none-text">
-    <h3>Здравствуйте, {{user.name}}!</h3>
-    <p>Здесь будут отображены ваши бронирования</p>
-    <p class="button button__blue">Связаться со службой поддержки</p>
-  </section>
-</ion-content>
+<ion-content padding >
+  <div *ngIf="booked.length === 0" class="booked__none">
+    <section class="booked__none-text">
+      <h3>Здравствуйте, {{user.name}}!</h3>
+      <p>Здесь будут отображены ваши бронирования</p>
+      <p class="button button__blue">Связаться со службой поддержки</p>
+    </section>
+  </div>
 
-<ion-content padding *ngIf="booked">
-  <ion-list no-lines>
-    <ion-item *ngFor="let item of booked" (click)="goToBookInfo(item)">
-
-      <h2 class="club-head">{{item}}</h2>
-      <p>{{place}}</p>
-      <p>{{date}}</p>
-      <p class="club-price">Общая стоимость: {{price}}</p>
-
-      <a class="club-button">Перейти к бронированию</a>
+  <ion-list no-lines *ngIf="booked.length !== 0">
+    <ion-item class="list-card" *ngFor="let item of booked">
+      <div class="list-card__info">
+        <h1 class="club-head">{{item.sportCenter}}</h1>
+        <p>{{item.playingField}}</p>
+        <p>{{item.day}} {{item.mounth}} {{item.year}} В {{item.hour}}</p>
+        <p class="club-price">Общая стоимость: {{item.pricePlayingField}}р</p>
+      </div>
+      <a class="club-button" (click)="goToBookInfo(item)">Перейти к бронированию</a>
     </ion-item>
   </ion-list>
 </ion-content>

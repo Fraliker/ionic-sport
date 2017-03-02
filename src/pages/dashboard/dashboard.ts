@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, Loading} from 'ionic-angular';
 import {BookInfoPage} from '../pages';
 import {User} from "../../app/models/user.model";
 import {AuthService} from "../../app/services/auth.service";
+import {DashboardService} from "./dashboard.service";
+import 'rxjs';
+import {Booking} from "../../app/models/Booking";
 /*
- Generated class for the Dashboard page.
-
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
+    Dashboard component show list of booking history
  */
 @Component({
   selector: 'page-dashboard',
@@ -15,25 +15,36 @@ import {AuthService} from "../../app/services/auth.service";
 })
 export class DashboardPage implements OnInit {
 
-  place: string = 'Корт с грунтовым покрытием';
-  date: string = '19 января 2017 в 18:00';
   price: number = 9900;
   user: User = new User({});
+  booked: Booking[] = [];
+  loading: Loading;
 
   ngOnInit(): void {
 
+    this.loading = this.loadingCtrl.create({
+      content: "Идет загрузка..."
+    });
+
+    this.dashBoardService.getOwnBookings().subscribe((res) => {
+      this.booked = res;
+      this.loading.dismissAll();
+    }, (err) => {
+      this.loading.dismissAll();
+    });
   }
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public auth: AuthService) {
+              public auth: AuthService,
+              public dashBoardService: DashboardService,
+              public loadingCtrl: LoadingController) {
 
-    this.auth.isAuthentificated().then((res: User) => {
-      this.user = res;
-    });
+    this.user = AuthService.getCurrentUser();
   }
 
   ionViewDidLoad() {
+    // this.loading.present();
   }
 
   goToBookInfo(book) {
