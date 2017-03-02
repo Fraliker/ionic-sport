@@ -6,9 +6,7 @@ import {AuthService} from "../../app/services/auth.service";
 import {DashboardService} from "./dashboard.service";
 import 'rxjs';
 import {Booking} from "../../app/models/Booking";
-/*
-    Dashboard component show list of booking history
- */
+
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html'
@@ -19,6 +17,7 @@ export class DashboardPage implements OnInit {
   user: User = new User({});
   booked: Booking[] = [];
   loading: Loading;
+  currentBooking : Booking;
 
   ngOnInit(): void {
 
@@ -49,6 +48,10 @@ export class DashboardPage implements OnInit {
 
   goToBookInfo(book) {
     this.navCtrl.push(BookInfoPage, {'book': book});
+  }
+
+  getBooking(id: number) {
+    this.navCtrl.push(BookInfoPage, {'id': id});
   }
 
   goToDashboard() {

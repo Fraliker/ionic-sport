@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import * as config from '../../config/prod.config';
-import {Http, Headers, Response} from "@angular/http";
+import {Http, Headers, Response, URLSearchParams} from "@angular/http";
 import 'rxjs';
 import {AuthService} from "../../app/services/auth.service";
 import {Observer, Observable} from "rxjs";
@@ -19,8 +19,20 @@ export class DashboardService {
   }
 
   getOwnBookings(): Observable<Booking[]> {
-    return this.http.get(`${this.API_URL}bookings/my-booking`, {headers: this.headers})
+    return this.http.get(`${this.API_URL}bookings/my-bookings`, {headers: this.headers})
       .map(this.parseData);
+  }
+
+  getBooking(id : number) : Observable<Booking> {
+
+    let urlParams = new URLSearchParams();
+    urlParams.append('id' , id.toString());
+
+    return this.http.get(`${this.API_URL}bookings/my-booking`, {headers: this.headers, search: urlParams})
+      .map((res) => {
+        console.log(res.json());
+        return res.json();
+      });
   }
 
   parseData(res: Response) {

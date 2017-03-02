@@ -1,26 +1,31 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Booking} from "../../app/models/Booking";
+import {DashboardService} from "../dashboard/dashboard.service";
 
-/*
-  Generated class for the BookInfo page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-book-info',
   templateUrl: 'book-info.html'
 })
 export class BookInfoPage {
 
-  book : any;
+  book: Booking = null;
+  id: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.book= this.navParams.get('book');
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public dashBoardService: DashboardService) {
+  }
+
+  ionViewWillEnter() {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BookInfoPage');
-  }
 
+    this.id = this.navParams.get('id');
+
+    this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
+      this.book = res;
+    }));
+  }
 }

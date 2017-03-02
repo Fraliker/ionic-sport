@@ -1,3 +1,49 @@
 page-book-info {
 
+  .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    border: none;
+  }
+
+  .toolbar-background {
+    border: none;
+  }
+
+  .header:after {
+    display: none;
+  }
+
+  .image-info {
+    text-align: center;
+  }
+
+  .book-info {
+    text-align: center;
+
+    &__text {
+      text-align: left;
+
+      &_bold{
+        font-weight: 600;
+      }
+
+      &_grey {
+        color: #8e9093;
+      }
+    }
+
+    &_wrap {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-flow: column wrap;
+    }
+  }
+
+  .info {
+    &_red {
+      color: #d66060;
+    }
+  }
+
+
 }

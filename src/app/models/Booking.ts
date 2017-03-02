@@ -8,6 +8,8 @@ export class Booking {
   hour: number;
   priceTime: number;
   playFieldPrice: number;
+  submit: number;
+  address: string;
 
   constructor(obj) {
     this.id = obj.bookingId || null;
@@ -19,5 +21,7 @@ export class Booking {
     this.hour = obj.hours || null;
     this.priceTime = obj.priceTime || 0;
     this.playFieldPrice = obj.pricePlayingField || 0;
+    this.submit = obj.submit || null;
+    this.address = obj.address || '';
   }
 }
