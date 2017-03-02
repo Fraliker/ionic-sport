@@ -7,10 +7,7 @@ import {DashboardService} from "./dashboard.service";
 import 'rxjs';
 import {Booking} from "../../app/models/Booking";
 /*
- Generated class for the Dashboard page.
-
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
+    Dashboard component show list of booking history
  */
 @Component({
   selector: 'page-dashboard',
@@ -20,14 +17,7 @@ export class DashboardPage implements OnInit {
 
   price: number = 9900;
   user: User = new User({});
-  booked: Booking[] = [];// [new Booking({
-    // id: 10,
-    // priceTime: 1200,
-    // day: 11, hour: 11,
-    // mounth: 3,
-    // playingField: 'Северная площадка',
-    // pricePlayingField: 300
-  // })];
+  booked: Booking[] = [];
   loading: Loading;
 
   ngOnInit(): void {
