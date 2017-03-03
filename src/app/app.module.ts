@@ -18,6 +18,7 @@ import {SmsVerifyPage, AuthenticationPage, DashboardPage,
 import {AuthService} from '../app/services/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
 import {DashboardService} from "../pages/dashboard/dashboard.service";
+import {SportCenterService} from "./services/sport-center.service";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {DashboardService} from "../pages/dashboard/dashboard.service";
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    DashboardService
+    DashboardService,
+    SportCenterService
   ]
 })
 export class AppModule {}
