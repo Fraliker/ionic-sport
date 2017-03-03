@@ -22,6 +22,11 @@
 
 
 <ion-content>
+
+  <div class="place-choose__content place-choose__content_center" *ngIf="places.length === 0">
+    Не найдено
+  </div>
+
   <div class="place-choose__content">
     <ion-list [ngClass]="{hide: !isList()}">
       <!--<button ion-button (click)="addNewPlace()">Добавить место</button>-->

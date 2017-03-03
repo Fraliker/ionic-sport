@@ -14,27 +14,32 @@ export class SportCenterService {
   private token: string = AuthService.getCurrentUser().token;
 
   constructor(private  http: Http) {
-
     this.headers.append("Authorization", `Bearer ${this.token}`);
   }
 
 
-  getSportCenters(): Observable<Place[]> {
+  getSportCenters(date: Date): Observable<Place[]> {
 
     let params = new URLSearchParams();
-    params.append('year', '2017');
-    params.append('month', '3');
-    params.append('day', '22');
-    params.append('hour', '14');
-    params.append('type', 'work');
+    params.append('year', '' + date.getFullYear());
+    params.append('month', '' + date.getMonth());
+    params.append('day', '' + date.getDate());
+    params.append('hour', '' + date.getHours());
+    if (date.getDay() > 5) {
+      params.append('type', 'weekend');
+    } else {
+      params.append('type', 'work');
+    }
 
     return this.http.get(`${this.API_URL}sport-centers/list`, {headers: this.headers, search: params})
-            .map(this.parseSportCenters);
+      .map(this.parseSportCenters);
   }
 
   parseSportCenters(res: Response) {
     let arr = [];
+    console.log(res);
     let respData = res.json();
+
     respData.forEach((item) => {
       arr.push(new Place(item))
     });

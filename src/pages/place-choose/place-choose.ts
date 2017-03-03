@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Place} from "../../app/models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {PlacePage} from "../place/place";
+import {SportCenterService} from "../../app/services/sport-center.service";
 
 @Component({
   selector: 'page-place-choose',
@@ -16,19 +17,20 @@ export class PlaceChoosePage {
   places: Place[] = [];
   counter: number = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // this.places.push(new Place({}));
-
-    for (let i = 0; i < 10; i++) {
-      this.addNewPlace();
-      this.counter++;
-    }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public sportCenters: SportCenterService) {
   }
-
   /**
    * loads map on view shown
    */
   ionViewDidLoad() {
+
+    let date = new Date(this.navParams.get('date'));
+
+    this.sportCenters.getSportCenters(date).subscribe((res) => {
+      this.places = res;
+    });
   }
 
   /**
@@ -44,8 +46,8 @@ export class PlaceChoosePage {
     this.navCtrl.push(DashboardPage);
   }
 
-  goToPlace(place : Place) {
-    this.navCtrl.push(PlacePage , {place : place});
+  goToPlace(place: Place) {
+    this.navCtrl.push(PlacePage, {place: place});
   }
 
   /**

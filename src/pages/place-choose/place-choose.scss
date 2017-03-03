@@ -1,4 +1,8 @@
 page-place-choose {
+  .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    display: none;
+  }
+
   .map-container {
     height: 100%;
   }
@@ -8,6 +12,14 @@ page-place-choose {
 
   .place-choose__content {
     height: 100%;
+
+    &_center {
+      display: flex;
+      justify-self: center;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .place {
