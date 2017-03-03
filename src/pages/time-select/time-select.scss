@@ -36,6 +36,10 @@ page-time-select {
     background: #f5f5f5 !important;
   }
 
+  .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+    display: none;
+  }
+
   .time-content {
     height: 100%;
     display: flex;

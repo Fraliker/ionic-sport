@@ -3,6 +3,8 @@ import {NavController, NavParams} from 'ionic-angular';
 import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
 import {SportCenterService} from "../../app/services/sport-center.service";
+import {Place} from "../../app/models/place.model";
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-time-select',
@@ -10,18 +12,15 @@ import {SportCenterService} from "../../app/services/sport-center.service";
 })
 export class TimeSelectPage {
 
-  day: string = new Date().toISOString();
-  time: string = new Date().toISOString();
+  day: string = moment(moment().format(), moment.ISO_8601).format(); // timezone bug fixed
   minDate: string = new Date().toISOString();
   maxDate: string;
   dayShortNames: string = 'Пн, Вт, Ср, Чт, Пт, Сб, Вс';
   monthNames: string = 'январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь';
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public sportCenters: SportCenterService) {
+              public navParams: NavParams) {
 
-    console.log(this.minDate);
 
     /**
      * setting max date
@@ -35,18 +34,13 @@ export class TimeSelectPage {
     }
   }
 
-  ionViewDidLoad() {
-
-    this.sportCenters.getSportCenters().subscribe((res) => {
-      console.log(res);
-    });
-  }
+  ionViewDidLoad() {}
 
   goToDashboard() {
     this.navCtrl.push(DashboardPage);
   }
 
   goToPlaceChoose() {
-    this.navCtrl.push(PlaceChoosePage);
+    this.navCtrl.push(PlaceChoosePage, {date : this.day});
   }
 }
