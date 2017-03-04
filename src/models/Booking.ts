@@ -3,7 +3,7 @@ export class Booking {
   sportCenter: string;
   playingField: string;
   year: number;
-  mounth: number;
+  month: number;
   day: number;
   hour: number;
   priceTime: number;
@@ -16,7 +16,7 @@ export class Booking {
     this.sportCenter = obj.sportCenter || null;
     this.playingField = obj.playingField || null;
     this.year = obj.year || null;
-    this.mounth = obj.mounth || null;
+    this.month = obj.month || null;
     this.day = obj.day || null;
     this.hour = obj.hours || null;
     this.priceTime = obj.priceTime || 0;

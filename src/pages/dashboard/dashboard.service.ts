@@ -20,19 +20,31 @@ export class DashboardService {
 
   getOwnBookings(): Observable<Booking[]> {
     return this.http.get(`${this.API_URL}bookings/my-bookings`, {headers: this.headers})
-      .map(this.parseData);
+      .map(this.parseBookings);
   }
 
-  getBooking(id : number) : Observable<Booking> {
+  getBooking(id: number): Observable<Booking> {
 
     let urlParams = new URLSearchParams();
-    urlParams.append('id' , id.toString());
+    urlParams.append('id', id.toString());
 
     return this.http.get(`${this.API_URL}bookings/my-booking`, {headers: this.headers, search: urlParams})
       .map((res) => {
         console.log(res.json());
         return res.json();
       });
+  }
+
+  parseBookings(res: Response) {
+
+    let data = res.json();
+    let arr = [];
+    data.forEach((item) => {
+      console.log(item);
+      arr.push(new Booking(item));
+    });
+
+    return arr;
   }
 
   parseData(res: Response) {

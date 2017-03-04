@@ -27,6 +27,7 @@ export class DashboardPage implements OnInit {
 
     this.dashBoardService.getOwnBookings().subscribe((res) => {
       this.booked = res;
+      console.log(res);
       this.loading.dismissAll();
     }, (err) => {
       this.loading.dismissAll();

@@ -21,7 +21,6 @@ export class BookInfoPage {
   }
 
   ionViewDidLoad() {
-
     this.id = this.navParams.get('id');
 
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {

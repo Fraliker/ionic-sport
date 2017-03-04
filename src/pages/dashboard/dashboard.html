@@ -25,11 +25,11 @@
       <div class="list-card__info">
         <h1 class="club-head">{{item.sportCenter}}</h1>
         <p>{{item.playingField}}</p>
-        <p>{{item.day}} {{item.mounth}} {{item.year}} В {{item.hour}}</p>
-        <p class="club-price">Общая стоимость: {{item.pricePlayingField}}р</p>
+        <p>{{item.day}} {{item.month}} {{item.year}} В {{item.hour}}</p>
+        <p class="club-price">Общая стоимость: {{item.playFieldPrice}}р</p>
       </div>
 
-      <a class="club-button" (click)="getBooking(item.bookingId)">Перейти к бронированию</a>
+      <a class="club-button" (click)="getBooking(item.id)">Перейти к бронированию</a>
     </ion-item>
   </ion-list>
 </ion-content>
