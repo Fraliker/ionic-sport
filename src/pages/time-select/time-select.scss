@@ -1,7 +1,12 @@
 page-time-select {
+
   .header-logo {
     padding: 5px;
     max-height: 40px;
+  }
+
+  ion-header {
+    background: #f5f5f5;
   }
 
   .header::after {
