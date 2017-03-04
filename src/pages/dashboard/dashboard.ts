@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController, NavParams, LoadingController, Loading} from 'ionic-angular';
 import {BookInfoPage} from '../pages';
-import {User} from "../../app/models/user.model";
-import {AuthService} from "../../app/services/auth.service";
+import {User} from "../../models/user.model";
+import {AuthService} from "../../providers/auth.service";
 import {DashboardService} from "./dashboard.service";
 import 'rxjs';
-import {Booking} from "../../app/models/Booking";
+import {Booking} from "../../models/Booking";
 
 @Component({
   selector: 'page-dashboard',

@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
-import {SportCenterService} from "../../app/services/sport-center.service";
-import {Place} from "../../app/models/place.model";
+import {SportCenterService} from "../../providers/sport-center.service";
+import {Place} from "../../models/place.model";
 import * as moment from 'moment';
 
 @Component({

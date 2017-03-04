@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import * as config from '../../config/prod.config';
+import * as config from '../config/prod.config';
 import {Http} from "@angular/http";
 import {Storage} from '@ionic/storage';
 import 'rxjs';

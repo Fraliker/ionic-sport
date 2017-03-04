@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import * as config from '../../config/prod.config';
+import * as config from '../config/prod.config';
 import {Http, Headers, Response, URLSearchParams} from "@angular/http";
 import 'rxjs';
 import {Place} from "../models/place.model";
@@ -16,7 +16,6 @@ export class SportCenterService {
   constructor(private  http: Http) {
     this.headers.append("Authorization", `Bearer ${this.token}`);
   }
-
 
   getSportCenters(date: Date): Observable<Place[]> {
 

@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import * as config from '../../config/prod.config';
 import {Http, Headers, Response, URLSearchParams} from "@angular/http";
 import 'rxjs';
-import {AuthService} from "../../app/services/auth.service";
+import {AuthService} from "../../providers/auth.service";
 import {Observer, Observable} from "rxjs";
-import {Booking} from "../../app/models/Booking";
-import {User} from "../../app/models/user.model";
+import {Booking} from "../../models/Booking";
+import {User} from "../../models/user.model";
 
 @Injectable()
 export class DashboardService {

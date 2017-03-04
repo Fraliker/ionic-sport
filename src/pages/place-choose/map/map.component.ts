@@ -1,7 +1,7 @@
 import {Component, ViewChild, ElementRef, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Geolocation} from 'ionic-native';
-import {Place} from "../../../app/models/place.model";
+import {Place} from "../../../models/place.model";
 
 declare var ymaps;
 

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from '../../app/services/auth.service';
+import {AuthService} from '../../providers/auth.service';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, ToastController, LoadingController} from 'ionic-angular';
 import {SmsVerifyPage} from '../pages';

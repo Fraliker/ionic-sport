@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, LoadingController} from 'ionic-angular';
-import {AuthService} from '../../app/services/auth.service';
-import {User} from "../../app/models/user.model";
+import {AuthService} from '../../providers/auth.service';
+import {User} from "../../models/user.model";
 import {TimeSelectPage} from "../time-select/time-select";
 
 @Component({

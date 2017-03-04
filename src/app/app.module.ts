@@ -13,12 +13,12 @@ import {SmsVerifyPage, AuthenticationPage, DashboardPage,
         BookInfoPage, MainSportChoosePage, TimeSelectPage,
         PlaceChoosePage, PlacePage} from '../pages/pages';
 /**
- * import services
+ * import providers
  */
-import {AuthService} from '../app/services/auth.service';
+import {AuthService} from '../providers/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
 import {DashboardService} from "../pages/dashboard/dashboard.service";
-import {SportCenterService} from "./services/sport-center.service";
+import {SportCenterService} from "../providers/sport-center.service";
 
 @NgModule({
   declarations: [

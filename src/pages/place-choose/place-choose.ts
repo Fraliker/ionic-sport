@@ -1,9 +1,9 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Place} from "../../app/models/place.model";
+import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {PlacePage} from "../place/place";
-import {SportCenterService} from "../../app/services/sport-center.service";
+import {SportCenterService} from "../../providers/sport-center.service";
 
 @Component({
   selector: 'page-place-choose',

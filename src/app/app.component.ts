@@ -3,8 +3,8 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
 
 import {AuthenticationPage} from "../pages/pages";
-import {AuthService} from './services/auth.service';
-import {User} from "./models/user.model";
+import {AuthService} from '../providers/auth.service';
+import {User} from "../models/user.model";
 import {TimeSelectPage} from "../pages/time-select/time-select";
 
 @Component({

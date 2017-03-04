@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Place} from "../../app/models/place.model";
+import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 
 @Component({
