@@ -1,4 +1,5 @@
 page-place-choose {
+
   .header-ios .toolbar-ios:last-child .toolbar-background-ios {
     display: none;
   }
@@ -23,26 +24,84 @@ page-place-choose {
   }
 
   .place {
-
     position: relative;
+    max-width: 180px;
 
     &__img {
+      max-height: 100%;
+      max-width: 100%;
+      width: 100%;
+    }
 
+    &__triangle {
+      position: absolute;
+      right: 0;
+
+      &_up {
+        top:0;
+
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 20px 60px 0;
+        border-color: transparent #ffffff transparent transparent;
+      }
+
+      &_down {
+        bottom: 0;
+
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 60px 20px;
+        border-color: transparent transparent #ffffff transparent;
+      }
     }
 
     &__logo {
-      height : 33%;
+      height: 33%;
       position: absolute;
       top: 50%;
-      right: 0;
+      right: -10px;
       transform: translate(0, -50%);
     }
 
     &__button {
-      height: 100%;
+      height: 100% !important;
       color: white;
+      min-width: 30px !important;
     }
   }
 
-}
+  .line {
 
+    &__wrap {
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__col {
+
+      &_1 {
+        width: 40%;
+      }
+
+      &_2 {
+        padding-left: 15px;
+        width: 40%;
+
+        p {
+          white-space: normal;
+        }
+      }
+
+      &_3 {
+
+      }
+    }
+
+  }
+}

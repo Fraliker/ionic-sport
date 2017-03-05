@@ -29,30 +29,31 @@
 
   <div class="place-choose__content">
     <ion-list [ngClass]="{hide: !isList()}">
-      <!--<button ion-button (click)="addNewPlace()">Добавить место</button>-->
 
       <ion-item *ngFor="let place of places">
-        <ion-grid>
-          <ion-row>
-            <ion-col width-33>
+        <div class="line__wrap">
+
+          <div class="line__row">
+            <div class="line__col line__col_1" width-33>
               <div class="place">
                 <img class="place__img" [src]='place.image'>
+                <span class="place__triangle place__triangle_up"></span>
+                <span class="place__triangle place__triangle_down"></span>
                 <img class="place__logo" [src]="place.imageLogo">
               </div>
-            </ion-col>
-            <ion-col width-55>
+            </div>
+            <div class="line__col line__col_2">
               <p>{{place.type}}</p>
               <p>{{place.name}}</p>
-              <p>{{place.adress}}</p>
-              <p>{{place.distance}}</p>
-            </ion-col>
-            <ion-col width-12>
+              <p>{{place.address}}</p>
+            </div>
+            <div class="line__col line__col_3">
               <button (click)="goToPlace(place)" ion-button class="place__button" icon-only>
                 <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
               </button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+            </div>
+          </div>
+        </div>
       </ion-item>
     </ion-list>
 

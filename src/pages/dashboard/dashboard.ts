@@ -27,7 +27,6 @@ export class DashboardPage implements OnInit {
 
     this.dashBoardService.getOwnBookings().subscribe((res) => {
       this.booked = res;
-      console.log(res);
       this.loading.dismissAll();
     }, (err) => {
       this.loading.dismissAll();
@@ -45,10 +44,6 @@ export class DashboardPage implements OnInit {
 
   ionViewDidLoad() {
     // this.loading.present();
-  }
-
-  goToBookInfo(book) {
-    this.navCtrl.push(BookInfoPage, {'book': book});
   }
 
   getBooking(id: number) {

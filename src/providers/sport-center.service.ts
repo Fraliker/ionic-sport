@@ -39,9 +39,11 @@ export class SportCenterService {
     console.log(res);
     let respData = res.json();
 
-    respData.forEach((item) => {
-      arr.push(new Place(item))
-    });
+    if(respData != null) {
+      respData.forEach((item) => {
+        arr.push(new Place(item))
+      });
+    }
 
     return arr;
   }

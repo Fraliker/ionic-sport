@@ -41,6 +41,7 @@ export class TimeSelectPage {
   }
 
   goToPlaceChoose() {
-    this.navCtrl.push(PlaceChoosePage, {date : this.day});
+    // this.navCtrl.push(PlaceChoosePage, {date : this.day});
+    this.navCtrl.push(PlaceChoosePage); //, {date : this.day});
   }
 }

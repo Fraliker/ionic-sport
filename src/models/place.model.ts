@@ -27,8 +27,9 @@ export class Place {
     this.longitude = obj.longitude || 0;
     this.distance = obj.distance || 0;
 
-    obj.playingFields.forEach((item) => {this.playingFields.push(new PlayingField(item))});
-
-    obj.playingFields.forEach((item) => {this.services.push(new PlayingField(item))});
+    // if (obj.playingFields.length != 0)
+    //   obj.playingFields.forEach((item) => {this.playingFields.push(new PlayingField(item))});
+    // if (obj.playingFields.length != 0)
+    //   obj.playingFields.forEach((item) => {this.services.push(new PlayingField(item))});
   }
 }
