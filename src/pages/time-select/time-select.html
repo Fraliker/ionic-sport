@@ -33,6 +33,7 @@
         <ion-col width-25 class="ion-datetime-wrap">
           <ion-datetime class="date__time border-left"
                         [min]="minDate"
+                        [max]="maxDate"
                         displayFormat="HH:00"
                         pickerFormat="HH:00"
                         [(ngModel)]="day">
@@ -43,6 +44,5 @@
       </ion-row>
     </ion-grid>
     <button ion-button class="time-content__button" (click)="goToPlaceChoose()">Подобрать корт</button>
-
   </section>
 </ion-content>

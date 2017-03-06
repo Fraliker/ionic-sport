@@ -28,7 +28,7 @@ export class TimeSelectPage {
      */
     let today = new Date();
     if (today.getMonth() == 11) {
-      this.maxDate = new Date(today.getFullYear() + 1, 0, 1).toISOString();
+      this.maxDate = new Date(today.getFullYear() + 1, 1, 1).toISOString();
     } else {
       this.maxDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDay()).toISOString();
     }
@@ -41,7 +41,6 @@ export class TimeSelectPage {
   }
 
   goToPlaceChoose() {
-    // this.navCtrl.push(PlaceChoosePage, {date : this.day});
-    this.navCtrl.push(PlaceChoosePage); //, {date : this.day});
+    this.navCtrl.push(PlaceChoosePage, {date : this.day});
   }
 }

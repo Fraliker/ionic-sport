@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title center>Выберите площадку</ion-title>
+    <ion-title text-center>Выберите площадку</ion-title>
     <ion-buttons end>
       <button (click)="goToDashboard()" ion-button icon-only>
         <ion-icon ios="ios-contact" md="md-contact" right></ion-icon>
@@ -22,40 +22,41 @@
 
 
 <ion-content>
-
   <div class="place-choose__content place-choose__content_center" *ngIf="places.length === 0">
     Не найдено
   </div>
 
-  <div class="place-choose__content">
-    <ion-list [ngClass]="{hide: !isList()}">
+  <div class="place-choose__content" *ngIf="places.length > 0">
 
-      <ion-item *ngFor="let place of places">
-        <div class="line__wrap">
+    <ul class="list" [ngClass]="{hide: !isList()}">
+      <li class="list__item" *ngFor="let place of places">
 
-          <div class="line__row">
-            <div class="line__col line__col_1" width-33>
-              <div class="place">
-                <img class="place__img" [src]='place.image'>
-                <span class="place__triangle place__triangle_up"></span>
-                <span class="place__triangle place__triangle_down"></span>
-                <img class="place__logo" [src]="place.imageLogo">
+        <div class="line__row">
+          <div class="line__col line__col_1">
+            <div class="place">
+              <div class="place__img">
+                <img class="" [src]='place.image'>
               </div>
-            </div>
-            <div class="line__col line__col_2">
-              <p>{{place.type}}</p>
-              <p>{{place.name}}</p>
-              <p>{{place.address}}</p>
-            </div>
-            <div class="line__col line__col_3">
-              <button (click)="goToPlace(place)" ion-button class="place__button" icon-only>
-                <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-              </button>
+
+              <span class="place__triangle place__triangle_up"></span>
+              <span class="place__triangle place__triangle_down"></span>
+              <img class="place__logo" [src]="place.imageLogo">
             </div>
           </div>
+          <div class="line__col line__col_2 club">
+            <h3 class="club__type">{{place.type}}</h3>
+            <h4 class="club__name">{{place.name}}</h4>
+            <p class="club__adress"><ion-icon class="navigate-icon" name="navigate"></ion-icon> {{place.address}}</p>
+          </div>
+          <div class="line__col line__col_3">
+            <button (click)="goToPlace(place)" ion-button class="place__button" icon-only>
+              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+            </button>
+          </div>
         </div>
-      </ion-item>
-    </ion-list>
+
+      </li>
+    </ul>
 
     <ion-list class="map-tab" [ngClass]="{hide: isList()}">
       <yandex-map [places]="places"></yandex-map>

@@ -14,7 +14,7 @@ export class PlaceChoosePage {
   @ViewChild('map') mapElement: ElementRef;
   segment: string = "list";
   map: any;
-  places: Place[] = [new Place({})];
+  places: Place[] = [];
   counter: number = 1;
 
   constructor(public navCtrl: NavController,
