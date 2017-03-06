@@ -23,19 +23,29 @@
 
     <div class="place-info__time">
       <h3>Выбранное время</h3>
-
+      <p>{{time}}</p>
     </div>
 
     <div class="place-info__playground">
       <h3>Доступные для бронирования корты</h3>
-
       <ul>
         <li *ngFor="let playground of place.playingFields">
-          {{playground}}
+          <h3>{{playground.name}}</h3>
+          <p>{{playground.price }}</p>
+          <p>{{playground.info}}</p>
         </li>
       </ul>
     </div>
 
+    <div class="place-info__services">
+      <h3>Дополнительные услуги</h3>
+      <ul>
+        <li *ngFor="let service of place.services">
+          <p>{{service.name}}</p>
+          <p>{{service.price}}</p>
+        </li>
+      </ul>
+    </div>
 
   </div>
 

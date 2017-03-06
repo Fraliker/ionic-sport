@@ -10,10 +10,13 @@ import {DashboardPage} from "../dashboard/dashboard";
 export class PlacePage {
 
   place: Place;
+  time: Date;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.place = this.navParams.get("place");
     console.log(this.place);
+    console.log(this.navParams.get("time"));
+    this.time= new Date(this.navParams.get("time"));
   }
 
   ionViewDidLoad() {

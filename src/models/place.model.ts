@@ -27,9 +27,13 @@ export class Place {
     this.distance = obj.distance || 0;
 
     if (obj.playingFields && obj.playingFields.length != 0)
-      obj.playingFields.forEach((item) => {this.playingFields.push(new PlayingField(item))});
+      obj.playingFields.forEach((item) => {
+        this.playingFields.push(new PlayingField(item))
+      });
 
-    // if (obj.playingFields.length != 0)
-    //   obj.playingFields.forEach((item) => {this.services.push(new PlayingField(item))});
+    if (obj.services && obj.services.length != 0)
+      obj.services.forEach((item) => {
+        this.services.push(new PlayingField(item))
+      });
   }
 }
