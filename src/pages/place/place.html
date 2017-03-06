@@ -9,10 +9,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
+  <!--<img [src]="place.image"> -->
+
+
   <ion-list>
     <ion-item>
-      {{place.adress}}
+      {{place.address}}
     </ion-item>
     <ion-item>
       {{place.type}}

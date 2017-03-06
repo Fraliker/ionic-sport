@@ -13,6 +13,7 @@ export class PlacePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.place = this.navParams.get("place");
+    console.log(this.place);
   }
 
   ionViewDidLoad() {
