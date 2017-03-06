@@ -10,17 +10,16 @@ import {DashboardPage} from "../dashboard/dashboard";
 export class PlacePage {
 
   place: Place;
-  time: Date;
+  time: string;
+  dayShortNames: string = 'Пн, Вт, Ср, Чт, Пт, Сб, Вс';
+  monthNames: string = 'январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.place = this.navParams.get("place");
-    console.log(this.place);
-    console.log(this.navParams.get("time"));
-    this.time= new Date(this.navParams.get("time"));
+    this.time= new Date(this.navParams.get("time")).toISOString();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PlacePage');
   }
 
   goToDashboard() {

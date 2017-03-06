@@ -23,14 +23,19 @@
 
     <div class="place-info__time">
       <h3>Выбранное время</h3>
-      <p>{{time}}</p>
+      <ion-datetime class="date__date"
+                    displayFormat="DDD. DD, MMMM"
+                    [monthNames]="monthNames"
+                    [dayShortNames]="dayShortNames"
+                    [(ngModel)]="time">
+      </ion-datetime>
     </div>
 
     <div class="place-info__playground">
-      <h3>Доступные для бронирования корты</h3>
+      <h4>Доступные для бронирования корты</h4>
       <ul>
         <li *ngFor="let playground of place.playingFields">
-          <h3>{{playground.name}}</h3>
+          <h4>{{playground.name}}</h4>
           <p>{{playground.price }}</p>
           <p>{{playground.info}}</p>
         </li>
@@ -38,7 +43,7 @@
     </div>
 
     <div class="place-info__services">
-      <h3>Дополнительные услуги</h3>
+      <h4>Дополнительные услуги</h4>
       <ul>
         <li *ngFor="let service of place.services">
           <p>{{service.name}}</p>
