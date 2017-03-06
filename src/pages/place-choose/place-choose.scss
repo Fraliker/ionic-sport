@@ -120,6 +120,7 @@ page-place-choose {
 
       &_2 {
         width: 40%;
+        padding-left: 5px;
 
         p {
           white-space: normal;
@@ -140,11 +141,12 @@ page-place-choose {
     padding: 0;
 
     &__item {
-      margin: 10px 0;
       border-radius: 10px;
       overflow: hidden;
       max-height: 150px;
       display: block;
+      max-width: 500px;
+      margin: 10px auto;
     }
   }
 
