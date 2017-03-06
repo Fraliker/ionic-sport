@@ -22,8 +22,12 @@
 
 
 <ion-content>
-  <div class="place-choose__content place-choose__content_center" *ngIf="places.length === 0">
-    Не найдено
+  <div class="place-choose__content place-choose__content_nothing" *ngIf="places.length === 0">
+    <p class="nothing-found">Не найдено</p>
+
+    <div>
+    <button ion-button (click)="goBack()">Вернуться назад</button>
+    </div>
   </div>
 
   <div class="place-choose__content" *ngIf="places.length > 0">

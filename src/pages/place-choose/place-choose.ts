@@ -21,6 +21,7 @@ export class PlaceChoosePage {
               public navParams: NavParams,
               public sportCenters: SportCenterService) {
   }
+
   /**
    * loads map on view shown
    */
@@ -41,12 +42,15 @@ export class PlaceChoosePage {
     return this.segment === 'list';
   }
 
+  goBack(): void {
+    this.navCtrl.pop();
+  }
 
-  goToDashboard() {
+  goToDashboard(): void {
     this.navCtrl.push(DashboardPage);
   }
 
-  goToPlace(place: Place) {
+  goToPlace(place: Place): void {
     this.navCtrl.push(PlacePage, {place: place});
   }
 

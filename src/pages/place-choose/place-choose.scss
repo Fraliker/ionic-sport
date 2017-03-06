@@ -30,6 +30,13 @@ page-place-choose {
       align-items: center;
       justify-content: center;
     }
+
+    &_nothing {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .place {
@@ -173,5 +180,9 @@ page-place-choose {
     position: absolute;
     left: 0;
 
+  }
+
+  .nothing-found {
+    font-size: 1.4em;
   }
 }
