@@ -20,8 +20,6 @@ export class TimeSelectPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
-
-
     /**
      * setting max date
      * @type {Date}
@@ -30,7 +28,7 @@ export class TimeSelectPage {
     if (today.getMonth() == 11) {
       this.maxDate = new Date(today.getFullYear() + 1, 1, 1).toISOString();
     } else {
-      this.maxDate = new Date(today.getFullYear(), today.getMonth() + 1, today.getDay()).toISOString();
+      this.maxDate = new Date(today.getFullYear(), today.getMonth() + 2, today.getDay() - 1 ).toISOString();
     }
   }
 
