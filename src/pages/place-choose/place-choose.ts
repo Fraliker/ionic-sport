@@ -1,5 +1,5 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {PlacePage} from "../place/place";
@@ -19,7 +19,8 @@ export class PlaceChoosePage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public sportCenters: SportCenterService) {
+              public sportCenters: SportCenterService,
+              private loadingCtrl: LoadingController) {
   }
 
   /**
@@ -27,10 +28,18 @@ export class PlaceChoosePage {
    */
   ionViewDidLoad() {
 
+    let loading = this.loadingCtrl.create({
+      content: "Пожалуйста, подождите..."
+    });
+    loading.present();
+
     let date = new Date(this.navParams.get('date'));
 
     this.sportCenters.getSportCenters(date).subscribe((res) => {
       this.places = res;
+      loading.dismissAll();
+    }, (err)=> {
+      loading.dismissAll();
     });
   }
 
