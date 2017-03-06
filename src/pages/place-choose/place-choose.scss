@@ -110,6 +110,8 @@ page-place-choose {
       justify-content: space-between;
       max-height: 150px;
       background: white;
+      border-radius: 15px;
+      overflow: hidden;
     }
 
     &__col {
@@ -141,8 +143,6 @@ page-place-choose {
     padding: 0 5px;
 
     &__item {
-      border-radius: 10px;
-      overflow: hidden;
       max-height: 150px;
       display: block;
       max-width: 500px;

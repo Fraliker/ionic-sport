@@ -17,20 +17,8 @@ export class Place {
   constructor(obj) {
 
     this.id = obj.id || null;
-
-    if (obj.image) {
-      this.image = obj.image.origin;
-    } else {
-      this.image = 'http://2.wlimg.com/product_images/bc-full/dir_21/601811/tennis-court-construction-1705242_service_image.jpg';
-    }
-
-    if (obj.logo) {
-      this.imageLogo = obj.logo.origin;
-    }
-    else {
-      this.imageLogo = 'https://thumb9.shutterstock.com/display_pic_with_logo/1453121/299886746/stock-vector-vector-illustration-for-logo-for-lawn-tennis-consisting-of-ground-orange-tennis-court-net-racket-299886746.jpg';
-    }
-
+    this.image = obj.image ? obj.image.origin : 'http://2.wlimg.com/product_images/bc-full/dir_21/601811/tennis-court-construction-1705242_service_image.jpg';
+    this.imageLogo = obj.logo ? obj.logo.origin : 'https://thumb9.shutterstock.com/display_pic_with_logo/1453121/299886746/stock-vector-vector-illustration-for-logo-for-lawn-tennis-consisting-of-ground-orange-tennis-court-net-racket-299886746.jpg';
     this.type = obj.type || 'Спортивный клуб';
     this.name = obj.name || 'Балашиха';
     this.address = obj.address || 'Москва ул. Правды 10';
@@ -38,8 +26,9 @@ export class Place {
     this.longitude = obj.longitude || 0;
     this.distance = obj.distance || 0;
 
-    // if (obj.playingFields.length != 0)
-    //   obj.playingFields.forEach((item) => {this.playingFields.push(new PlayingField(item))});
+    if (obj.playingFields && obj.playingFields.length != 0)
+      obj.playingFields.forEach((item) => {this.playingFields.push(new PlayingField(item))});
+
     // if (obj.playingFields.length != 0)
     //   obj.playingFields.forEach((item) => {this.services.push(new PlayingField(item))});
   }

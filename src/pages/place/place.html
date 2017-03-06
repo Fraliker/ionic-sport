@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title cetnet>Выберите услуги</ion-title>
+    <ion-title text-center>Выберите услуги</ion-title>
     <ion-buttons end>
       <button (click)="goToDashboard()" ion-button icon-only>
         <ion-icon class="white" ios="ios-contact" md="md-contact" right></ion-icon>
@@ -11,19 +11,32 @@
 
 <ion-content>
 
-  <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
-  <!--<img [src]="place.image"> -->
+  <div class="image-container">
+    <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
+    <img class="image__logo" [src]="place.imageLogo">
+  </div>
+
+  <div class="place-info">
+    <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
+
+    <p class="place-info__text">Адрес: {{place.address}}</p>
+
+    <div class="place-info__time">
+      <h3>Выбранное время</h3>
+
+    </div>
+
+    <div class="place-info__playground">
+      <h3>Доступные для бронирования корты</h3>
+
+      <ul>
+        <li *ngFor="let playground of place.playingFields">
+          {{playground}}
+        </li>
+      </ul>
+    </div>
 
 
-  <ion-list>
-    <ion-item>
-      {{place.address}}
-    </ion-item>
-    <ion-item>
-      {{place.type}}
-    </ion-item>
-    <ion-item>
-      {{place.name}}
-    </ion-item>
-  </ion-list>
+  </div>
+
 </ion-content>

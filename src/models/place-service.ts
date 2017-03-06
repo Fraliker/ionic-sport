@@ -8,6 +8,5 @@ export class PlaceService {
     this.id = obj.id || null;
     this.name = obj.name || '';
     this.price = obj.price || null;
-
   }
 }
