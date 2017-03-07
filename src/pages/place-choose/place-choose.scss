@@ -40,9 +40,10 @@ page-place-choose {
   }
 
   .place {
-    position: relative;
+    position: absolute;
     max-width: 180px;
     height: 100%;
+    width: 100%;
 
     &__img {
       max-height: 100%;
@@ -92,6 +93,10 @@ page-place-choose {
     }
 
     &__button {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
       height: 100% !important;
       color: white;
       min-width: 30px !important;
@@ -118,6 +123,8 @@ page-place-choose {
 
     &__col {
 
+      position: relative;
+
       &_1 {
         width: 40%;
       }
@@ -133,7 +140,7 @@ page-place-choose {
       }
 
       &_3 {
-
+        width: 20%;
       }
     }
   }
