@@ -19,6 +19,8 @@ import {AuthService} from '../providers/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
 import {DashboardService} from "../pages/dashboard/dashboard.service";
 import {SportCenterService} from "../providers/sport-center.service";
+import {DynamicFormComponent} from "../pages/place/dynamic-form/dynamic-form";
+import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-form-question.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {SportCenterService} from "../providers/sport-center.service";
     TimeSelectPage,
     PlaceChoosePage,
     YandexMap,
-    PlacePage
+    PlacePage,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ],
   imports: [
     FormsModule,

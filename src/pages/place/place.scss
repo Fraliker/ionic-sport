@@ -48,6 +48,18 @@ page-place {
     }
   }
 
+  .date {
+
+    &__time {
+      display: flex;
+      align-self: center;
+    }
+
+    &__date {
+      position: relative;
+    }
+  }
+
   .place-info {
     padding: 0 10px;
 

@@ -55,9 +55,13 @@ export class YandexMap implements OnInit, OnChanges {
 
   drawPointers() {
     if (this.places != null) {
+
       this.places.forEach((place) => {
-        console.log(place.latitude, place.longitude);
-        this.map.geoObjects.add(YandexMap.createPlacemark(place));
+        if (place.latitude === 0 && place.longitude === 0) {
+          console.debug('Map ignored place ---- bacause of coordinates', place);
+        } else {
+          this.map.geoObjects.add(YandexMap.createPlacemark(place));
+        }
       });
     }
   }
@@ -69,7 +73,7 @@ export class YandexMap implements OnInit, OnChanges {
   /**
    * @return {ymaps.Placemark}
    */
-  static createPlacemark(place : Place): any {
+  static createPlacemark(place: Place): any {
     return new ymaps.Placemark([place.latitude, place.longitude], {
       balloonContent: `${place.type}</br>${place.name}`
     }, {
