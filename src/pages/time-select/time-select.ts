@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ToastController} from 'ionic-angular';
 import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
 import {SportCenterService} from "../../providers/sport-center.service";
@@ -19,7 +19,8 @@ export class TimeSelectPage {
   monthNames: string = 'январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь';
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public toastCtrl: ToastController) {
     /**
      * setting max date
      * @type {Date}
@@ -28,17 +29,31 @@ export class TimeSelectPage {
     if (today.getMonth() == 11) {
       this.maxDate = new Date(today.getFullYear() + 1, 1, 1).toISOString();
     } else {
-      this.maxDate = new Date(today.getFullYear(), today.getMonth() + 2, today.getDay() - 1 ).toISOString();
+      this.maxDate = new Date(today.getFullYear(), today.getMonth() + 2, today.getDay() - 1).toISOString();
     }
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+  }
 
   goToDashboard() {
     this.navCtrl.push(DashboardPage);
   }
 
   goToPlaceChoose() {
-    this.navCtrl.push(PlaceChoosePage, {date : this.day});
+    let selectedTime = new Date(this.day);
+    let minDate = new Date(this.minDate);
+
+    if (minDate.getDay() >= selectedTime.getDay() && minDate.getMonth() >= selectedTime.getMonth()) {
+      if (minDate.getHours() >= (selectedTime.getHours() - 2)) {
+        let toast = this.toastCtrl.create({
+          message: 'Дата не может быть выбрана. Выберите дату, не ранее, чем через 2 часа',
+          duration: 2000
+        });
+        toast.present();
+      } else {
+        this.navCtrl.push(PlaceChoosePage, {date: this.day});
+      }
+    }
   }
 }
