@@ -44,16 +44,18 @@ export class TimeSelectPage {
     let selectedTime = new Date(this.day);
     let minDate = new Date(this.minDate);
 
-    if (minDate.getDay() >= selectedTime.getDay() && minDate.getMonth() >= selectedTime.getMonth()) {
-      if (minDate.getHours() >= (selectedTime.getHours() - 2)) {
-        let toast = this.toastCtrl.create({
-          message: 'Дата не может быть выбрана. Выберите дату, не ранее, чем через 2 часа',
-          duration: 2000
-        });
-        toast.present();
-      } else {
-        this.navCtrl.push(PlaceChoosePage, {date: this.day});
-      }
+    if (minDate.getDate() >= selectedTime.getDate()
+      && minDate.getMonth() >= selectedTime.getMonth()
+      && minDate.getHours() >= (selectedTime.getHours() - 2)) {
+
+      let toast = this.toastCtrl.create({
+        message: 'Дата не может быть выбрана. Выберите дату, не ранее, чем через 2 часа',
+        duration: 2000
+      });
+      toast.present();
+
+    } else {
+      this.navCtrl.push(PlaceChoosePage, {date: this.day});
     }
   }
 }
