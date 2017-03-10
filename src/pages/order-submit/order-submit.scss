@@ -1,0 +1,112 @@
+page-order-submit {
+  .nav {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #f1f1f1;
+    }
+
+    &.active {
+      font-weight: bold;
+
+      &:after {
+        background-color: #fccb31;
+        height: 2px;
+        bottom: -1px;
+      }
+    }
+  }
+
+  .order-submit-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    &__button {
+      flex-grow: 1;
+      margin: 0;
+    }
+  }
+
+  .add-comment {
+    width: 100%;
+    min-height: 45px;
+    color: #329bdc;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    display: flex;
+    text-align: center;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__text-area {
+      width: 100%;
+      resize: none;
+      height: 150px;
+      padding: 10px;
+      border: none;
+      background: #f4f4f4;
+    }
+  }
+
+  .scroll-content {
+    padding: 0;
+  }
+
+  .total-price {
+    min-height: 50px;
+    padding-top: 19px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .book-info {
+
+    background: #fdf1cb;
+    padding: 10px;
+
+    &__list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding-left: 5px;
+        margin-bottom: 8px;
+
+        &:before {
+          content: '-';
+        }
+      }
+    }
+  }
+
+  .guest {
+    &__name {
+
+    }
+    &__contacts {
+      display: flex;
+
+      input {
+        border: none;
+      }
+    }
+  }
+
+  .margin {
+    margin: 10px;
+  }
+
+  .toolbar-background {
+    border: none !important;
+  }
+
+  .edit-icon {
+  }
+}

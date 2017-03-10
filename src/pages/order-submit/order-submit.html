@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>Подтвердить заказ</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50 class="nav active">Шаг 1</ion-col>
+        <ion-col width-50 class="nav">Шаг 2</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="margin">
+    <h3>Cпортивный клуб Балашиха</h3>
+    <p>Адрес: г.Москва ул Пушкина</p>
+    <p>Время посещения: с 12 до 13</p>
+  </div>
+
+  <div class="book-info">
+    <ul class="book-info__list">
+      <li>Теннисный корт с грунтовым покрытием №1</li>
+      <li>Аренда мячей 12штук</li>
+    </ul>
+  </div>
+
+  <div class="guest margin">
+    <p class="guest__name">Имя гостя: Ибрагим</p>
+    <p class="guest__contacts">Контактный телефон: <input [(ngModel)]="phone">
+      <ion-icon ios="ios-create" md="md-create" class="edit-icon"></ion-icon>
+    </p>
+  </div>
+
+  <div class="add-comment">
+    <p (click)="addCommentShow = !addCommentShow">Добавить комментарий</p>
+    <div *ngIf="addCommentShow" [@enterAnimation]="addCommentShow">
+      <textarea class="add-comment__text-area" placeholder="Введите комментарий" [(ngModel)]="comment"></textarea>
+    </div>
+  </div>
+
+  <div class="total-price">
+    Общая стоимость 1000 рублей
+  </div>
+
+</ion-content>
+
+<ion-footer class="order-submit-footer">
+  <button class="order-submit-footer__button" ion-button (click)="submitOrder()">Подтвердить заказ</button>
+</ion-footer>
