@@ -42,17 +42,16 @@
         </ion-grid>
       </div>
 
-      <!--<ul>-->
-      <!--<li *ngFor="let playground of place.playingFields">-->
-
-      <!--</li>-->
-      <!--</ul>-->
-
-      <h3>Dynamic form</h3>
-      <div *ngFor="let question of questions" class="form-row">
+      <h3>Доступные для бронирования корты</h3>
+      <div *ngFor="let question of customOptions" class="form-row">
         <df-question [question]="question" [form]="form"></df-question>
       </div>
-      <h3>Dynamic form end</h3>
+
+      <h3>Доступные для бронирования услуги</h3>
+
+      <div *ngFor="let question of corts" class="form-row">
+        <df-question [question]="question" [form]="form"></df-question>
+      </div>
 
       <!--<div class="place-info__playground">-->
       <!--<h4>Доступные для бронирования корты</h4>-->

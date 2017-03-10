@@ -6,6 +6,7 @@ import {AuthenticationPage} from "../pages/pages";
 import {AuthService} from '../providers/auth.service';
 import {User} from "../models/user.model";
 import {TimeSelectPage} from "../pages/time-select/time-select";
+import {OrderSubmitPage} from "../pages/order-submit/order-submit";
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +16,6 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
-
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public auth: AuthService) {
@@ -30,9 +30,11 @@ export class MyApp {
       Splashscreen.hide();
 
       if (AuthService.isAuthentificated()) {
-        this.rootPage = TimeSelectPage;
+        // this.rootPage = TimeSelectPage;
+        this.rootPage = OrderSubmitPage;
       } else {
         this.rootPage = AuthenticationPage;
+
       }
     }).catch((err) => {
       console.log(err);

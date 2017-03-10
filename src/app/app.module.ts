@@ -11,7 +11,7 @@ import { TextMaskModule } from 'angular2-text-mask';
  */
 import {SmsVerifyPage, AuthenticationPage, DashboardPage,
         BookInfoPage, MainSportChoosePage, TimeSelectPage,
-        PlaceChoosePage, PlacePage} from '../pages/pages';
+        PlaceChoosePage, PlacePage, OrderSubmitPage} from '../pages/pages';
 /**
  * import providers
  */
@@ -35,7 +35,8 @@ import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-
     YandexMap,
     PlacePage,
     DynamicFormComponent,
-    DynamicFormQuestionComponent
+    DynamicFormQuestionComponent,
+    OrderSubmitPage
   ],
   imports: [
     FormsModule,
@@ -52,7 +53,8 @@ import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-
     MainSportChoosePage,
     TimeSelectPage,
     PlaceChoosePage,
-    PlacePage
+    PlacePage,
+    OrderSubmitPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
