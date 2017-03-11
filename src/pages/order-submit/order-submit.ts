@@ -1,12 +1,6 @@
 import {Component, trigger, transition, style, animate} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the OrderSubmit page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-order-submit',
   templateUrl: 'order-submit.html',
@@ -27,6 +21,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class OrderSubmitPage {
 
+  //TODO add logic
   addCommentShow : boolean = false;
   comment : string = '';
   phone: string = '+7(007)849-32-24';

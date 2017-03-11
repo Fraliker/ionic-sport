@@ -5,11 +5,18 @@
            [id]="question.key" [type]="question.type">
 
     <div *ngSwitchCase="'radio'">
-      <div *ngFor="let opt of question.options">
-        <input [id]="opt.key" [type]="question.controlType" [name]="question.group"
-               [formControlName]="question.key" [value]="opt.key">
-        <label [attr.for]="opt.key">{{opt.value}}</label>
-      </div>
+
+      <input [id]="question.key" [type]="question.controlType" [name]="question.name"
+                              [formControlName]="question.key" [value]="question.value">
+      <label [attr.for]="question.key">{{question.value}}</label>
+
+
+      <!--<h3 class="radio-group__title">{{question.header}}</h3>-->
+      <!--<div *ngFor="let opt of question.options">-->
+        <!--<input [id]="opt.key" [type]="question.controlType" [name]="question.group"-->
+               <!--[formControlName]="question.key" [value]="opt.key">-->
+        <!--<label [attr.for]="opt.key">{{opt.value}}</label>-->
+      <!--</div>-->
     </div>
 
     <label [attr.for]="question.key">{{question.label}}</label>

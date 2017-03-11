@@ -15,10 +15,13 @@ export class Place {
   services: PlaceService[] = [];
 
   constructor(obj) {
+    console.log(obj);
 
     this.id = obj.id || null;
-    this.image = obj.image ? obj.image.origin : 'http://2.wlimg.com/product_images/bc-full/dir_21/601811/tennis-court-construction-1705242_service_image.jpg';
-    this.imageLogo = obj.logo ? obj.logo.origin : 'https://thumb9.shutterstock.com/display_pic_with_logo/1453121/299886746/stock-vector-vector-illustration-for-logo-for-lawn-tennis-consisting-of-ground-orange-tennis-court-net-racket-299886746.jpg';
+    this.image = (obj.image != null) ? obj.image.origin
+      : 'http://2.wlimg.com/product_images/bc-full/dir_21/601811/tennis-court-construction-1705242_service_image.jpg';
+    this.imageLogo = (obj.logo != null) ? obj.logo.origin
+      : 'https://thumb9.shutterstock.com/display_pic_with_logo/1453121/299886746/stock-vector-vector-illustration-for-logo-for-lawn-tennis-consisting-of-ground-orange-tennis-court-net-racket-299886746.jpg';
     this.type = obj.type || 'Спортивный клуб';
     this.name = obj.name || 'Балашиха';
     this.address = obj.address || 'Москва ул. Правды 10';

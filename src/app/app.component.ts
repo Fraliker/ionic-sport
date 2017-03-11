@@ -7,6 +7,7 @@ import {AuthService} from '../providers/auth.service';
 import {User} from "../models/user.model";
 import {TimeSelectPage} from "../pages/time-select/time-select";
 import {OrderSubmitPage} from "../pages/order-submit/order-submit";
+import {PlacePage} from "../pages/place/place";
 
 @Component({
   templateUrl: 'app.html',
@@ -31,11 +32,11 @@ export class MyApp {
 
       if (AuthService.isAuthentificated()) {
         // this.rootPage = TimeSelectPage;
-        this.rootPage = OrderSubmitPage;
+        this.rootPage = TimeSelectPage;
       } else {
         this.rootPage = AuthenticationPage;
-
       }
+
     }).catch((err) => {
       console.log(err);
       this.rootPage = AuthenticationPage;

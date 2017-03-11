@@ -21,7 +21,7 @@
 
     <p class="place-info__text">Адрес: {{place.address}}</p>
 
-    <form>
+    <form [formGroup]="form" (submit)="formSubmit(form)">
       <div class="place-info__time">
         <h3>Выбранное время</h3>
         <ion-grid>
@@ -43,15 +43,15 @@
       </div>
 
       <h3>Доступные для бронирования корты</h3>
-      <div *ngFor="let question of customOptions" class="form-row">
+      <div *ngFor="let question of questions" class="form-row">
         <df-question [question]="question" [form]="form"></df-question>
       </div>
 
-      <h3>Доступные для бронирования услуги</h3>
+      <!--<h3>Доступные для бронирования услуги</h3>-->
 
-      <div *ngFor="let question of corts" class="form-row">
-        <df-question [question]="question" [form]="form"></df-question>
-      </div>
+      <!--<div *ngFor="let question of corts" class="form-row">-->
+      <!--<df-question [question]="question" [form]="form"></df-question>-->
+      <!--</div>-->
 
       <!--<div class="place-info__playground">-->
       <!--<h4>Доступные для бронирования корты</h4>-->
@@ -75,9 +75,9 @@
       <!--</li>-->
       <!--</ul>-->
       <!--</div>-->
-
+      <button ion-button type="submit">Push to form</button>
     </form>
 
-    <button ion-button (click)="pushToDynamicForm()">Push to form</button>
+
   </div>
 </ion-content>

@@ -15,7 +15,7 @@ export class TimeSelectPage {
   day: string = moment(moment().format(), moment.ISO_8601).format(); // timezone bug fixed
   minDate: string = new Date().toISOString();
   maxDate: string;
-  dayShortNames: string = 'Пн, Вт, Ср, Чт, Пт, Сб, Вс';
+  dayShortNames: string = 'Вс, Пн, Вт, Ср, Чт, Пт, Сб';
   monthNames: string = 'январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь';
 
   constructor(public navCtrl: NavController,
@@ -46,10 +46,10 @@ export class TimeSelectPage {
 
     if (minDate.getDate() >= selectedTime.getDate()
       && minDate.getMonth() >= selectedTime.getMonth()
-      && minDate.getHours() >= (selectedTime.getHours() - 2)) {
+      && minDate.getHours() >= (selectedTime.getHours() - 1)) {
 
       let toast = this.toastCtrl.create({
-        message: 'Дата не может быть выбрана. Выберите дату, не ранее, чем через 2 часа',
+        message: 'Дата не может быть выбрана. Выберите дату, не ранее, чем через 1 час',
         duration: 2000
       });
       toast.present();
