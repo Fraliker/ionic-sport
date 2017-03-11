@@ -1,25 +1,26 @@
 <div [formGroup]="form">
   <div [ngSwitch]="question.controlType">
 
-    <input *ngSwitchCase="'checkbox'" [formControlName]="question.key"
-           [id]="question.key" [type]="question.type">
+    <div *ngSwitchCase="'checkbox'">
+      <input [formControlName]="question.key"
+             [id]="question.key" [type]="question.type">
+      <label [attr.for]="question.key">{{question.value}}</label>
+    </div>
 
     <div *ngSwitchCase="'radio'">
 
-      <input [id]="question.key" [type]="question.controlType" [name]="question.name"
-                              [formControlName]="question.key" [value]="question.value">
-      <label [attr.for]="question.key">{{question.value}}</label>
+      <input [id]="question.value" [type]="question.controlType" [name]="question.name"
+             [formControlName]="question.key" [value]="question.value">
+      <label [attr.for]="question.value">{{question.value}}</label>
 
 
       <!--<h3 class="radio-group__title">{{question.header}}</h3>-->
       <!--<div *ngFor="let opt of question.options">-->
-        <!--<input [id]="opt.key" [type]="question.controlType" [name]="question.group"-->
-               <!--[formControlName]="question.key" [value]="opt.key">-->
-        <!--<label [attr.for]="opt.key">{{opt.value}}</label>-->
+      <!--<input [id]="opt.key" [type]="question.controlType" [name]="question.group"-->
+      <!--[formControlName]="question.key" [value]="opt.key">-->
+      <!--<label [attr.for]="opt.key">{{opt.value}}</label>-->
       <!--</div>-->
     </div>
-
-    <label [attr.for]="question.key">{{question.label}}</label>
 
     <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
            [id]="question.key" [type]="question.type">

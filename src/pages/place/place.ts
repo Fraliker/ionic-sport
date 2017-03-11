@@ -100,6 +100,6 @@ export class PlacePage implements OnInit {
 
   formSubmit(form) {
     console.log(form.value);
-    console.log(form.valid);
+    console.log(form);
   }
 }
