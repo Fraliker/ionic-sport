@@ -78,6 +78,16 @@ export class YandexMap implements OnInit, OnChanges {
       balloonContent: `${place.type}</br>${place.name}`
     }, {
       preset: 'islands#icon',
+      // Опции.
+      // Необходимо указать данный тип макета.
+      iconLayout: 'default#image',
+      // Своё изображение иконки метки.
+      iconImageHref: 'assets/images/map-marker.png',
+      // Размеры метки.
+      iconImageSize: [80, 80],
+      // Смещение левого верхнего угла иконки относительно
+      // её "ножки" (точки привязки).
+      iconImageOffset: [-40, -40]
     });
   }
 }
