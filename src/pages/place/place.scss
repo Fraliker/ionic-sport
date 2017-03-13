@@ -53,15 +53,21 @@ page-place {
     &__time {
       display: flex;
       align-self: center;
+      max-width: 25px;
     }
 
     &__date {
       position: relative;
+      padding-left: 0;
     }
   }
 
   .place-info {
     padding: 0 10px;
+
+    &__time-head {
+      margin-bottom: 0;
+    }
 
     &__head {
       margin-top: 35px;
@@ -160,6 +166,20 @@ page-place {
           opacity: 1;
         }
       }
+    }
+  }
+
+  .sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    button {
+      padding: 20px 0;
+      text-transform: none;
+      font-size: 20px;
+      margin: 0;
     }
   }
 

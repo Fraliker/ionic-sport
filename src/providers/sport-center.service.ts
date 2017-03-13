@@ -34,12 +34,34 @@ export class SportCenterService {
       .map(this.parseSportCenters);
   }
 
+  checkSportCenter(date: Date, place: Place): Observable<Place> {
+
+    let params = new URLSearchParams();
+
+    params.append('id', '' + place.id);
+    params.append('year', '' + date.getFullYear());
+    params.append('month', '' + date.getMonth());
+    params.append('day', '' + date.getDate());
+    params.append('hour', '' + date.getHours());
+    if (date.getDay() > 5) {
+      params.append('type', 'weekend');
+    } else {
+      params.append('type', 'work');
+    }
+
+    return this.http.get(`${this.API_URL}sport-centers/sport-center`, {headers: this.headers, search: params})
+      .map((res: Response) => {
+        console.log(res.json());
+        return new Place(res.json());
+      });
+  }
+
   parseSportCenters(res: Response) {
     let arr = [];
     console.log(res);
     let respData = res.json();
 
-    if(respData != null) {
+    if (respData != null) {
       respData.forEach((item) => {
         arr.push(new Place(item))
       });

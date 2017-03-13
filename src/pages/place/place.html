@@ -23,7 +23,7 @@
 
     <form [formGroup]="form" (submit)="formSubmit(form)" class="radio">
       <div class="place-info__time">
-        <h3>Выбранное время</h3>
+        <h3 class="place-info__time-head">Выбранное время</h3>
         <ion-grid>
           <ion-row>
             <ion-col width-10 class="date__time">
@@ -32,6 +32,8 @@
             <ion-col width-90>
               <ion-datetime class="date__date"
                             displayFormat="DDD. DD, MMMM"
+                            [min]="minDate"
+                            [max]="maxDate"
                             [monthNames]="monthNames"
                             [dayShortNames]="dayShortNames"
                             [(ngModel)]="time"
@@ -47,37 +49,46 @@
         <df-question [question]="question" [form]="form"></df-question>
       </div>
 
-      <!--<h3>Доступные для бронирования услуги</h3>-->
+      <h3>Дополнительные услуги</h3>
+      <div *ngFor="let service of place.services">
+        <input [id]="service.id" [name]="service.id" type="checkbox">
+        <label [attr.for]="service.id">{{service.name}}</label>
+      </div>
 
-      <!--<div *ngFor="let question of corts" class="form-row">-->
-      <!--<df-question [question]="question" [form]="form"></df-question>-->
-      <!--</div>-->
-
-      <!--<div class="place-info__playground">-->
-      <!--<h4>Доступные для бронирования корты</h4>-->
-      <!--<ul>-->
-      <!--<li *ngFor="let playground of place.playingFields">-->
-      <!--<h4>{{playground.name}}</h4>-->
-      <!--<p>{{playground.price }}</p>-->
-      <!--<p>{{playground.info}}</p>-->
-      <!--</li>-->
-      <!--</ul>-->
-
-
-      <!--</div>-->
-
-      <!--<div class="place-info__services">-->
-      <!--<h4>Дополнительные услуги</h4>-->
-      <!--<ul>-->
-      <!--<li *ngFor="let service of place.services">-->
-      <!--<p>{{service.name}}</p>-->
-      <!--<p>{{service.price}}</p>-->
-      <!--</li>-->
-      <!--</ul>-->
-      <!--</div>-->
-      <button ion-button type="submit">Push to form</button>
+      <div class="sticky-footer" *ngIf="form.valid">
+        <button ion-button full type="submit"> Продолжить</button>
+      </div>
     </form>
+    <!--<h3>Доступные для бронирования услуги</h3>-->
 
+    <!--<div *ngFor="let question of corts" class="form-row">-->
+    <!--<df-question [question]="question" [form]="form"></df-question>-->
+    <!--</div>-->
+
+    <!--<div class="place-info__playground">-->
+    <!--<h4>Доступные для бронирования корты</h4>-->
+    <!--<ul>-->
+    <!--<li *ngFor="let playground of place.playingFields">-->
+    <!--<h4>{{playground.name}}</h4>-->
+    <!--<p>{{playground.price }}</p>-->
+    <!--<p>{{playground.info}}</p>-->
+    <!--</li>-->
+    <!--</ul>-->
+
+
+    <!--</div>-->
+
+    <!--<div class="place-info__services">-->
+    <!--<h4>Дополнительные услуги</h4>-->
+    <!--<ul>-->
+    <!--<li *ngFor="let service of place.services">-->
+    <!--<p>{{service.name}}</p>-->
+    <!--<p>{{service.price}}</p>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
 
   </div>
 </ion-content>
+
+

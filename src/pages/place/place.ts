@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, RadioGroup} from 'ionic-angular';
+import {NavController, NavParams, RadioGroup, LoadingController, ToastController} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
@@ -13,6 +13,8 @@ import {InputQuestion} from "./dynamic-form/question-input";
 import {RadioQuestion} from "./dynamic-form/question-radio";
 import {Response} from "@angular/http";
 import {PlaceService} from "../../models/place-service";
+import {OrderSubmitPage} from "../order-submit/order-submit";
+import {SportCenterService} from "../../providers/sport-center.service";
 
 @Component({
   selector: 'page-place',
@@ -30,28 +32,53 @@ export class PlacePage implements OnInit {
   time: string;
   dayShortNames: string = names.dayShortNames;
   monthNames: string = names.monthNames;
+  minDate: string = new Date().toISOString();
+  maxDate: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public qct: QuestionControlService) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public sportCenters: SportCenterService,
+              private loadingCtrl: LoadingController,
+              public qct: QuestionControlService,
+              public toastCtrl: ToastController) {
 
-    this.place = this.navParams.get("place");
-    this.time = new Date(this.navParams.get("time")).toISOString();
-
+    let today = new Date();
+    if (today.getMonth() == 11) {
+      this.maxDate = new Date(today.getFullYear() + 1, 1, 1).toISOString();
+    } else {
+      this.maxDate = new Date(today.getFullYear(), today.getMonth() + 2, today.getDay() - 1).toISOString();
+    }
   }
 
   ngOnInit(): void {
-    this.questions = this.parseRadio(this.place.playingFields);
-    console.log("return radio", this.parseRadio(this.place.playingFields));
-    console.log("return checkbox", this.parseCheckbox(this.place.services));
-
-    this.parseCheckbox(this.place.services).forEach((item) => {
-      console.log(item);
-      this.questions.push(item);
+    let loading = this.loadingCtrl.create({
+      content: "Пожалуйста, подождите..."
     });
-    this.questions.concat(this.parseCheckbox(this.place.services));
+    loading.present();
 
-
-    console.log(this.questions);
+    this.place = this.navParams.get("place");
+    this.time = new Date(this.navParams.get("time")).toISOString();
+    this.questions = this.parseRadio(this.place.playingFields);
     this.form = this.qct.toFormGroup(this.questions);
+
+    this.sportCenters.checkSportCenter(new Date(this.time), this.place)
+      .subscribe((res) => {
+        console.log(res);
+        loading.dismissAll();
+
+        this.place = res;
+        this.questions = this.parseRadio(this.place.playingFields);
+        this.form = this.qct.toFormGroup(this.questions);
+        this.time = new Date(this.navParams.get("time")).toISOString();
+      }, (err) => {
+        loading.dismissAll();
+        let toast = this.toastCtrl.create({
+          message: 'Ошибка загрузки',
+          duration: 2000
+        });
+        toast.present();
+        this.navCtrl.pop();
+      });
   }
 
   ionViewDidLoad() {
@@ -69,6 +96,7 @@ export class PlacePage implements OnInit {
     playingFields.forEach((item) => {
 
       let obj = {};
+      obj['required'] = true;
       obj['key'] = item.id;
       obj['label'] = item.name + " " + item.price;
       obj['value'] = item.name;
@@ -99,7 +127,19 @@ export class PlacePage implements OnInit {
   }
 
   formSubmit(form) {
-    console.log(form.value);
-    console.log(form);
+
+    this.sportCenters.checkSportCenter(new Date(this.time), this.place)
+      .subscribe((res) => {
+        this.navCtrl.push(OrderSubmitPage, {place : this.place});
+      }, (err) => {
+        let toast = this.toastCtrl.create({
+          message: 'Проверьте дату, не получилось проверить дату',
+          duration: 2000
+        });
+        toast.present();
+      });
+
+    // console.log(form.value);
+    // console.log(form);
   }
 }

@@ -1,5 +1,9 @@
 import {Component, trigger, transition, style, animate} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
+
+import {Place} from "../../models/place.model";
+import {Order} from "../../models/order.model";
+
 
 @Component({
   selector: 'page-order-submit',
@@ -21,12 +25,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class OrderSubmitPage {
 
+  place: Place;
+  order: Order;
+
   //TODO add logic
-  addCommentShow : boolean = false;
-  comment : string = '';
+  addCommentShow: boolean = false;
+  comment: string = '';
   phone: string = '+7(007)849-32-24';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.place = this.navParams.get('place');
+    console.log(this.place);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderSubmitPage');
