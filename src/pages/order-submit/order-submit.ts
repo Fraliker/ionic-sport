@@ -30,12 +30,11 @@ export class OrderSubmitPage {
 
   //TODO add logic
   addCommentShow: boolean = false;
-  comment: string = '';
-  phone: string = '+7(007)849-32-24';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.place = this.navParams.get('place');
-    console.log(this.place);
+    this.order = this.navParams.get('order');
+
+    console.log(this.order);
   }
 
   ionViewDidLoad() {
@@ -43,6 +42,6 @@ export class OrderSubmitPage {
   }
 
   submitOrder() {
-    console.log(this.comment);
+    console.log(this.order);
   }
 }

@@ -15,6 +15,8 @@ import {Response} from "@angular/http";
 import {PlaceService} from "../../models/place-service";
 import {OrderSubmitPage} from "../order-submit/order-submit";
 import {SportCenterService} from "../../providers/sport-center.service";
+import {Order} from "../../models/order.model";
+import {AuthService} from "../../providers/auth.service";
 
 @Component({
   selector: 'page-place',
@@ -40,7 +42,8 @@ export class PlacePage implements OnInit {
               public sportCenters: SportCenterService,
               private loadingCtrl: LoadingController,
               public qct: QuestionControlService,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public auth: AuthService) {
 
     let today = new Date();
     if (today.getMonth() == 11) {
@@ -130,8 +133,23 @@ export class PlacePage implements OnInit {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe((res) => {
-        this.navCtrl.push(OrderSubmitPage, {place : this.place});
+
+        //TODO price add
+        let obj = {
+          place: this.place,
+          time: new Date(this.time),
+          price: 1150,
+          user: AuthService.getCurrentUser(),
+          orderList: ['Верхняя площадка', 'Чиcтые носки']
+        };
+
+        let order = new Order(obj);
+        console.log('Order: ', order);
+
+        this.navCtrl.push(OrderSubmitPage, {order: order});
+
       }, (err) => {
+
         let toast = this.toastCtrl.create({
           message: 'Проверьте дату, не получилось проверить дату',
           duration: 2000
@@ -139,7 +157,5 @@ export class PlacePage implements OnInit {
         toast.present();
       });
 
-    // console.log(form.value);
-    // console.log(form);
   }
 }
