@@ -1,5 +1,20 @@
 page-place {
 
+  .no-content {
+
+    &__wrap {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      flex-flow: column;
+    }
+
+    &__text {
+      text-align: center;
+    }
+  }
+
   .white {
     color: white;
   }
@@ -67,6 +82,14 @@ page-place {
 
     &__time-head {
       margin-bottom: 0;
+    }
+
+    &__description {
+      margin: 10px 0;
+    }
+
+    &__playground {
+      margin-top: 0;
     }
 
     &__head {

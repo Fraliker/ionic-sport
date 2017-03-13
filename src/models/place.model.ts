@@ -11,11 +11,11 @@ export class Place {
   latitude: number;
   longitude: number;
   id: number;
+  description: string;
   playingFields: PlayingField[] = [];
   services: PlaceService[] = [];
 
   constructor(obj) {
-    console.log(obj);
 
     this.id = obj.id || null;
     this.image = (obj.image != null) ? obj.image.origin
@@ -28,6 +28,7 @@ export class Place {
     this.latitude = obj.latitude || 0;
     this.longitude = obj.longitude || 0;
     this.distance = obj.distance || 0;
+    this.description = obj.description || '';
 
     if (obj.playingFields && obj.playingFields.length != 0)
       obj.playingFields.forEach((item) => {

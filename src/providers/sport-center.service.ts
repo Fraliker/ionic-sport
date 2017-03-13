@@ -51,14 +51,12 @@ export class SportCenterService {
 
     return this.http.get(`${this.API_URL}sport-centers/sport-center`, {headers: this.headers, search: params})
       .map((res: Response) => {
-        console.log(res.json());
         return new Place(res.json());
       });
   }
 
-  parseSportCenters(res: Response) {
+  private parseSportCenters(res: Response) {
     let arr = [];
-    console.log(res);
     let respData = res.json();
 
     if (respData != null) {

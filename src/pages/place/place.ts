@@ -36,6 +36,8 @@ export class PlacePage implements OnInit {
   monthNames: string = names.monthNames;
   minDate: string = new Date().toISOString();
   maxDate: string;
+  oldTime: string;
+  oldData: {place : Place, time: string};
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -61,9 +63,13 @@ export class PlacePage implements OnInit {
 
     this.place = this.navParams.get("place");
     this.time = new Date(this.navParams.get("time")).toISOString();
+    this.oldTime = new Date(this.navParams.get("time")).toISOString();
     this.questions = this.parseRadio(this.place.playingFields);
     this.form = this.qct.toFormGroup(this.questions);
 
+    /**
+     * updating sport center information
+     */
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe((res) => {
         console.log(res);
@@ -129,6 +135,36 @@ export class PlacePage implements OnInit {
     return checkboxes;
   }
 
+  /**
+   * check time avaliability for this sport center
+   */
+  dateChange() {
+    console.debug("time change");
+    this.sportCenters.checkSportCenter(new Date(this.time), this.place)
+      .subscribe((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+        this.oldData = {place : this.place, time: this.time};
+        this.place = null;
+
+        console.log(this.oldData, this.place);
+      });
+
+  }
+
+  /**
+   * after data change return data
+   */
+  returnResults() {
+    this.place = this.oldData.place;
+    this.time = this.oldTime;
+  }
+
+  /**
+   * form submit, parse
+   * @param form
+   */
   formSubmit(form) {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
@@ -140,7 +176,8 @@ export class PlacePage implements OnInit {
           time: new Date(this.time),
           price: 1150,
           user: AuthService.getCurrentUser(),
-          orderList: ['Верхняя площадка', 'Чиcтые носки']
+          playground: "Северная площадка",
+          orderList: ['Теплое полотенце', '12 мячиков']
         };
 
         let order = new Order(obj);
@@ -156,6 +193,5 @@ export class PlacePage implements OnInit {
         });
         toast.present();
       });
-
   }
 }

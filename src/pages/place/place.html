@@ -11,82 +11,95 @@
 
 <ion-content>
 
-  <div class="image-container">
-    <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
-    <img class="image__logo" [src]="place.imageLogo">
+  <div class="no-content__wrap" *ngIf="place == null">
+    <div>
+      <p class="no-content__text">В Спорт центре нет свободных мест на заданное время</p>
+      <button ion-button full (click)="returnResults()">К предыдущему результату</button>
+    </div>
   </div>
 
-  <div class="place-info">
-    <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
+  <div *ngIf="place != null">
+    <div class="image-container">
+      <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
+      <img class="image__logo" [src]="place.imageLogo">
+    </div>
 
-    <p class="place-info__text">Адрес: {{place.address}}</p>
+    <div class="place-info">
+      <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
 
-    <form [formGroup]="form" (submit)="formSubmit(form)" class="radio">
-      <div class="place-info__time">
-        <h3 class="place-info__time-head">Выбранное время</h3>
-        <ion-grid>
-          <ion-row>
-            <ion-col width-10 class="date__time">
-              <ion-icon name="ios-time-outline"></ion-icon>
-            </ion-col>
-            <ion-col width-90>
-              <ion-datetime class="date__date"
-                            displayFormat="DDD. DD, MMMM"
-                            [min]="minDate"
-                            [max]="maxDate"
-                            [monthNames]="monthNames"
-                            [dayShortNames]="dayShortNames"
-                            [(ngModel)]="time"
-                            [ngModelOptions]="{standalone: true}">
-              </ion-datetime>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
+      <p class="place-info__text">Адрес: {{place.address}}</p>
 
-      <h3>Доступные для бронирования корты</h3>
-      <div *ngFor="let question of questions" class="form-row">
-        <df-question [question]="question" [form]="form"></df-question>
-      </div>
+      <p class="place-info__description">{{place.description}}</p>
 
-      <h3>Дополнительные услуги</h3>
-      <div *ngFor="let service of place.services">
-        <input [id]="service.id" [name]="service.id" type="checkbox">
-        <label [attr.for]="service.id">{{service.name}}</label>
-      </div>
+      <form [formGroup]="form" (submit)="formSubmit(form)" class="radio">
+        <div class="place-info__time">
+          <h3 class="place-info__time-head">Выбранное время</h3>
+          <ion-grid>
+            <ion-row>
+              <ion-col width-10 class="date__time">
+                <ion-icon name="ios-time-outline"></ion-icon>
+              </ion-col>
+              <ion-col width-90>
+                <ion-datetime (ionChange)="dateChange()"
+                              class="date__date"
+                              displayFormat="DDD. DD, MMMM, HH:00"
+                              [min]="minDate"
+                              [max]="maxDate"
+                              [monthNames]="monthNames"
+                              [dayShortNames]="dayShortNames"
+                              [(ngModel)]="time"
+                              [ngModelOptions]="{standalone: true}">
+                </ion-datetime>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
 
-      <div class="sticky-footer" *ngIf="form.valid">
-        <button ion-button full type="submit"> Продолжить</button>
-      </div>
-    </form>
-    <!--<h3>Доступные для бронирования услуги</h3>-->
+        <h3 class="place-info__playground">Доступные для бронирования корты</h3>
+        <div *ngFor="let question of questions" class="form-row">
+          <df-question [question]="question" [form]="form"></df-question>
+        </div>
 
-    <!--<div *ngFor="let question of corts" class="form-row">-->
-    <!--<df-question [question]="question" [form]="form"></df-question>-->
-    <!--</div>-->
+        <h3>Дополнительные услуги</h3>
+        <div *ngFor="let service of place.services">
+          <input [id]="service.id" [name]="service.id" type="checkbox">
+          <label [attr.for]="service.id">{{service.name}}</label>
+        </div>
 
-    <!--<div class="place-info__playground">-->
-    <!--<h4>Доступные для бронирования корты</h4>-->
-    <!--<ul>-->
-    <!--<li *ngFor="let playground of place.playingFields">-->
-    <!--<h4>{{playground.name}}</h4>-->
-    <!--<p>{{playground.price }}</p>-->
-    <!--<p>{{playground.info}}</p>-->
-    <!--</li>-->
-    <!--</ul>-->
+        <div class="sticky-footer" *ngIf="form.valid">
+          <button ion-button full type="submit"> Продолжить</button>
+        </div>
+      </form>
+      <!--<h3>Доступные для бронирования услуги</h3>-->
+
+      <!--<div *ngFor="let question of corts" class="form-row">-->
+      <!--<df-question [question]="question" [form]="form"></df-question>-->
+      <!--</div>-->
+
+      <!--<div class="place-info__playground">-->
+      <!--<h4>Доступные для бронирования корты</h4>-->
+      <!--<ul>-->
+      <!--<li *ngFor="let playground of place.playingFields">-->
+      <!--<h4>{{playground.name}}</h4>-->
+      <!--<p>{{playground.price }}</p>-->
+      <!--<p>{{playground.info}}</p>-->
+      <!--</li>-->
+      <!--</ul>-->
 
 
-    <!--</div>-->
+      <!--</div>-->
 
-    <!--<div class="place-info__services">-->
-    <!--<h4>Дополнительные услуги</h4>-->
-    <!--<ul>-->
-    <!--<li *ngFor="let service of place.services">-->
-    <!--<p>{{service.name}}</p>-->
-    <!--<p>{{service.price}}</p>-->
-    <!--</li>-->
-    <!--</ul>-->
-    <!--</div>-->
+      <!--<div class="place-info__services">-->
+      <!--<h4>Дополнительные услуги</h4>-->
+      <!--<ul>-->
+      <!--<li *ngFor="let service of place.services">-->
+      <!--<p>{{service.name}}</p>-->
+      <!--<p>{{service.price}}</p>-->
+      <!--</li>-->
+      <!--</ul>-->
+      <!--</div>-->
+
+    </div>
 
   </div>
 </ion-content>

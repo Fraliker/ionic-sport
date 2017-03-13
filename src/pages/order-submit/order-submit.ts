@@ -23,12 +23,10 @@ import {Order} from "../../models/order.model";
     )
   ]
 })
+
 export class OrderSubmitPage {
 
-  place: Place;
   order: Order;
-
-  //TODO add logic
   addCommentShow: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
