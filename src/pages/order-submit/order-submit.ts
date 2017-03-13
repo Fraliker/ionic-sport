@@ -28,9 +28,11 @@ export class OrderSubmitPage {
 
   order: Order;
   addCommentShow: boolean = false;
+  time: Date = new Date();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.order = this.navParams.get('order');
+    this.time = new Date(this.order.time);
 
     console.log(this.order);
   }
@@ -41,5 +43,6 @@ export class OrderSubmitPage {
 
   submitOrder() {
     console.log(this.order);
+    // this.navCtrl.push(PaymentPage);
   }
 }

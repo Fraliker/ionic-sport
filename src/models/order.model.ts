@@ -3,14 +3,14 @@ import {User} from "./user.model";
 
 export class Order {
   place: Place;
-  time: Date;
+  time: string;
   price: number;
   user: User;
   playground: string;
   orderList: any[];
   comment: string;
 
-  constructor(obj: {place: Place, time: Date, price: number, user: User, playground: string, orderList: any[], comment?: string}) {
+  constructor(obj: {place: Place, time: string, price: number, user: User, playground: string, orderList: any[], comment?: string}) {
     this.place = obj.place;
     this.time = obj.time;
     this.price = obj.price;

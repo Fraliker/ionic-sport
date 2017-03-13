@@ -37,7 +37,14 @@ export class PlacePage implements OnInit {
   minDate: string = new Date().toISOString();
   maxDate: string;
   oldTime: string;
-  oldData: {place : Place, time: string};
+  oldData: {place: Place, time: string};
+
+  fromData = {};
+  public user = {};
+  public genders = [
+    {value: 'F', display: 'Female'},
+    {value: 'M', display: 'Male'}
+  ];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -56,6 +63,8 @@ export class PlacePage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user['gender'] = this.genders[0].value;
+
     let loading = this.loadingCtrl.create({
       content: "Пожалуйста, подождите..."
     });
@@ -98,6 +107,11 @@ export class PlacePage implements OnInit {
     this.navCtrl.push(DashboardPage);
   }
 
+  /**
+   * parse data for dynamic form
+   * @param playingFields
+   * @return {Array}
+   */
   parseRadio(playingFields): RadioQuestion[] {
 
     let radioGroup = [];
@@ -117,6 +131,11 @@ export class PlacePage implements OnInit {
     return radioGroup;
   }
 
+  /**
+   * parse checkbox data
+   * @param services
+   * @return {Array}
+   */
   parseCheckbox(services: PlaceService[]): InputQuestion[] {
     let checkboxes = [];
 
@@ -139,16 +158,14 @@ export class PlacePage implements OnInit {
    * check time avaliability for this sport center
    */
   dateChange() {
-    console.debug("time change");
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe((res) => {
         console.log(res);
+        this.place = res;
       }, (err) => {
         console.log(err);
-        this.oldData = {place : this.place, time: this.time};
+        this.oldData = {place: this.place, time: this.time};
         this.place = null;
-
-        console.log(this.oldData, this.place);
       });
 
   }
@@ -161,30 +178,37 @@ export class PlacePage implements OnInit {
     this.time = this.oldTime;
   }
 
+  save(f) {
+
+    console.log(f);
+  }
+
   /**
    * form submit, parse
    * @param form
    */
+  //TODO price add
   formSubmit(form) {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe((res) => {
 
-        //TODO price add
+
         let obj = {
           place: this.place,
-          time: new Date(this.time),
-          price: 1150,
+          time: this.time,
+          price: this.calcPrice(),
           user: AuthService.getCurrentUser(),
-          playground: "Северная площадка",
-          orderList: ['Теплое полотенце', '12 мячиков']
+          playground: form.playground,
+          orderList: this.servicesFromForm(form)
         };
 
         let order = new Order(obj);
         console.log('Order: ', order);
+        console.log(form);
+        // console.log(this.form.value);
 
         this.navCtrl.push(OrderSubmitPage, {order: order});
-
       }, (err) => {
 
         let toast = this.toastCtrl.create({
@@ -193,5 +217,34 @@ export class PlacePage implements OnInit {
         });
         toast.present();
       });
+  }
+
+  /**
+   * grabs all values from the form
+   */
+  //TODO
+  private calcPrice(): number {
+    return 1125;
+  }
+
+  /**
+   * grabs all values from obj
+   */
+  //TODO
+  private servicesFromForm(obj): string[] {
+
+    console.log(obj);
+
+    let arr = [];
+    for (let prop in obj) {
+      if (prop != 'playground') {
+        if (obj[prop] != null) {
+          arr.push(obj[prop]);
+        }
+      }
+    }
+
+    return arr;
+    // return ['Теплое полотенце', '12 мячиков'];
   }
 }
