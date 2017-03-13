@@ -62,8 +62,8 @@ export class PlacePage implements OnInit {
     loading.present();
 
     this.place = this.navParams.get("place");
-    this.time = new Date(this.navParams.get("time")).toISOString();
-    this.oldTime = new Date(this.navParams.get("time")).toISOString();
+    this.time = this.navParams.get("time");
+    this.oldTime = this.navParams.get("time");
     this.questions = this.parseRadio(this.place.playingFields);
     this.form = this.qct.toFormGroup(this.questions);
 
@@ -78,7 +78,7 @@ export class PlacePage implements OnInit {
         this.place = res;
         this.questions = this.parseRadio(this.place.playingFields);
         this.form = this.qct.toFormGroup(this.questions);
-        this.time = new Date(this.navParams.get("time")).toISOString();
+        this.time = this.navParams.get("time");
       }, (err) => {
         loading.dismissAll();
         let toast = this.toastCtrl.create({

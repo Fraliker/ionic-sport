@@ -16,7 +16,7 @@ export class PlaceChoosePage {
   map: any;
   places: Place[] = [];
   counter: number = 1;
-  time: Date;
+  time: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -34,12 +34,13 @@ export class PlaceChoosePage {
     });
     loading.present();
 
-    let date = this.time = new Date(this.navParams.get('date'));
+    this.time = this.navParams.get('date');
+    let date = new Date(this.navParams.get('date'));
 
     this.sportCenters.getSportCenters(date).subscribe((res) => {
       this.places = res;
       loading.dismissAll();
-    }, (err)=> {
+    }, (err) => {
       loading.dismissAll();
     });
   }
