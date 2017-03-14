@@ -183,13 +183,10 @@ export class PlacePage implements OnInit {
    * form submit, parse
    * @param form
    */
-  //TODO price add
   formSubmit(form) {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe(() => {
-
-
         let obj = {
           place: this.place,
           time: this.time,
@@ -200,9 +197,6 @@ export class PlacePage implements OnInit {
         };
 
         let order = new Order(obj);
-        console.log('Order: ', order);
-        console.log(form);
-        // console.log(this.form.value);
 
         this.navCtrl.push(OrderSubmitPage, {order: order});
       }, (err) => {
@@ -217,6 +211,7 @@ export class PlacePage implements OnInit {
 
   /**
    * grabs all values from the form
+   * @return {number}
    */
   private calcPrice(obj): number {
     let price: number = 0;
@@ -245,10 +240,12 @@ export class PlacePage implements OnInit {
 
   /**
    * grabs all values from obj
+   * @return {string[]}
    */
   private servicesFromForm(obj): string[] {
 
     let arr = [];
+
     for (let prop in obj) {
       if (prop != 'playground') {
         if (obj[prop] != null && obj[prop] == true) {
