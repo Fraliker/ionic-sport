@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Booking} from "../../models/Booking";
 import {DashboardService} from "../dashboard/dashboard.service";
+import {PaymentPage} from "../payment/payment";
 
 @Component({
   selector: 'page-book-info',
@@ -26,5 +27,9 @@ export class BookInfoPage {
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
       this.book = res;
     }));
+  }
+
+  goToPayment() {
+    this.navCtrl.push(PaymentPage);
   }
 }

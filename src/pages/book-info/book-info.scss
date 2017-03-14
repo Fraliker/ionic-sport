@@ -12,6 +12,15 @@ page-book-info {
     display: none;
   }
 
+  .go-to-book {
+    color: #007aff;
+    text-align: center;
+    border: 1px solid #8e9093;
+    padding: 15px 0;
+    border-right: none;
+    border-left: none;
+  }
+
   .image-info {
     text-align: center;
   }
@@ -22,7 +31,7 @@ page-book-info {
     &__text {
       text-align: left;
 
-      &_bold{
+      &_bold {
         font-weight: 600;
       }
 
@@ -44,6 +53,5 @@ page-book-info {
       color: #d66060;
     }
   }
-
 
 }

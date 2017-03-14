@@ -48,6 +48,5 @@ export class Place {
         }
       }
     }
-    console.log(obj);
   }
 }
