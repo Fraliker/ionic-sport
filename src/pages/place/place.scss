@@ -1,7 +1,6 @@
 page-place {
 
   .no-content {
-
     &__wrap {
       height: 100%;
       display: flex;
@@ -206,4 +205,8 @@ page-place {
     }
   }
 
+  .scroll-content {
+    padding-bottom: 50px;
+    overflow: scroll;
+  }
 }

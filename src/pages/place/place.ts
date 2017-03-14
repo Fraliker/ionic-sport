@@ -191,10 +191,10 @@ export class PlacePage implements OnInit {
         let obj = {
           place: this.place,
           time: this.time,
+          orderList: this.servicesFromForm(form),
           price: this.calcPrice(),
           user: AuthService.getCurrentUser(),
-          playground: form.playground,
-          orderList: this.servicesFromForm(form)
+          playground: form.playground
         };
 
         let order = new Order(obj);
@@ -225,12 +225,9 @@ export class PlacePage implements OnInit {
   /**
    * grabs all values from obj
    */
-  //TODO
   private servicesFromForm(obj): string[] {
 
-    // console.log(obj);
     let arr = [];
-
     for (let prop in obj) {
       if (prop != 'playground') {
         if (obj[prop] != null && obj[prop] == true) {
@@ -238,8 +235,6 @@ export class PlacePage implements OnInit {
         }
       }
     }
-
     return arr;
-    // return ['Теплое полотенце', '12 мячиков'];
   }
 }
