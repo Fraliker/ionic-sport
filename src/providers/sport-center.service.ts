@@ -74,6 +74,7 @@ export class SportCenterService {
     return arr;
   }
 
+  //TODO place order return value
   public placeOrder(order: Order): Observable<boolean> {
 
     let orderRequest = this.transformOrderForRequest(order);

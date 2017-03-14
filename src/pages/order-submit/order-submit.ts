@@ -48,7 +48,7 @@ export class OrderSubmitPage {
   }
 
   submitOrder() {
-    console.log(this.order);
+
     let loading = this.loadingCtrl.create({
       content: "Пожалуйста, подождите..."
     });
@@ -79,7 +79,5 @@ export class OrderSubmitPage {
       });
       toast.present();
     });
-
-
   }
 }
