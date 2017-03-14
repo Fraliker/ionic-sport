@@ -41,10 +41,6 @@ export class PlacePage implements OnInit {
 
   fromData = {};
   public user = {};
-  public genders = [
-    {value: 'F', display: 'Female'},
-    {value: 'M', display: 'Male'}
-  ];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -63,7 +59,6 @@ export class PlacePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user['gender'] = this.genders[0].value;
 
     let loading = this.loadingCtrl.create({
       content: "Пожалуйста, подождите..."
@@ -88,7 +83,11 @@ export class PlacePage implements OnInit {
         this.questions = this.parseRadio(this.place.playingFields);
         this.form = this.qct.toFormGroup(this.questions);
         this.time = this.navParams.get("time");
-      }, (err) => {
+
+        // setting defaults to form radio button
+        this.user['playground'] = this.place.playingFields[0].name;
+
+      }, () => {
         loading.dismissAll();
         let toast = this.toastCtrl.create({
           message: 'Ошибка загрузки',
@@ -178,11 +177,6 @@ export class PlacePage implements OnInit {
     this.time = this.oldTime;
   }
 
-  save(f) {
-
-    console.log(f);
-  }
-
   /**
    * form submit, parse
    * @param form
@@ -191,7 +185,7 @@ export class PlacePage implements OnInit {
   formSubmit(form) {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
-      .subscribe((res) => {
+      .subscribe(() => {
 
 
         let obj = {

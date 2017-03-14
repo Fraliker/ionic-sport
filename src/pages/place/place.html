@@ -63,7 +63,7 @@
           <div class="radio" *ngFor="let pg of place.playingFields">
             <input [id]="pg.id" type="radio" name="playground" [(ngModel)]="user.playground" [value]="pg.name">
             <label [attr.for]="pg.id">
-              {{pg.name}}
+              {{pg.name}} {{pg.price || 0}}p
             </label>
           </div>
 
