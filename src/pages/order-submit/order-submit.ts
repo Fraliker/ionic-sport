@@ -1,9 +1,10 @@
 import {Component, trigger, transition, style, animate} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, ToastController} from 'ionic-angular';
 
 import {Place} from "../../models/place.model";
 import {Order} from "../../models/order.model";
 import {PaymentPage} from "../payment/payment";
+import {SportCenterService} from "../../providers/sport-center.service";
 
 
 @Component({
@@ -31,7 +32,11 @@ export class OrderSubmitPage {
   addCommentShow: boolean = false;
   time: Date = new Date();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public sportCenterService: SportCenterService,
+              private loadingCtrl: LoadingController,
+              public toastCtrl: ToastController) {
     this.order = this.navParams.get('order');
     this.time = new Date(this.order.time);
 
@@ -44,7 +49,37 @@ export class OrderSubmitPage {
 
   submitOrder() {
     console.log(this.order);
+    let loading = this.loadingCtrl.create({
+      content: "Пожалуйста, подождите..."
+    });
+    loading.present();
 
-    this.navCtrl.push(PaymentPage);
+    this.sportCenterService.placeOrder(this.order).subscribe((res) => {
+      let toast = this.toastCtrl.create({
+        message: 'Бронирование размещено, оплатите за 30 минут',
+        position: 'center',
+        duration: 4000,
+        showCloseButton: true,
+        closeButtonText: "закрыть"
+      });
+
+      loading.dismissAll();
+      this.navCtrl.push(PaymentPage);
+
+    }, (err) => {
+
+      loading.dismissAll();
+
+      let toast = this.toastCtrl.create({
+        message: 'Не удалось разместить заказ, обратитесь к администратору',
+        position: 'center',
+        duration: 4000,
+        showCloseButton: true,
+        closeButtonText: "закрыть"
+      });
+      toast.present();
+    });
+
+
   }
 }

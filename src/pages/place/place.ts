@@ -76,7 +76,6 @@ export class PlacePage implements OnInit {
      */
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe((res) => {
-        console.log(res);
         loading.dismissAll();
 
         this.place = res;
