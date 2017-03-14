@@ -38,9 +38,12 @@ export class DashboardService {
   parseBookings(res: Response) {
 
     let data = res.json();
+
+    // console.log(data);
+
     let arr = [];
     data.forEach((item) => {
-      console.log(item);
+      // console.log(item);
       arr.push(new Booking(item));
     });
 

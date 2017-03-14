@@ -25,6 +25,7 @@ export class BookInfoPage {
 
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
       this.book = res;
+      console.log(this.book);
     }));
   }
 }

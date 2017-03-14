@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content padding>
   <div *ngIf="booked.length === 0" class="booked__none">
     <section class="booked__none-text">
       <h3>Здравствуйте, {{user.name}}!</h3>
@@ -24,7 +24,7 @@
       <div class="list-card__info">
         <h1 class="club-head">{{item.sportCenter}}</h1>
         <p>{{item.playingField}}</p>
-        <p>{{item.day}} {{item.month}} {{item.year}} В {{item.hour}}</p>
+        <p>{{item.day}} {{item.month}} {{item.year}} В {{item.hour}} часов</p>
         <p class="club-price">Общая стоимость: {{item.playFieldPrice}}р</p>
       </div>
 
