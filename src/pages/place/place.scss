@@ -73,6 +73,7 @@ page-place {
     &__date {
       position: relative;
       padding-left: 0;
+      padding-bottom: 2px;
     }
   }
 
@@ -104,7 +105,7 @@ page-place {
 
     & + label {
       position: relative;
-      padding-left: 20px;
+      padding-left: 30px;
       line-height: 25px;
 
       &:before {
@@ -123,7 +124,7 @@ page-place {
         display: block;
         position: absolute;
         top: 5px;
-        left: 2px;
+        left: 5px;
         width: 10px;
         height: 10px;
         border-radius: 100%;
@@ -151,7 +152,7 @@ page-place {
 
     & + label {
       position: relative;
-      padding-left: 20px;
+      padding-left: 30px;
       line-height: 25px;
 
       &:before {
@@ -170,7 +171,7 @@ page-place {
         display: block;
         position: absolute;
         top: 5px;
-        left: 2px;
+        left: 5px;
         width: 10px;
         height: 10px;
         border-radius: 2px;
@@ -208,5 +209,10 @@ page-place {
   .scroll-content {
     padding-bottom: 50px;
     overflow: scroll;
+  }
+
+  .data-change {
+    margin: 0;
+    color: #007aff;
   }
 }

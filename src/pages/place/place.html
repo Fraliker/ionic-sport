@@ -42,7 +42,7 @@
                 <ion-icon name="ios-time-outline"></ion-icon>
               </ion-col>
               <ion-col width-90>
-                <ion-datetime (ionChange)="dateChange()"
+                <ion-datetime #datepicker (ionChange)="dateChange()"
                               class="date__date"
                               displayFormat="DDD. DD, MMMM, HH:00"
                               [min]="minDate"
@@ -52,6 +52,7 @@
                               [(ngModel)]="time"
                               [ngModelOptions]="{standalone: true}">
                 </ion-datetime>
+                <p class="data-change" (click)="datepicker.open()">Изменить время</p>
               </ion-col>
             </ion-row>
           </ion-grid>

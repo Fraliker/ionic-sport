@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {NavController, NavParams, RadioGroup, LoadingController, ToastController} from 'ionic-angular';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {NavController, NavParams, RadioGroup, LoadingController, ToastController, DateTime} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {FormGroup, FormControl, Validators} from '@angular/forms';
@@ -25,7 +25,6 @@ import {AuthService} from "../../providers/auth.service";
 })
 
 export class PlacePage implements OnInit {
-
   place: Place;
   form: FormGroup;
   corts: QuestionBase<any>[] = [new InputQuestion({})];
@@ -254,4 +253,6 @@ export class PlacePage implements OnInit {
     }
     return arr;
   }
+
+
 }
