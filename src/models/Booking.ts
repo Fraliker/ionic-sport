@@ -12,7 +12,7 @@ export class Booking {
   address: string;
 
   constructor(obj) {
-    this.id = obj.bookingId || null;
+    this.id = obj.id || null;
     this.sportCenter = obj.sportCenter || null;
     this.playingField = obj.playingFieldName || null;
     this.year = obj.year || null;

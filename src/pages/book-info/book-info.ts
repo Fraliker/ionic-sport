@@ -10,7 +10,7 @@ import {DashboardService} from "../dashboard/dashboard.service";
 export class BookInfoPage {
 
   book: Booking = null;
-  id: number;
+  id: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -25,7 +25,6 @@ export class BookInfoPage {
 
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
       this.book = res;
-      console.log(this.book);
     }));
   }
 }

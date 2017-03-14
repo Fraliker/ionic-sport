@@ -23,10 +23,10 @@ export class DashboardService {
       .map(this.parseBookings);
   }
 
-  getBooking(id: number): Observable<Booking> {
+  getBooking(id: string): Observable<Booking> {
 
     let urlParams = new URLSearchParams();
-    urlParams.append('id', id.toString());
+    urlParams.append('id', id);
 
     return this.http.get(`${this.API_URL}bookings/my-booking`, {headers: this.headers, search: urlParams})
       .map((res) => {
