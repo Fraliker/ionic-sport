@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class TimeSelectPage {
 
-  day: string = moment(moment().format(), moment.ISO_8601).format(); // timezone bug fixed
+  day: string = moment(moment().add(1,'day').format(), moment.ISO_8601).format(); // timezone bug fixed
   minDate: string = new Date().toISOString();
   maxDate: string;
   dayShortNames: string = 'Вс, Пн, Вт, Ср, Чт, Пт, Сб';
@@ -21,6 +21,8 @@ export class TimeSelectPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public toastCtrl: ToastController) {
+
+    console.log(this.day);
     /**
      * setting max date
      * @type {Date}
