@@ -51,6 +51,7 @@ export class SportCenterService {
 
     return this.http.get(`${this.API_URL}sport-centers/sport-center`, {headers: this.headers, search: params})
       .map((res: Response) => {
+        console.log(res);
         return new Place(res.json());
       });
   }

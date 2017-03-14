@@ -161,6 +161,8 @@ export class PlacePage implements OnInit {
       .subscribe((res) => {
         console.log(res);
         this.place = res;
+
+
       }, (err) => {
         console.log(err);
         this.oldData = {place: this.place, time: this.time};
@@ -192,7 +194,7 @@ export class PlacePage implements OnInit {
           place: this.place,
           time: this.time,
           orderList: this.servicesFromForm(form),
-          price: this.calcPrice(),
+          price: this.calcPrice(form),
           user: AuthService.getCurrentUser(),
           playground: form.playground
         };
@@ -216,10 +218,29 @@ export class PlacePage implements OnInit {
   /**
    * grabs all values from the form
    */
-  //TODO
-  private calcPrice(): number {
+  private calcPrice(obj): number {
+    let price: number = 0;
 
-    return 1125;
+    for (let prop in obj) {
+      if (prop == 'playground') {
+        this.place.playingFields.forEach((item) => {
+          if (item.name == obj[prop]) {
+            price += +item.price;
+          }
+        });
+      }
+      if (prop != 'playground') {
+        if (obj[prop] != null && obj[prop] == true) {
+          this.place.services.forEach((item)=>{
+            if (item.name == prop) {
+              price += +item.price;
+            }
+          });
+        }
+      }
+    }
+
+    return price;
   }
 
   /**

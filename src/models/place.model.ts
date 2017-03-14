@@ -24,7 +24,7 @@ export class Place {
       : 'https://thumb9.shutterstock.com/display_pic_with_logo/1453121/299886746/stock-vector-vector-illustration-for-logo-for-lawn-tennis-consisting-of-ground-orange-tennis-court-net-racket-299886746.jpg';
     this.type = obj.type || 'Спортивный клуб';
     this.name = obj.name || 'Балашиха';
-    this.address = obj.address || 'Москва ул. Правды 10';
+    this.address = obj.address || 'Не указан';
     this.latitude = obj.latitude || 0;
     this.longitude = obj.longitude || 0;
     this.distance = obj.distance || 0;
@@ -37,7 +37,7 @@ export class Place {
 
     if (obj.services && obj.services.length != 0)
       obj.services.forEach((item) => {
-        this.services.push(new PlayingField(item))
+        this.services.push(new PlaceService(item))
       });
   }
 }
