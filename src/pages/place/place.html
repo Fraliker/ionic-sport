@@ -59,11 +59,10 @@
 
         <h3 class="place-info__playground">Доступные для бронирования корты</h3>
         <div class="form-group">
-
           <div class="radio" *ngFor="let pg of place.playingFields">
             <input [id]="pg.id" type="radio" name="playground" [(ngModel)]="user.playground" [value]="pg.name">
             <label [attr.for]="pg.id">
-              {{pg.name}} {{pg.price || 0}}p
+              {{pg.name}}
             </label>
           </div>
 

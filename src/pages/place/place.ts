@@ -218,6 +218,7 @@ export class PlacePage implements OnInit {
    */
   //TODO
   private calcPrice(): number {
+
     return 1125;
   }
 
@@ -227,13 +228,13 @@ export class PlacePage implements OnInit {
   //TODO
   private servicesFromForm(obj): string[] {
 
-    console.log(obj);
-
+    // console.log(obj);
     let arr = [];
+
     for (let prop in obj) {
       if (prop != 'playground') {
-        if (obj[prop] != null) {
-          arr.push(obj[prop]);
+        if (obj[prop] != null && obj[prop] == true) {
+          arr.push(prop);
         }
       }
     }
