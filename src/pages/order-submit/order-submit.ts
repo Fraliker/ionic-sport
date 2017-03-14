@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 
 import {Place} from "../../models/place.model";
 import {Order} from "../../models/order.model";
+import {PaymentPage} from "../payment/payment";
 
 
 @Component({
@@ -43,6 +44,7 @@ export class OrderSubmitPage {
 
   submitOrder() {
     console.log(this.order);
-    // this.navCtrl.push(PaymentPage);
+
+    this.navCtrl.push(PaymentPage);
   }
 }

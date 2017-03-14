@@ -21,6 +21,7 @@ import {DashboardService} from "../pages/dashboard/dashboard.service";
 import {SportCenterService} from "../providers/sport-center.service";
 import {DynamicFormComponent} from "../pages/place/dynamic-form/dynamic-form";
 import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-form-question.component";
+import {PaymentPage} from "../pages/payment/payment";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-
     PlacePage,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    OrderSubmitPage
+    OrderSubmitPage,
+    PaymentPage
   ],
   imports: [
     FormsModule,
@@ -54,7 +56,8 @@ import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-
     TimeSelectPage,
     PlaceChoosePage,
     PlacePage,
-    OrderSubmitPage
+    OrderSubmitPage,
+    PaymentPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
