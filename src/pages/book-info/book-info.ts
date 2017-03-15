@@ -36,6 +36,7 @@ export class BookInfoPage {
   }
 
   goToMainPage() {
-    this.navCtrl.setRoot(TimeSelectPage);
+    // this.navCtrl.setRoot(TimeSelectPage);
+    this.navCtrl.popAll();
   }
 }

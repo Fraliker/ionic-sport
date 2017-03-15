@@ -62,6 +62,10 @@ page-dashboard {
     border-radius: 5px;
     padding: 0;
 
+    .label {
+      margin: 0;
+    }
+
     .item-inner {
       padding-right: 0 !important;
     }
