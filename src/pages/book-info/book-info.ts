@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Booking} from "../../models/Booking";
 import {DashboardService} from "../dashboard/dashboard.service";
 import {PaymentPage} from "../payment/payment";
+import {TimeSelectPage} from "../time-select/time-select";
 
 @Component({
   selector: 'page-book-info',
@@ -31,5 +32,9 @@ export class BookInfoPage {
 
   goToPayment() {
     this.navCtrl.push(PaymentPage);
+  }
+
+  goToMainPage() {
+    this.navCtrl.setRoot(TimeSelectPage);
   }
 }
