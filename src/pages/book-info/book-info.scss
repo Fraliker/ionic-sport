@@ -12,7 +12,29 @@ page-book-info {
     display: none;
   }
 
-  .go-to-main {
+  .order-list {
+    background: #fdf1cb;
+    padding: 10px;
+
+    &__list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        position: relative;
+        padding-left: 30px;
+        text-align: left;
+
+        &:before {
+          content: '-';
+          position: absolute;
+          left: 5px;
+        }
+      }
+    }
+  }
+
+  .action-button {
     color: #007aff;
     text-align: center;
     border: 1px solid #e9e9e9;
@@ -53,6 +75,12 @@ page-book-info {
     &_red {
       color: #d66060;
     }
+  }
+
+  .total-price {
+    text-align: left;
+    fonr-size: 1.2em;
+    font-weight: bold;
   }
 
 }

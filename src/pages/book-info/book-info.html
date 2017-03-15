@@ -12,8 +12,23 @@
 
       <p class="book-info__text book-info__text_bold">Номер бронирования: {{book.id}}</p>
       <p class="book-info__text">{{book.sportCenter}}</p>
-      <p class="book-info__text">Время посещения: {{book.day}} {{book.month}} в {{book.hour}}:00 </p>
+      <p class="book-info__text">Время посещения: {{book.date.getDay()}} {{book.month}} в {{book.hour}}:00 </p>
       <p class="book-info__text">Адрес: {{book.address}}</p>
+
+      <div class="order-list">
+        <ul class="order-list__list">
+          <li>{{book.playingField}}</li>
+          <li *ngFor="let service of book.orderSevices"></li>
+        </ul>
+      </div>
+
+      <p class="total-price">Общая стоимость: {{book.playFieldPrice}}p</p>
+
+      <div class="submite-buttons">
+        <p class='action-button'>Схема проезда</p>
+        <p class='action-button'>Отправить на email</p>
+        <p class='action-button'>Пригласить друга</p>
+      </div>
     </div>
   </div>
 
@@ -25,7 +40,8 @@
         Пожалуйста, проверьте реквизиты и убедитесь, что на вашем счете достаточно средств для бронирования
       </p>
       <button class="go-to-book" ion-button full (click)="goToPayment()">Перейти к оплате</button>
-      <p class='go-to-main' (click)="goToMainPage()">На главный экран</p>
+      <p class='action-button' (click)="goToMainPage()">На главный экран</p>
     </div>
   </div>
+
 </ion-content>

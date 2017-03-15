@@ -10,10 +10,12 @@ export class Booking {
   playFieldPrice: number;
   submit: number;
   address: string;
+  orderSevices: string[] = [];
+  date: Date;
 
   constructor(obj) {
     this.id = obj.id || null;
-    this.sportCenter = obj.sportCenter || null;
+    this.sportCenter = obj.sportCenterName || null;
     this.playingField = obj.playingFieldName || null;
     this.year = obj.year || null;
     this.month = obj.month || null;
@@ -22,6 +24,7 @@ export class Booking {
     this.priceTime = obj.price || 0;
     this.playFieldPrice = obj.price || 0;
     this.submit = obj.submit || 0;
-    this.address = obj.address || '';
+    this.address = obj.address || 'Не указан';
+    this.date = new Date(this.year, this.month, this.day, this.hour);
   }
 }
