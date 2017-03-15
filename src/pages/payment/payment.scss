@@ -36,6 +36,10 @@ page-payment {
 
   .form {
     padding: 0 10px;
+    min-height: 90%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
   }
 
   .input-container {
@@ -55,7 +59,8 @@ page-payment {
   }
 
   .info-text {
-    margin: 35px 0;
+    text-align: center;
+    margin: 10px 0 35px 0;
     color: #8e9093;
     font-size: 0.9em;
     line-height: 1.5em;
