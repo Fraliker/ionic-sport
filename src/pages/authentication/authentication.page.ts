@@ -10,7 +10,7 @@ import {SmsVerifyPage} from '../pages';
 })
 export class AuthenticationPage {
   mask = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  private complexForm: FormGroup;
+  private from: FormGroup;
   lockNextButton: boolean;
   phonePlaceholder: string = '+7(___) ___-____';
 
@@ -21,7 +21,7 @@ export class AuthenticationPage {
               public loadingCtrl: LoadingController) {
 
     this.lockNextButton = true;
-    this.complexForm = fb.group({
+    this.from = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'phone': ['', this.customValidator]
     });

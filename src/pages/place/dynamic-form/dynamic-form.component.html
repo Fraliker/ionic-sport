@@ -3,12 +3,12 @@ Example of user dynamic form
 -->
 
 <div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="payForm">
     <div *ngFor="let question of questions" class="form-row">
-      <df-question [question]="question" [form]="form"></df-question>
+      <df-question [question]="question" [form]="payForm"></df-question>
     </div>
     <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+      <button type="submit" [disabled]="!payForm.valid">Save</button>
     </div>
   </form>
   <div *ngIf="payLoad" class="form-row">
