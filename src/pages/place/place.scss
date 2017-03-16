@@ -192,6 +192,17 @@ page-place {
     }
   }
 
+  .distance {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    color: white;
+    font-size: 0.7em;
+    padding: 3px;
+  }
+
   .sticky-footer {
     position: fixed;
     bottom: 0;

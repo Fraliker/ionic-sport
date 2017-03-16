@@ -22,7 +22,7 @@
     <div class="image-container">
       <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
       <img class="image__logo" [src]="place.imageLogo">
-      <p>{{place.distance}}</p>
+      <p class="distance" *ngIf="place.distance"> {{place.distance | distanceKmPipe}}</p>
     </div>
 
     <div class="place-info">
