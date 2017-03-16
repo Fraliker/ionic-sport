@@ -117,6 +117,7 @@ page-place-choose {
     &__row {
       display: flex;
       justify-content: space-between;
+      min-height: 120px;
       max-height: 150px;
       background: white;
       border-radius: 15px;
