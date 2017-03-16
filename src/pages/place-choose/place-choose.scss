@@ -167,13 +167,12 @@ page-place-choose {
 
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-between;
 
     &__name {
       font-weight: bold;
       font-size: 1.1em;
       margin: 0;
-      padding: 0 0 20px 0;
     }
 
     &__type {
