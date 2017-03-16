@@ -151,7 +151,7 @@ export class SportCenterService {
     arr.forEach((item) => {
       if (item.latitude != 0 && item.longitude != 0) {
         item.distance =
-          this.getDistanceFromLatLonInKm(this.position.lat, this.position.lng, item.latitude, item.latitude);
+          this.getDistanceFromLatLonInKm(this.position.lat, this.position.lng, item.latitude, item.longitude);
       } else {
         item.distance = null;
       }
