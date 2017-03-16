@@ -8,6 +8,7 @@ import {User} from "../models/user.model";
 import {TimeSelectPage} from "../pages/time-select/time-select";
 import {OrderSubmitPage} from "../pages/order-submit/order-submit";
 import {PlacePage} from "../pages/place/place";
+import {SportCenterService} from "../providers/sport-center.service";
 
 @Component({
   templateUrl: 'app.html',
@@ -19,7 +20,9 @@ export class MyApp {
   rootPage: any;
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public auth: AuthService) {
+  constructor(public platform: Platform,
+              public auth: AuthService,
+              public spCenter: SportCenterService) {
     this.initializeApp();
   }
 

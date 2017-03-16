@@ -23,8 +23,8 @@ export class Place {
     this.type = obj.type || 'Спортивный клуб';
     this.name = obj.name || 'Балашиха';
     this.address = obj.address || 'Не указан';
-    this.latitude = obj.latitude || 0;
-    this.longitude = obj.longitude || 0;
+    this.latitude = +obj.latitude || 0;
+    this.longitude = +obj.longitude || 0;
     this.distance = obj.distance || 0;
     this.description = obj.description || '';
 

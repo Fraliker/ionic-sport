@@ -4,6 +4,7 @@ import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {PlacePage} from "../place/place";
 import {SportCenterService} from "../../providers/sport-center.service";
+import {GeolocationService} from "../../providers/geolocation.service";
 
 @Component({
   selector: 'page-place-choose',
@@ -21,7 +22,8 @@ export class PlaceChoosePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public sportCenters: SportCenterService,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private geolocation: GeolocationService) {
   }
 
   /**
@@ -68,16 +70,9 @@ export class PlaceChoosePage {
   /**
    * adding new place to map, updates Array reference
    */
-  addNewPlace() {
-    let newPlaces = Array.from(this.places);
-    newPlaces.push(new Place({name: 'letMeSport test', latitude: 55 + this.counter, longitude: 32 + this.counter}));
-    this.places = newPlaces;
-  }
-
-  // addNewPlace(place : Place) {
+  // addNewPlace() {
   //   let newPlaces = Array.from(this.places);
-  //   newPlaces.push(new Place({name: 'letMeSport test' , latitude: 55+ this.counter, longitude: 32+ this.counter}));
+  //   newPlaces.push(new Place({name: 'letMeSport test', latitude: 55 + this.counter, longitude: 32 + this.counter}));
   //   this.places = newPlaces;
-  //   console.log(this.places);
   // }
 }

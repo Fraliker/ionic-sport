@@ -6,6 +6,8 @@ import 'rxjs';
 import {Place} from "../models/place.model";
 import {AuthService} from "./auth.service";
 import {Order} from "../models/order.model";
+import {Geolocation} from 'ionic-native';
+import {async} from "@angular/core/testing";
 
 @Injectable()
 export class SportCenterService {
@@ -13,20 +15,40 @@ export class SportCenterService {
   private API_URL: string = config.default.API_PATH;
   private headers: Headers = new Headers();
   private token: string = AuthService.getCurrentUser().token;
+  private position: {lat: number, lng: number};
+
 
   constructor(private  http: Http) {
     this.headers.append("Authorization", `Bearer ${this.token}`);
+
+    Geolocation.getCurrentPosition().then((res) => {
+      this.position = {lat: res.coords.latitude, lng: res.coords.longitude};
+    });
   }
 
+  /**
+   * GET request
+   * @param date
+   * @return {Observable<Place[]>}
+   */
   public getSportCenters(date: Date): Observable<Place[]> {
 
     let params = new URLSearchParams();
     params = this.divideDate(params, date);
 
     return this.http.get(`${this.API_URL}sport-centers/list`, {headers: this.headers, search: params})
-      .map(this.parseSportCenters);
+      .map(this.parseSportCenters)
+      .map((places: Place[]) => {
+        return this.updateDistance(places);
+      });
   }
 
+  /**
+   * GET request
+   * @param date
+   * @param place {Place}
+   * @return {Observable<Place>}
+   */
   public checkSportCenter(date: Date, place: Place): Observable<Place> {
 
     let params = new URLSearchParams();
@@ -35,8 +57,17 @@ export class SportCenterService {
 
     return this.http.get(`${this.API_URL}sport-centers/sport-center`, {headers: this.headers, search: params})
       .map((res: Response) => {
-        console.log(res);
         return new Place(res.json());
+      })
+      .map((place: Place) => {
+        if (place.latitude != 0 && place.longitude != 0) {
+          place.distance =
+            this.getDistanceFromLatLonInKm(this.position.lat, this.position.lng, place.latitude, place.longitude);
+        } else {
+          place.distance = null;
+        }
+        console.log(place);
+        return place;
       });
   }
 
@@ -106,11 +137,50 @@ export class SportCenterService {
     });
 
     return {
-      'availableTimeId' : availableTimeId,
-      'year' : date.getFullYear(),
-      'month' : date.getMonth(),
-      'day' : date.getDate(),
-      'serviceIds' : serviceIds
+      'availableTimeId': availableTimeId,
+      'year': date.getFullYear(),
+      'month': date.getMonth(),
+      'day': date.getDate(),
+      'serviceIds': serviceIds
     };
+  }
+
+  public updateDistance(places: Place[]): Place[] {
+    let arr = Array.from(places);
+
+    arr.forEach((item) => {
+      if (item.latitude != 0 && item.longitude != 0) {
+        item.distance =
+          this.getDistanceFromLatLonInKm(this.position.lat, this.position.lng, item.latitude, item.latitude);
+      } else {
+        item.distance = null;
+      }
+    });
+
+    console.log(arr);
+    return arr;
+  }
+
+  private getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2): number {
+
+    let R = 6371; // Radius of the earth in km
+    let dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+    let dLon = this.deg2rad(lon2 - lon1);
+    let a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let d = R * c; // Distance in km
+    return d;
+  }
+
+  private deg2rad(deg): number {
+    return deg * (Math.PI / 180)
+  }
+
+  private sortPlacesByDistance(places: Place[]): Place[] {
+    return places;
   }
 }

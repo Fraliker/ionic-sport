@@ -44,12 +44,13 @@
             </div>
           </div>
           <div class="line__col line__col_2 club">
-            <h3 class="club__type">{{place.type}}</h3>
+            <!--<h3 class="club__type">{{place.type}}</h3>-->
             <h4 class="club__name">{{place.name}}</h4>
             <p class="club__adress">
               <ion-icon class="navigate-icon" name="navigate"></ion-icon>
               {{place.address}}
             </p>
+            <p class="distance">{{place.distance | distanceKmPipe}}</p>
           </div>
           <div class="line__col line__col_3">
             <button (click)="goToPlace(place)"  class="place__button" icon-only>
