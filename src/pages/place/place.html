@@ -32,8 +32,6 @@
 
       <p class="place-info__description">{{place.description}}</p>
 
-      <!--<form [formGroup]="form" (submit)="formSubmit(form)"  (submit)="save(f.value )"  class="radio">-->
-
       <form #f="ngForm" (submit)="formSubmit(f.value)" class="radio">
         <div class="place-info__time">
           <h3 class="place-info__time-head">Выбранное время</h3>
@@ -64,7 +62,7 @@
           <div class="radio" *ngFor="let pg of place.playingFields">
             <input [id]="pg.id" type="radio" name="playground" [(ngModel)]="user.playground" [value]="pg.name">
             <label [attr.for]="pg.id">
-              {{pg.name}}
+              {{pg.name}} {{pg.price}}р
             </label>
           </div>
 
@@ -81,16 +79,7 @@
           </div>
         </div>
 
-        <!--<h3 class="place-info__playground">Доступные для бронирования корты</h3>-->
-        <!--<div *ngFor="let question of questions" class="form-row">-->
-        <!--<df-question [question]="question" [form]="form"></df-question>-->
-        <!--</div>-->
-        <!--<h3>Дополнительные услуги</h3>-->
-        <!--<div *ngFor="let service of place.services">-->
-        <!--<input [id]="service.id" [name]="service.id" type="checkbox">-->
-        <!--<label [attr.for]="service.id">{{service.name}}</label>-->
-        <!--</div>-->
-        <div class="sticky-footer" *ngIf="form.valid">
+        <div class="sticky-footer">
           <button ion-button full type="submit"> Продолжить</button>
         </div>
       </form>

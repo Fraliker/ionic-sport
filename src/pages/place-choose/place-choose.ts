@@ -22,8 +22,7 @@ export class PlaceChoosePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public sportCenters: SportCenterService,
-              private loadingCtrl: LoadingController,
-              private geolocation: GeolocationService) {
+              private loadingCtrl: LoadingController) {
   }
 
   /**

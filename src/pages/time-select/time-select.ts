@@ -3,7 +3,6 @@ import {NavController, NavParams, ToastController} from 'ionic-angular';
 import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
 import {SportCenterService} from "../../providers/sport-center.service";
-import {Place} from "../../models/place.model";
 import * as moment from 'moment';
 
 @Component({
@@ -20,7 +19,8 @@ export class TimeSelectPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public sportCenters: SportCenterService) {
 
     console.log(this.day);
     /**

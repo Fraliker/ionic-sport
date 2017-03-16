@@ -22,7 +22,6 @@ import {SportCenterService} from "../providers/sport-center.service";
 import {DynamicFormComponent} from "../pages/place/dynamic-form/dynamic-form";
 import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-form-question.component";
 import {PaymentPage} from "../pages/payment/payment";
-import {GeolocationService} from "../providers/geolocation.service";
 import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.pipe";
 
 @NgModule({
@@ -37,8 +36,6 @@ import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.
     PlaceChoosePage,
     YandexMap,
     PlacePage,
-    DynamicFormComponent,
-    DynamicFormQuestionComponent,
     OrderSubmitPage,
     PaymentPage,
     DistanceKmPipe,
@@ -67,8 +64,7 @@ import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     DashboardService,
-    SportCenterService,
-    GeolocationService
+    SportCenterService
   ]
 })
 export class AppModule {}
