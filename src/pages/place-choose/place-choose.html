@@ -31,7 +31,7 @@
   <div class="place-choose__content" *ngIf="places.length > 0">
 
     <ul class="list" [ngClass]="{hide: !isList()}">
-      <li class="list__item" *ngFor="let place of places">
+      <li class="list__item" *ngFor="let place of (places | placeSortByDistance)">
 
         <div class="line__row">
           <div class="line__col line__col_1">
