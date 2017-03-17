@@ -23,6 +23,10 @@ export class SportCenterService {
 
     Geolocation.getCurrentPosition().then((res) => {
       this.position = {lat: res.coords.latitude, lng: res.coords.longitude};
+    }).catch((err) => {
+      console.error('Cannot load geo data ' + err);
+      // if cannot load geodata - set Moscow as default value
+      this.position = {lat: 55.7819219, lng: 37.5061349};
     });
   }
 
