@@ -98,6 +98,7 @@ export class YandexMap implements OnInit, OnChanges {
 
     //adding events for placemark redirect
     placemark.events.add('click', function (e) {
+      e.preventDefault();
       e.stopPropagation();
       eventEmitter.emit(place);
     });
