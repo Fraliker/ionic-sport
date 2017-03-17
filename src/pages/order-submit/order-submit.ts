@@ -63,8 +63,10 @@ export class OrderSubmitPage {
         closeButtonText: "закрыть"
       });
 
+      let id = res;
+
       loading.dismissAll();
-      this.navCtrl.push(PaymentPage);
+      this.navCtrl.push(PaymentPage, {id : id});
 
     }, (err) => {
 

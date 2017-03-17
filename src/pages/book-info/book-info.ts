@@ -32,7 +32,7 @@ export class BookInfoPage {
   }
 
   goToPayment() {
-    this.navCtrl.push(PaymentPage);
+    this.navCtrl.push(PaymentPage, {id : this.book.id});
   }
 
   goToMainPage() {

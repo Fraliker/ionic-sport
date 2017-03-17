@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PaymentPage {
 
   public payForm: FormGroup;
+  private id : string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -21,11 +22,16 @@ export class PaymentPage {
       'submit' : [false, Validators.required]
     });
 
-    console.log(this.payForm);
+    this.id = this.navParams.get("id");
+    console.log(this.id);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PaymentPage');
+
+    if(this.id == null) {
+      this.navCtrl.pop();
+    }
+    console.log('ionViewDidLoad PaymentPage', this.id);
   }
 
   formSubmit() {

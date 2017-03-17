@@ -110,12 +110,13 @@ export class SportCenterService {
   }
 
   //TODO place order return value
-  public placeOrder(order: Order): Observable<boolean> {
+  public placeOrder(order: Order): Observable<string> {
 
     let orderRequest = this.transformOrderForRequest(order);
     return this.http.post(`${this.API_URL}bookings/create-booking`, orderRequest, {headers: this.headers})
       .map((res: Response) => {
-        return true;
+        console.log(res.json());
+        return res.json().id;
       });
   }
 
