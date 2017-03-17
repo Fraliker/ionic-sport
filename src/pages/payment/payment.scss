@@ -47,6 +47,46 @@ page-payment {
     height: 40px;
     font-size: 1.3em;
     margin-bottom: 15px;
+    position: relative;
+
+    &__number {
+      &:before {
+        content: '';
+        position: absolute;
+        width: 43px;
+        height: 31px;
+        left: 5px;
+        top: 5px;
+        background: url('/assets/images/card-1.png');
+        background-size: cover;
+      }
+    }
+
+    &__year {
+      &:before {
+        content: '';
+        position: absolute;
+        width: 43px;
+        height: 31px;
+        left: 5px;
+        top: 5px;
+        background: url('/assets/images/card-2.png');
+        background-size: cover;
+      }
+    }
+
+    &__cvv {
+      &:before {
+        content: '';
+        position: absolute;
+        width: 43px;
+        height: 31px;
+        left: 5px;
+        top: 5px;
+        background: url('/assets/images/card-3.png');
+        background-size: cover;
+      }
+    }
 
     input {
       width: 100%;
@@ -115,6 +155,15 @@ page-payment {
           opacity: 1;
         }
       }
+    }
+  }
+
+  .garantee {
+    display: flex;
+    justify-content: center;
+    
+    img {
+      padding: 10px;
     }
   }
 }
