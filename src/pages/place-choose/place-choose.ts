@@ -66,6 +66,10 @@ export class PlaceChoosePage {
     this.navCtrl.push(PlacePage, {place: place, time: this.time});
   }
 
+  mapClick(place : any) {
+    this.navCtrl.push(PlacePage, {place: place, time: this.time});
+  }
+
   /**
    * adding new place to map, updates Array reference
    */

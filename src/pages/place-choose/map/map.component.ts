@@ -1,4 +1,7 @@
-import {Component, ViewChild, ElementRef, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  Component, ViewChild, ElementRef, OnInit, Input, OnChanges, SimpleChanges, EventEmitter,
+  Output
+} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Geolocation} from 'ionic-native';
 import {Place} from "../../../models/place.model";
@@ -13,6 +16,7 @@ export class YandexMap implements OnInit, OnChanges {
 
   @ViewChild('map') mapElement: ElementRef;
   @Input() places: Place[];
+  @Output() placemarkClick: EventEmitter<Place> = new EventEmitter();
 
   private yamapsLoad: boolean = false;
   map: any;
@@ -50,6 +54,7 @@ export class YandexMap implements OnInit, OnChanges {
     }, {
       searchControlProvider: 'yandex#search'
     });
+
     this.yamapsLoad = true;
   }
 
@@ -60,7 +65,7 @@ export class YandexMap implements OnInit, OnChanges {
         if (place.latitude === 0 && place.longitude === 0) {
           console.debug('Map ignored place ---- bacause of coordinates', place);
         } else {
-          this.map.geoObjects.add(YandexMap.createPlacemark(place));
+          this.map.geoObjects.add(this.createPlacemark(place, this.placemarkClick));
         }
       });
     }
@@ -73,8 +78,9 @@ export class YandexMap implements OnInit, OnChanges {
   /**
    * @return {ymaps.Placemark}
    */
-  static createPlacemark(place: Place): any {
-    return new ymaps.Placemark([place.latitude, place.longitude], {
+  createPlacemark(place: Place, eventEmitter: any): any {
+
+    let placemark = new ymaps.Placemark([place.latitude, place.longitude], {
       balloonContent: `${place.type}</br>${place.name}`
     }, {
       preset: 'islands#icon',
@@ -89,5 +95,13 @@ export class YandexMap implements OnInit, OnChanges {
       // её "ножки" (точки привязки).
       iconImageOffset: [-40, -40]
     });
+
+    //adding events for placemark redirect
+    placemark.events.add('click', function (e) {
+      e.stopPropagation();
+      eventEmitter.emit(place);
+    });
+
+    return placemark;
   }
 }
