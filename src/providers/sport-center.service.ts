@@ -145,7 +145,9 @@ export class SportCenterService {
       'year': date.getFullYear(),
       'month': date.getMonth(),
       'day': date.getDate(),
-      'serviceIds': serviceIds
+      'serviceIds': serviceIds,
+      'comment' : order.comment,
+      'phone' : order.user.phone
     };
   }
 
