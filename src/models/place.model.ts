@@ -50,7 +50,10 @@ export class Place {
 
         // slider images setting
         obj.images.forEach((item) => {
-          this.images.push(item.src);
+          if (item.src != null) {
+            this.images.push(item.src);
+          }
+
         });
       }
     }
