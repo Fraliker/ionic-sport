@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NavController, NavParams,  LoadingController, ToastController} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
@@ -9,13 +9,21 @@ import {OrderSubmitPage} from "../order-submit/order-submit";
 import {SportCenterService} from "../../providers/sport-center.service";
 import {Order} from "../../models/order.model";
 import {AuthService} from "../../providers/auth.service";
+import { Slides } from 'ionic-angular';
 
 @Component({
   selector: 'page-place',
-  templateUrl: 'place.html',
+  templateUrl: 'place.html'
 })
 
 export class PlacePage implements OnInit {
+  get slides(): Slides {
+    return this._slides;
+  }
+
+  set slides(value: Slides) {
+    this._slides = value;
+  }
   place: Place;
   form: FormGroup;
   time: string;
@@ -25,6 +33,9 @@ export class PlacePage implements OnInit {
   maxDate: string;
   oldTime: string;
   oldData: {place: Place, time: string};
+
+  @ViewChild(Slides) private _slides: Slides;
+
 
   fromData = {};
   public user = {};

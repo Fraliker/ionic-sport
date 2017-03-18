@@ -20,7 +20,12 @@
 
   <div *ngIf="place != null">
     <div class="image-container">
-      <div class="image" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
+      <ion-slides>
+        <ion-slide *ngFor="let img of place.images">
+          <div class="image" [ngStyle]="{'background-image':'url(' + img + ')'}"></div>
+        </ion-slide>
+      </ion-slides>
+
       <img class="image__logo" [src]="place.imageLogo">
       <p class="distance" *ngIf="place.distance"> {{place.distance | distanceKmPipe}}</p>
     </div>

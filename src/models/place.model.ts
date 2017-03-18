@@ -14,6 +14,7 @@ export class Place {
   description: string;
   playingFields: PlayingField[] = [];
   services: PlaceService[] = [];
+  images: string[] = [];
 
   constructor(obj) {
 
@@ -46,7 +47,13 @@ export class Place {
             break;
           }
         }
+
+        // slider images setting
+        obj.images.forEach((item) => {
+          this.images.push(item.src);
+        });
       }
     }
+
   }
 }

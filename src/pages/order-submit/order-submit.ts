@@ -6,7 +6,6 @@ import {Order} from "../../models/order.model";
 import {PaymentPage} from "../payment/payment";
 import {SportCenterService} from "../../providers/sport-center.service";
 
-
 @Component({
   selector: 'page-order-submit',
   templateUrl: 'order-submit.html',
