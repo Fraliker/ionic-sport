@@ -13,6 +13,7 @@ import {async} from "@angular/core/testing";
 export class SportCenterService {
 
   private API_URL: string = config.default.API_PATH;
+  private API_ERR: string = config.default.API_ERROR;
   private headers: Headers = new Headers();
   private token: string = AuthService.getCurrentUser().token;
   private position: {lat: number, lng: number};
@@ -44,7 +45,8 @@ export class SportCenterService {
       .map(this.parseSportCenters)
       .map((places: Place[]) => {
         return this.updateDistance(places);
-      });
+      })
+      .catch(this.handleError);
   }
 
   /**
@@ -70,9 +72,9 @@ export class SportCenterService {
         } else {
           place.distance = null;
         }
-        console.log(place);
         return place;
-      });
+      })
+      .catch(this.handleError);
   }
 
   /**
@@ -109,15 +111,14 @@ export class SportCenterService {
     return arr;
   }
 
-  //TODO place order return value
   public placeOrder(order: Order): Observable<string> {
 
     let orderRequest = this.transformOrderForRequest(order);
     return this.http.post(`${this.API_URL}bookings/create-booking`, orderRequest, {headers: this.headers})
       .map((res: Response) => {
-        console.log(res.json());
         return res.json().id;
-      });
+      })
+      .catch(this.handleError);
   }
 
   private transformOrderForRequest(order: Order): Object {
@@ -163,8 +164,6 @@ export class SportCenterService {
         item.distance = null;
       }
     });
-
-    console.log(arr);
     return arr;
   }
 
@@ -187,7 +186,21 @@ export class SportCenterService {
     return deg * (Math.PI / 180)
   }
 
-  private sortPlacesByDistance(places: Place[]): Place[] {
-    return places;
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.log(errMsg);
+
+    this.http.post(this.API_ERR, {errorText: errMsg}).map(res => res).subscribe((res)=>{
+      console.log(res);
+    });
+
+    return Observable.throw(errMsg);
   }
 }
