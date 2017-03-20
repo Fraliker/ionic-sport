@@ -252,4 +252,10 @@ page-place {
   .next-button {
     margin: 0;
   }
+
+  .shadow {
+    -webkit-box-shadow: inset 0px 18px 17px 0px rgba(71, 50, 50, 0.22);
+    -moz-box-shadow:    inset 0px 18px 17px 0px rgba(71, 50, 50, 0.22);
+    box-shadow:         inset 0px 18px 17px 0px rgba(71, 50, 50, 0.22);
+  }
 }
