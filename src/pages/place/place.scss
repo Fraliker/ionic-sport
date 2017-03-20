@@ -45,6 +45,12 @@ page-place {
     position: relative;
   }
 
+  ion-navbar {
+    position: absolute;
+    z-index: 10;
+    background: none;
+  }
+
   .slide-zoom {
     height: 100%;
   }
