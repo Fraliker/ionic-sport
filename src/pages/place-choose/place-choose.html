@@ -33,7 +33,7 @@
     <ul class="list" [ngClass]="{hide: !isList()}">
       <li class="list__item" *ngFor="let place of (places | placeSortByDistance)">
 
-        <div class="line__row">
+        <div class="line__row" (click)="goToPlace(place)">
           <div class="line__col line__col_1">
             <div class="place">
               <div class="place__img" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
@@ -52,7 +52,7 @@
             <p class="distance">{{place.distance | distanceKmPipe}}</p>
           </div>
           <div class="line__col line__col_3">
-            <button (click)="goToPlace(place)"  class="place__button" icon-only>
+            <button class="place__button" icon-only>
               <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
             </button>
           </div>
