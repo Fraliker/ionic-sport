@@ -29,7 +29,8 @@ export class YandexMap implements OnInit, OnChanges {
    */
   ngOnInit(): void {
     Geolocation.getCurrentPosition().then((resp) => {
-        ymaps.ready(this.loadMap(resp.coords.latitude, resp.coords.longitude));
+        // ymaps.ready(this.loadMap(resp.coords.latitude, resp.coords.longitude));
+        ymaps.ready(this.loadMap(55.76, 37.64));
       }
     ).then(() => {
       this.drawPointers();// draw to map pointers from place
@@ -50,7 +51,7 @@ export class YandexMap implements OnInit, OnChanges {
   loadMap(latitude = 55.76, longitude = 37.64): void {
     this.map = new ymaps.Map('map', {
       center: [latitude, longitude], // Москва
-      zoom: 10
+      zoom: 9
     }, {
       searchControlProvider: 'yandex#search'
     });
