@@ -12,12 +12,11 @@
            [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="verifyCode()">
 
       <p class="input-wrap__code">{{testCode}}</p>
-
     </div>
 
     <div class="controls">
-      <p (click)="goBackToAuth()">Изменить номер телефона</p>
-      <p (click)="sendNewCode()">Отправить код повторно</p>
+      <p class='action-button' (click)="goBackToAuth()">Изменить номер телефона</p>
+      <p class='action-button' (click)="sendNewCode()">Отправить код повторно</p>
     </div>
   </div>
 </ion-content>

@@ -28,6 +28,7 @@ export class SmsVerifyPage {
   }
 
   verifyCode() {
+    this.validCode = true;
 
     if (this.inputCode.length === this.testCode.length && this.inputCode === this.testCode) {
 
@@ -46,7 +47,9 @@ export class SmsVerifyPage {
           loading.dismissAll();
         });
 
-    } else if (this.inputCode.length === this.testCode.length && this.inputCode !== this.testCode) {
+    } else if ((this.inputCode.length === this.testCode.length && this.inputCode !== this.testCode)
+      || this.inputCode.length >= this.testCode.length) {
+
       this.validCode = false;
     }
   }

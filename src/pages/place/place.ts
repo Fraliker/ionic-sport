@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NavController, NavParams,  LoadingController, ToastController} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, ToastController} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {FormGroup} from '@angular/forms';
@@ -9,7 +9,8 @@ import {OrderSubmitPage} from "../order-submit/order-submit";
 import {SportCenterService} from "../../providers/sport-center.service";
 import {Order} from "../../models/order.model";
 import {AuthService} from "../../providers/auth.service";
-import { Slides } from 'ionic-angular';
+import {Slides} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
 
 @Component({
   selector: 'page-place',
@@ -24,6 +25,7 @@ export class PlacePage implements OnInit {
   set slides(value: Slides) {
     this._slides = value;
   }
+
   place: Place;
   form: FormGroup;
   time: string;
@@ -91,7 +93,13 @@ export class PlacePage implements OnInit {
   }
 
   ionViewDidLoad() {
+    // StatusBar.overlaysWebView(false); // let status bar overlay webview
+    // StatusBar.backgroundColorByHexString('#000'); // set status bar to white
+    // StatusBar.hide(); // set status bar to white
+  }
 
+  ionViewWillLeave() {
+    // StatusBar.show();
   }
 
   goToDashboard() {
@@ -171,7 +179,7 @@ export class PlacePage implements OnInit {
       }
       if (prop != 'playground') {
         if (obj[prop] != null && obj[prop] == true) {
-          this.place.services.forEach((item)=>{
+          this.place.services.forEach((item) => {
             if (item.name == prop) {
               price += +item.price;
             }
