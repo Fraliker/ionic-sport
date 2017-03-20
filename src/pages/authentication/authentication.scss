@@ -12,7 +12,7 @@ page-authentication {
   }
 
   .scroll-content {
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -45,5 +45,9 @@ page-authentication {
       font-size: 20px;
       margin: 0;
     }
+  }
+
+  .submit-button {
+    margin: 0;
   }
 }

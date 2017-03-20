@@ -4,13 +4,14 @@
   <h1>Делаем спорт доступным</h1>
 
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
-
-    <input #nameInput (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text" [formControl]="complexForm.controls['name']"/>
+    <input #nameInput (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text"
+           [formControl]="complexForm.controls['name']"/>
     <input #phoneInput class="phone-input" [textMask]="{mask: mask}" placeholder="Введите телефон" type="tel"
            [formControl]="complexForm.controls['phone']" (focus)="setPlaceholder(phoneInput)"/>
     <label class="phone-label"></label>
-    <div class=" sticky-footer" *ngIf="complexForm.valid">
-      <button ion-button full>Продолжить</button>
-    </div>
   </form>
 </ion-content>
+<ion-footer>
+  <button class="submit-button" *ngIf="complexForm.valid" (click)="submitForm(complexForm)" ion-button full>Продолжить
+  </button>
+</ion-footer>

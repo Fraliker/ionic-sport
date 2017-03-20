@@ -41,9 +41,6 @@ export class PaymentPage {
   }
 
   formSubmit() {
-    console.log(1);
-    console.log(this.payForm.value);
-
     this.payService.sendPayment(this.id).subscribe((res) => {
 
       this.showAlert("Спасибо", "Ваш платеж принят");
