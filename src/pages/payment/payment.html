@@ -19,15 +19,18 @@
       Сразу после обработки платежа мы вышлем Вам подтверждение заказа</h4>
 
     <div class="input-container input-container__number">
-      <input type="text" placeholder="Номер банковской карты" [formControl]="payForm.controls['cardNumber']">
+      <input type="text" placeholder="Номер банковской карты" [textMask]="{mask: maskCardNumber}"
+             [formControl]="payForm.controls['cardNumber']">
     </div>
 
     <div class="input-container input-container__year">
-      <input type="text" placeholder="Месяц/Год" [formControl]="payForm.controls['date']">
+      <input type="text" placeholder="Месяц/Год" [textMask]="{mask: maskDate}"
+             [formControl]="payForm.controls['date']">
     </div>
 
     <div class="input-container input-container__cvv">
-      <input type="text" placeholder="CVV" [formControl]="payForm.controls['cvv']">
+      <input type="text" placeholder="CVV" [textMask]="{mask: maskCVV}"
+             [formControl]="payForm.controls['cvv']">
     </div>
 
     <div class="garantee">
@@ -45,5 +48,6 @@
 </ion-content>
 
 <ion-footer class="order-submit-footer">
-  <button *ngIf="payForm.valid" class="order-submit-footer__button" (click)="formSubmit()" ion-button>Забронировать за</button>
+  <button *ngIf="payForm.valid" class="order-submit-footer__button" (click)="formSubmit()" ion-button>Забронировать за
+  </button>
 </ion-footer>
