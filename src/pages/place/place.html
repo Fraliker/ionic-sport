@@ -42,6 +42,13 @@
         {{place.description}} <span
         class="place-info__text_black">Свернуть</span></p>
 
+      <section class="advantages">
+        <div class="advantages__item" *ngFor="let a of place.advantages">
+          <p class="advantages__img-container"><img [src]="a.icon"></p>
+          <p class="advantages__text">{{a.name}}</p>
+        </div>
+      </section>
+
       <form #f="ngForm" (submit)="formSubmit(f.value)" class="radio">
         <div class="place-info__time">
           <h3 class="place-info__time-head">Выбранное время</h3>
@@ -90,7 +97,7 @@
         </div>
 
         <!--<div class="sticky-footer">-->
-          <!--<button ion-button full type="submit"> Продолжить</button>-->
+        <!--<button ion-button full type="submit"> Продолжить</button>-->
         <!--</div>-->
       </form>
     </div>

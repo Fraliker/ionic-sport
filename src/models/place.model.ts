@@ -18,6 +18,7 @@ export class Place {
   images: string[] = [];
   startWorkTime: string;
   endWorkTime: string;
+  advantages: {icon: string, name: string}[];
 
   constructor(obj) {
 
@@ -65,10 +66,34 @@ export class Place {
           if (item.src != null) {
             this.images.push(item.src);
           }
-
         });
       }
     }
 
+    this.advantages = this.parseAdvanteges(obj);
+  }
+
+  private parseAdvanteges(obj: any): {icon: string, name: string}[] {
+
+    let arr = [];
+    if (obj.advantages) {
+      if (obj.advantages.length != 0) {
+       
+        obj.advantages.forEach((item) => {
+          let toPush = {};
+          toPush['icon'] = item.iconSrc || '';
+          toPush['name'] = item.name;
+          arr.push(toPush);
+        });
+
+        return arr;
+      }
+      else {
+        return [];
+      }
+    } else {
+      return [];
+    }
   }
 }
+

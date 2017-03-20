@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NavController, NavParams, LoadingController, ToastController} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
-import {FormGroup} from '@angular/forms';
 import '../../config/russian-time';
 import {names} from "../../config/russian-time";
 import {OrderSubmitPage} from "../order-submit/order-submit";
@@ -10,7 +9,6 @@ import {SportCenterService} from "../../providers/sport-center.service";
 import {Order} from "../../models/order.model";
 import {AuthService} from "../../providers/auth.service";
 import {Slides} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
 
 @Component({
   selector: 'page-place',
