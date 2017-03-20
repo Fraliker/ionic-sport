@@ -20,7 +20,7 @@
     <ion-grid class="date">
       <ion-row class="inputs-background">
         <ion-col width-75 class="ion-datetime-wrap">
-          <ion-datetime class="date__date"
+          <ion-datetime #dateSelect class="date__date"
                         [min]="minDate"
                         [max]="maxDate"
                         displayFormat="DDD. DD, MMMM"
@@ -28,10 +28,10 @@
                         [dayShortNames]="dayShortNames"
                         [(ngModel)]="day">
           </ion-datetime>
-          <ion-icon name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
+          <ion-icon (click)="dateSelect.open()" name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
         </ion-col>
         <ion-col width-25 class="ion-datetime-wrap">
-          <ion-datetime class="date__time border-left"
+          <ion-datetime #hourSelect class="date__time border-left"
                         [min]="minDate"
                         [max]="maxDate"
                         displayFormat="HH:00"
@@ -39,7 +39,7 @@
                         [(ngModel)]="day">
           </ion-datetime>
 
-          <ion-icon name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
+          <ion-icon (click)="hourSelect.open()" name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
