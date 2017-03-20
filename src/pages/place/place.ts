@@ -27,15 +27,16 @@ export class PlacePage implements OnInit {
   }
 
   place: Place;
-  form: FormGroup;
   time: string;
   dayShortNames: string = names.dayShortNames;
   monthNames: string = names.monthNames;
   minDate: string = new Date().toISOString();
   maxDate: string;
   oldTime: string;
+  description : boolean = false;
   oldData: {place: Place, time: string};
 
+  form;
   @ViewChild(Slides) private _slides: Slides;
 
 
@@ -136,17 +137,18 @@ export class PlacePage implements OnInit {
    * form submit, parse
    * @param form
    */
-  formSubmit(form) {
+  formSubmit(form ?: any) {
 
     this.sportCenters.checkSportCenter(new Date(this.time), this.place)
       .subscribe(() => {
         let obj = {
           place: this.place,
           time: this.time,
-          orderList: this.servicesFromForm(form),
-          price: this.calcPrice(form),
+          orderList: this.servicesFromForm(this.user),
+          price: this.calcPrice(this.user),
           user: AuthService.getCurrentUser(),
-          playground: form.playground
+          // playground: form.playground
+          playground: this.user['playground']
         };
 
         let order = new Order(obj);

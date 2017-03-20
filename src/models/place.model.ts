@@ -12,9 +12,12 @@ export class Place {
   longitude: number;
   id: number;
   description: string;
+  descriptionShort: string;
   playingFields: PlayingField[] = [];
   services: PlaceService[] = [];
   images: string[] = [];
+  startWorkTime: string;
+  endWorkTime: string;
 
   constructor(obj) {
 
@@ -28,6 +31,15 @@ export class Place {
     this.longitude = +obj.longitude || 0;
     this.distance = obj.distance || 0;
     this.description = obj.description || '';
+    this.startWorkTime = obj.begin || '';
+    this.endWorkTime = obj.end || '';
+
+
+    if (this.description.length > 75) {
+      this.descriptionShort = this.description.substr(0, 75);
+    } else {
+      this.descriptionShort = this.description;
+    }
 
     if (obj.playingFields && obj.playingFields.length != 0)
       obj.playingFields.forEach((item) => {

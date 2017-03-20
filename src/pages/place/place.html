@@ -30,9 +30,17 @@
     <div class="place-info">
       <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
 
-      <p class="place-info__text">Адрес: {{place.address}}  <span class="place-info__text_blue">(показать на карте)</span></p>
+      <p class="place-info__text">Адрес: {{place.address}} <span
+        class="place-info__text_blue">(показать на карте)</span></p>
 
-      <p class="place-info__description">{{place.description}}</p>
+      <p class="place-info__text">Часы работы с {{place.startWorkTime}} до {{place.endWorkTime}}</p>
+
+      <p class="place-info__description" *ngIf="!description" (click)="description = !description">
+        {{place.descriptionShort}} <span
+        class="place-info__text_black">Развернуть</span></p>
+      <p class="place-info__description" *ngIf="description" (click)="description = !description">
+        {{place.description}} <span
+        class="place-info__text_black">Свернуть</span></p>
 
       <form #f="ngForm" (submit)="formSubmit(f.value)" class="radio">
         <div class="place-info__time">
@@ -74,20 +82,23 @@
         <div class="form-group">
           <div class="checkbox" *ngFor="let service of place.services">
             <input [id]="service.name" type="checkbox" [name]="service.name"
-                   [(ngModel)]="user[service.id]">
+                   [(ngModel)]="user[service.name]">
             <label [attr.for]="service.name">
               {{service.name}} {{service.price}}p
             </label>
           </div>
         </div>
 
-        <div class="sticky-footer">
-          <button ion-button full type="submit"> Продолжить</button>
-        </div>
+        <!--<div class="sticky-footer">-->
+          <!--<button ion-button full type="submit"> Продолжить</button>-->
+        <!--</div>-->
       </form>
     </div>
 
   </div>
 </ion-content>
+<ion-footer>
+  <button ion-button full class="next-button" (click)="formSubmit()">Продолжить</button>
+</ion-footer>
 
 
