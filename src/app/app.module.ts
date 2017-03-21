@@ -24,6 +24,7 @@ import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-
 import {PaymentPage} from "../pages/payment/payment";
 import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.pipe";
 import {PaymentService} from "../providers/payment.service";
+import {MapPage} from "../pages/map/map";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {PaymentService} from "../providers/payment.service";
     OrderSubmitPage,
     PaymentPage,
     DistanceKmPipe,
-    DistancePlaceSort
+    DistancePlaceSort,
+    MapPage
   ],
   imports: [
     FormsModule,
@@ -61,7 +63,8 @@ import {PaymentService} from "../providers/payment.service";
     PlaceChoosePage,
     PlacePage,
     OrderSubmitPage,
-    PaymentPage
+    PaymentPage,
+    MapPage
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

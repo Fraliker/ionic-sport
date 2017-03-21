@@ -9,6 +9,7 @@ import {SportCenterService} from "../../providers/sport-center.service";
 import {Order} from "../../models/order.model";
 import {AuthService} from "../../providers/auth.service";
 import {Slides} from 'ionic-angular';
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-place',
@@ -210,5 +211,7 @@ export class PlacePage implements OnInit {
     return arr;
   }
 
-
+  placeOnMap() {
+    this.navCtrl.push(MapPage, {'place': this.place});
+  }
 }

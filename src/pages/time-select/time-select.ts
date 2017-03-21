@@ -4,6 +4,7 @@ import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
 import {SportCenterService} from "../../providers/sport-center.service";
 import * as moment from 'moment';
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-time-select',

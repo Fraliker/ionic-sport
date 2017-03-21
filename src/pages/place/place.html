@@ -31,7 +31,7 @@
       <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
 
       <p class="place-info__text">Адрес: {{place.address}} <span
-        class="place-info__text_blue">(показать на карте)</span></p>
+        class="place-info__text_blue" (click)="placeOnMap()">(показать на карте)</span></p>
 
       <p class="place-info__text" *ngIf="!place.roundTheClock">Часы работы: с {{place.startWorkTime}} до {{place.endWorkTime}}</p>
       <p class="place-info__text" *ngIf="place.roundTheClock">Часы работы: Круглосуточно</p>
