@@ -60,11 +60,12 @@
               <ion-col width-90>
                 <ion-datetime #datepicker (ionChange)="dateChange()"
                               class="date__date"
-                              displayFormat="DDD. DD, MMMM, HH:00"
+                              displayFormat="DDDD, DD MMMM, HH:00"
                               [min]="minDate"
                               [max]="maxDate"
                               [monthNames]="monthNames"
                               [dayShortNames]="dayShortNames"
+                              [dayNames]="dayNames"
                               [(ngModel)]="time"
                               [ngModelOptions]="{standalone: true}">
                 </ion-datetime>

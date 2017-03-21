@@ -28,6 +28,7 @@ export class PlacePage implements OnInit {
   time: string;
   dayShortNames: string = names.dayShortNames;
   monthNames: string = names.monthNames;
+  dayNames: string = names.dayNames;
   minDate: string = new Date().toISOString();
   maxDate: string;
   oldTime: string;
