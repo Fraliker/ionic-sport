@@ -9,14 +9,15 @@
   </ion-navbar>
 
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="list">
-        Список
-      </ion-segment-button>
-      <ion-segment-button value="map">
-        Карта
-      </ion-segment-button>
-    </ion-segment>
+
+    <div class="tabs">
+      <div class="tabs__item" (click)="segment = 'list'" [ngClass]="{active: segment === 'list'}">
+        <span class="tabs__list" [ngClass]="{active: segment === 'list'}">Список</span>
+      </div>
+      <div class="tabs__item" (click)="segment = 'map'" [ngClass]="{active: segment === 'map'}">
+        <span class="tabs__map" [ngClass]="{active: segment === 'map'}">Карта</span>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 

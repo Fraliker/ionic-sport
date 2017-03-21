@@ -87,9 +87,9 @@ page-place-choose {
       right: -10px;
       transform: translate(0, -50%);
       border-radius: 5px;
-      -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+      -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
     }
 
     &__button {
@@ -120,7 +120,7 @@ page-place-choose {
       min-height: 120px;
       max-height: 150px;
       background: white;
-      border-radius: 15px;
+      border-radius: 5px;
       overflow: hidden;
     }
 
@@ -205,5 +205,85 @@ page-place-choose {
     font-size: 0.7em;
     margin: 0;
     font-weight: bold;
+  }
+
+  .tabs {
+    display: flex;
+    flex-flow: row wrap;
+
+    &__item {
+      width: 50%;
+      text-align: center;
+      position: relative;
+
+      &:after {
+        content: '';
+        background: #fff;
+        left: 0;
+        top: -15px;
+        width: 100%;
+        height: 2px;
+        position: absolute;
+      }
+
+      &.active {
+        &:after {
+          content: '';
+          background: #fcca31;
+          left: 0;
+          top: -15px;
+          width: 100%;
+          height: 2px;
+          position: absolute;
+        }
+      }
+    }
+
+    &__map {
+      display: inline-block;
+      padding-left: 10px;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        background: url('../assets/images/control-sprite.png') -40px 0;
+        width: 40px;
+        height: 40px;
+        top: -10px;
+        left: -30px;
+      }
+
+      &.active {
+        &:after {
+          top: -13px;
+          background: url('../assets/images/control-sprite.png') -40px -42px !important;
+        }
+      }
+    }
+
+    &__list {
+
+      display: inline-block;
+      padding-left: 10px;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        background: url('../assets/images/control-sprite.png') 0 0;
+        width: 40px;
+        height: 40px;
+        top: -10px;
+        left: -30px;
+      }
+
+      &.active {
+        &:after {
+          top: -13px;
+          background: url('../assets/images/control-sprite.png') 0 -42px !important;
+        }
+      }
+    }
   }
 }
