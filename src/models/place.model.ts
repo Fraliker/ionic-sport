@@ -19,6 +19,7 @@ export class Place {
   startWorkTime: string;
   endWorkTime: string;
   advantages: {icon: string, name: string}[];
+  roundTheClock : boolean;
 
   constructor(obj) {
 
@@ -34,6 +35,7 @@ export class Place {
     this.description = obj.description || '';
     this.startWorkTime = obj.begin || '';
     this.endWorkTime = obj.end || '';
+    this.roundTheClock = obj.typeTime || false;
 
 
     if (this.description.length > 75) {

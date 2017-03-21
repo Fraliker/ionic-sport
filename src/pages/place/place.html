@@ -33,7 +33,8 @@
       <p class="place-info__text">Адрес: {{place.address}} <span
         class="place-info__text_blue">(показать на карте)</span></p>
 
-      <p class="place-info__text">Часы работы с {{place.startWorkTime}} до {{place.endWorkTime}}</p>
+      <p class="place-info__text" *ngIf="!place.roundTheClock">Часы работы: с {{place.startWorkTime}} до {{place.endWorkTime}}</p>
+      <p class="place-info__text" *ngIf="place.roundTheClock">Часы работы: Круглосуточно</p>
 
       <p class="place-info__description" *ngIf="!description" (click)="description = !description">
         {{place.descriptionShort}} <span
