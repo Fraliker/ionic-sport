@@ -44,7 +44,9 @@ import {PaymentService} from "../providers/payment.service";
   ],
   imports: [
     FormsModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: ''
+    }),
     TextMaskModule
   ],
   bootstrap: [IonicApp],
