@@ -78,7 +78,7 @@ export class Place {
     let arr = [];
     if (obj.advantages) {
       if (obj.advantages.length != 0) {
-       
+
         obj.advantages.forEach((item) => {
           let toPush = {};
           toPush['icon'] = item.iconSrc || '';
