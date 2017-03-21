@@ -103,6 +103,7 @@ page-place {
 
     &__time-head {
       margin-bottom: 0;
+      font-size: 1.3em;
     }
 
     &__description {
@@ -111,12 +112,18 @@ page-place {
 
     &__playground {
       margin-top: 0;
+      font-size: 1.3em;
     }
 
     &__head {
       margin-top: 35px;
       margin-bottom: 20px;
+      font-size: 1.3em;
     }
+  }
+
+  .advantages__head {
+    font-size: 1.3em;
   }
 
   input[type='radio'] {
@@ -128,12 +135,14 @@ page-place {
       position: relative;
       padding-left: 30px;
       line-height: 25px;
+      display: inline-block;
 
       &:before {
         content: '';
         display: block;
         position: absolute;
         top: 0;
+        left: 0;
         width: 20px;
         height: 20px;
         background: #f1f1f1;
@@ -175,12 +184,14 @@ page-place {
       position: relative;
       padding-left: 30px;
       line-height: 25px;
+      display: inline-block;
 
       &:before {
         content: '';
         display: block;
         position: absolute;
         top: 0;
+        left: 0;
         width: 20px;
         height: 20px;
         background: #f1f1f1;
