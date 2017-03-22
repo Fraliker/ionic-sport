@@ -2,6 +2,7 @@ export class Booking {
   id: number;
   sportCenter: string;
   playingField: string;
+  playingFieldID: string;
   year: number;
   month: number;
   day: number;
@@ -17,6 +18,7 @@ export class Booking {
     this.id = obj.id || null;
     this.sportCenter = obj.sportCenterName || null;
     this.playingField = obj.playingFieldName || null;
+    this.playingFieldID = obj.playingFieldId || null;
     this.year = obj.year || null;
     this.month = obj.month || null;
     this.day = obj.day || null;

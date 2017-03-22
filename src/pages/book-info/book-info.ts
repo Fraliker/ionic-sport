@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {AlertController, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Booking} from "../../models/Booking";
 import {DashboardService} from "../dashboard/dashboard.service";
 import {PaymentPage} from "../payment/payment";
@@ -14,10 +14,13 @@ export class BookInfoPage {
 
   book: Booking = null;
   id: string;
+  loader: Loading;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public dashBoardService: DashboardService) {
+              public dashBoardService: DashboardService,
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController) {
   }
 
   ionViewWillEnter() {
@@ -33,7 +36,7 @@ export class BookInfoPage {
   }
 
   goToPayment() {
-    this.navCtrl.push(PaymentPage, {id : this.book.id});
+    this.navCtrl.push(PaymentPage, {id: this.book.id});
   }
 
   goToMainPage() {
@@ -41,8 +44,34 @@ export class BookInfoPage {
   }
 
   goToMapRout() {
-    console.log(this.book);
-    this.navCtrl.push(MapPage, {'pointB': {lat: 55, lng: 35}});
+    this.presentLoading();
 
+    this.dashBoardService.getBookingRoute(this.book.playingFieldID).subscribe((res) => {
+      this.dismissLoading();
+      this.navCtrl.push(MapPage, {'pointB': {lat: res.latitude, lng: res.longitude}});
+    }, (err) => {
+      this.dismissLoading();
+      this.showAlert();
+    });
+  }
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Ошибка',
+      subTitle: 'Спортивный центр не найден',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  presentLoading() {
+    this.loader = this.loadingCtrl.create({
+      content: "Пожалуйста, подождите..."
+    });
+    this.loader.present();
+  }
+
+  dismissLoading() {
+    this.loader.dismissAll();
   }
 }

@@ -34,6 +34,14 @@ export class DashboardService {
       });
   }
 
+  getBookingRoute(id: string): Observable<any> {
+    let urlParams = new URLSearchParams();
+    urlParams.append('id', id);
+
+    return this.http.get(`${this.API_URL}playing-fields/create-route`, {headers: this.headers, search: urlParams})
+      .map(res => res.json());
+  }
+
   parseBookings(res: Response) {
 
     let data = res.json();
