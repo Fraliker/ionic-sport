@@ -4,6 +4,7 @@ import {Booking} from "../../models/Booking";
 import {DashboardService} from "../dashboard/dashboard.service";
 import {PaymentPage} from "../payment/payment";
 import {TimeSelectPage} from "../time-select/time-select";
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-book-info',
@@ -37,5 +38,11 @@ export class BookInfoPage {
 
   goToMainPage() {
     this.navCtrl.setRoot(TimeSelectPage);
+  }
+
+  goToMapRout() {
+    console.log(this.book);
+    this.navCtrl.push(MapPage, {'pointB': {lat: 55, lng: 35}});
+
   }
 }

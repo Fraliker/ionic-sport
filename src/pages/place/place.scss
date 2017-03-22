@@ -122,14 +122,24 @@ page-place {
     }
   }
 
-  .advantages__head {
-    font-size: 1.3em;
+  .advantages{
+
+    &__head {
+      font-size: 1.3em;
+    }
+
+    &__description {
+      margin: 0;
+      line-height: 11px;
+      font-size: 11px;
+    }
   }
 
   input[type='radio'] {
     opacity: 0;
     width: 0;
     height: 0;
+    display: none;
 
     & + label {
       position: relative;
@@ -141,7 +151,7 @@ page-place {
         content: '';
         display: block;
         position: absolute;
-        top: 0;
+        top: 2px;
         left: 0;
         width: 20px;
         height: 20px;
@@ -153,7 +163,7 @@ page-place {
         content: '';
         display: block;
         position: absolute;
-        top: 5px;
+        top: 7px;
         left: 5px;
         width: 10px;
         height: 10px;
@@ -179,6 +189,7 @@ page-place {
     opacity: 0;
     width: 0;
     height: 0;
+    display: none;
 
     & + label {
       position: relative;
@@ -190,7 +201,7 @@ page-place {
         content: '';
         display: block;
         position: absolute;
-        top: 0;
+        top: 2px;
         left: 0;
         width: 20px;
         height: 20px;
@@ -202,7 +213,7 @@ page-place {
         content: '';
         display: block;
         position: absolute;
-        top: 5px;
+        top: 7px;
         left: 5px;
         width: 10px;
         height: 10px;
