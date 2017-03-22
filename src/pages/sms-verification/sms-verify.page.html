@@ -11,7 +11,8 @@
     <input placeholder="Введите код" type="text" [ngClass]="{'invalid' : !validCode}"
            [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="verifyCode()">
 
-      <p class="input-wrap__code">{{testCode}}</p>
+      <p class="input-wrap__code" *ngIf="testCode != true">{{testCode}}</p>
+      <p class="input-wrap__code" *ngIf="!validCode">Проверьте код</p>
     </div>
 
     <div class="controls">

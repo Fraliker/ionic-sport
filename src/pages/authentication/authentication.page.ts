@@ -23,6 +23,7 @@ export class AuthenticationPage {
     this.lockNextButton = true;
     this.complexForm = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      // 'phone': ['', Validators.minLength(7)]
       'phone': ['', this.customValidator]
     });
   }
@@ -60,7 +61,7 @@ export class AuthenticationPage {
   /**
    * login
    */
-  login(name: string, phone: string) {
+  login(name: string, phone: string) : void {
     let loading = this.loadingCtrl.create({
       content: "Отправка сообщения..."
     });

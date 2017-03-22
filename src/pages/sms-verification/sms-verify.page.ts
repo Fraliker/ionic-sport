@@ -13,6 +13,7 @@ export class SmsVerifyPage {
   name: string;
   phone: string;
   testCode: string;
+  testCodeLength: number = 4;
   inputCode: string;
   validCode: boolean = true;
 
@@ -27,10 +28,38 @@ export class SmsVerifyPage {
     this.navCtrl.pop();
   }
 
+  //TODO remove after test
+  // verifyCodeTest() {
+  //   this.validCode = true;
+  //
+  //   if (this.inputCode.length === this.testCodeLength && this.inputCode === this.testCode) {
+  //
+  //     let loading = this.loadingCtrl.create({
+  //       content: "Пожалуйста, подождите..."
+  //     });
+  //     loading.present();
+  //
+  //     this.auth.checkSMSCode(new User({code: this.inputCode, name: this.name, phone: this.phone}))
+  //       .subscribe((res) => {
+  //
+  //         this.navCtrl.setRoot(TimeSelectPage);
+  //         loading.dismissAll();
+  //
+  //       }, (err) => {
+  //         loading.dismissAll();
+  //       });
+  //
+  //   } else if ((this.inputCode.length === this.testCodeLength && this.inputCode !== this.testCode)
+  //     || this.inputCode.length >= this.testCodeLength) {
+  //
+  //     this.validCode = false;
+  //   }
+  // }
+
   verifyCode() {
     this.validCode = true;
 
-    if (this.inputCode.length === this.testCode.length && this.inputCode === this.testCode) {
+    if (this.inputCode.length === this.testCodeLength) {
 
       let loading = this.loadingCtrl.create({
         content: "Пожалуйста, подождите..."
@@ -45,10 +74,11 @@ export class SmsVerifyPage {
 
         }, (err) => {
           loading.dismissAll();
+          this.validCode = false;
         });
 
-    } else if ((this.inputCode.length === this.testCode.length && this.inputCode !== this.testCode)
-      || this.inputCode.length >= this.testCode.length) {
+    } else if ((this.inputCode.length === this.testCodeLength && this.inputCode !== this.testCode)
+      || this.inputCode.length >= this.testCodeLength) {
 
       this.validCode = false;
     }
