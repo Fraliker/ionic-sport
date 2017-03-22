@@ -37,7 +37,6 @@ export class Place {
     this.endWorkTime = obj.end || '';
     this.roundTheClock = obj.typeTime || false;
 
-
     if (this.description.length > 75) {
       this.descriptionShort = this.description.substr(0, 75);
     } else {
@@ -98,4 +97,3 @@ export class Place {
     }
   }
 }
-
