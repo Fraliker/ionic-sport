@@ -12,7 +12,10 @@ declare const ymaps;
 export class MapPage {
 
   place: Place;
-  point: GeoPoint;
+  point: GeoPoint = {
+    lat: 0,
+    lng: 0
+  };
   pointB: GeoPoint;
   map;
 
@@ -26,12 +29,13 @@ export class MapPage {
    * check logic type: draw single place or route
    */
   ionViewDidLoad() {
-    this.place = this.navParams.get('place');
+    this.place = this.navParams.get('place') ? this.navParams.get('place') : null;
     this.pointB = this.navParams.get('pointB');
 
     if (this.place != null) {
       this.point.lat = this.place.latitude;
       this.point.lng = this.place.longitude;
+
       ymaps.ready(this.drawPlace(this.point));
 
     } else if (this.pointB != null) {
@@ -58,7 +62,7 @@ export class MapPage {
   drawRoute(): void {
     this.map = new ymaps.Map('map1', {
       center: [55.734876, 37.59308], // Москва will be owerride by map route generator
-      zoom: 12
+      zoom: 5
     }, {
       searchControlProvider: 'yandex#search'
     });
