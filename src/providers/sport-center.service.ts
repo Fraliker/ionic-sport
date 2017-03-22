@@ -16,7 +16,7 @@ export class SportCenterService {
   private API_ERR: string = config.default.API_ERROR;
   private headers: Headers = new Headers();
   private token: string = AuthService.getCurrentUser().token;
-  private position: {lat: number, lng: number};
+  public position: {lat: number, lng: number};
 
 
   constructor(private  http: Http) {
