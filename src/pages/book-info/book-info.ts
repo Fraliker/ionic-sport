@@ -55,7 +55,7 @@ export class BookInfoPage {
     });
   }
 
-  showAlert() {
+  showAlert() : void {
     let alert = this.alertCtrl.create({
       title: 'Ошибка',
       subTitle: 'Спортивный центр не найден',
@@ -64,14 +64,14 @@ export class BookInfoPage {
     alert.present();
   }
 
-  presentLoading() {
+  presentLoading() : void {
     this.loader = this.loadingCtrl.create({
       content: "Пожалуйста, подождите..."
     });
     this.loader.present();
   }
 
-  dismissLoading() {
+  dismissLoading() : void {
     this.loader.dismissAll();
   }
 }
