@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {NavController, NavParams, AlertController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PaymentService} from "../../providers/payment.service";
+import {TimeSelectPage} from "../time-select/time-select";
+import {DashboardPage} from "../dashboard/dashboard";
 
 @Component({
   selector: 'page-payment',
@@ -44,6 +46,7 @@ export class PaymentPage {
     this.payService.sendPayment(this.id).subscribe((res) => {
 
       this.showAlert("Спасибо", "Ваш платеж принят");
+      this.navCtrl.setPages([TimeSelectPage, DashboardPage]);
     }, (err) => {
 
       this.showAlert();
