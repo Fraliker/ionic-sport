@@ -13,6 +13,7 @@ export class AuthenticationPage {
   private complexForm: FormGroup;
   lockNextButton: boolean;
   phonePlaceholder: string = '+7(___) ___-____';
+  phone: string;
 
   constructor(private fb: FormBuilder,
               public navCtrl: NavController,
@@ -23,7 +24,6 @@ export class AuthenticationPage {
     this.lockNextButton = true;
     this.complexForm = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      // 'phone': ['', Validators.minLength(7)]
       'phone': ['', this.customValidator]
     });
   }
@@ -33,11 +33,11 @@ export class AuthenticationPage {
    * @param control - {FormControl}
    * @return {{invalidPhone: boolean}}
    */
-  customValidator(control: FormControl): {[s: string]: boolean} {
+  customValidator(control: FormControl): { [s: string]: boolean } {
     if (!control.value)
       return {invalidPhone: true};
     else {
-      if (control.value.replace(/\D+|\s/g, '').length !== 11) {
+      if (control.value.replace(/\D+|\s/g, '').length < 11) { // text-mask input plugin bugfix
         return {invalidPhone: true};
       }
     }
@@ -48,8 +48,11 @@ export class AuthenticationPage {
     if (form.valid) {
       this.lockNextButton = true;
 
-      let phone = form.value.phone.replace(/\D+/g, '');
+      // let phone = form.value.phone.replace(/\D+/g, '');
       let name = form.value.name;
+      let phone = this.phone;
+
+      console.log(phone);
 
       this.login(name, phone);
 
@@ -61,7 +64,7 @@ export class AuthenticationPage {
   /**
    * login
    */
-  login(name: string, phone: string) : void {
+  login(name: string, phone: string): void {
     let loading = this.loadingCtrl.create({
       content: "Отправка сообщения..."
     });
@@ -101,5 +104,19 @@ export class AuthenticationPage {
 
   setNamePlaceholer(input: HTMLInputElement) {
     input.placeholder = "";
+  }
+
+  updatePhone(inputValue : string) : void {
+    this.phone = inputValue.replace(/\D+/g, '');
+  }
+
+  /**
+   * Plugin pipe function
+   * @param conformedValue
+   * @param config
+   * @return {any}
+   */
+  inputMaskPipe(conformedValue, config) {
+    return conformedValue;
   }
 }

@@ -5,9 +5,12 @@
 
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
     <input #nameInput (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text"
-           [formControl]="complexForm.controls['name']"/>
-    <input #phoneInput class="phone-input" [textMask]="{mask: mask}" placeholder="Введите телефон" type="tel"
-           [formControl]="complexForm.controls['phone']" (focus)="setPlaceholder(phoneInput)"/>
+           [formControl]="complexForm.controls['name']">
+    <input #phoneInput class="phone-input" [textMask]="{mask: mask, guide: true, pipe: inputMaskPipe}"
+           placeholder="Введите телефон"
+           type="tel"
+           [formControl]="complexForm.controls['phone']"
+           (keyup)="updatePhone(phoneInput.value)">
     <label class="phone-label"></label>
   </form>
 </ion-content>

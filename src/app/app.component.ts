@@ -29,7 +29,6 @@ export class MyApp {
       Splashscreen.hide();
 
       if (AuthService.isAuthentificated()) {
-        // this.rootPage = TimeSelectPage;
         this.rootPage = TimeSelectPage;
       } else {
         this.rootPage = AuthenticationPage;
