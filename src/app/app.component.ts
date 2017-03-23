@@ -33,7 +33,6 @@ export class MyApp {
       } else {
         this.rootPage = AuthenticationPage;
       }
-
     }).catch((err) => {
       console.log(err);
       this.rootPage = AuthenticationPage;

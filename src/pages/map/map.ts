@@ -33,12 +33,14 @@ export class MapPage {
     this.pointB = this.navParams.get('pointB');
 
     if (this.place != null) {
+      console.debug('Map scenarios: Place');
       this.point.lat = this.place.latitude;
       this.point.lng = this.place.longitude;
 
       ymaps.ready(this.drawPlace(this.point));
 
     } else if (this.pointB != null) {
+      console.debug('Map scenarios: Route');
       ymaps.ready(this.drawRoute());
     }
   }
@@ -60,6 +62,8 @@ export class MapPage {
    * sets route to map from start point(user location) to end point
    */
   drawRoute(): void {
+
+    console.debug('darw route');
     this.map = new ymaps.Map('map1', {
       center: [55.734876, 37.59308], // Москва will be owerride by map route generator
       zoom: 5

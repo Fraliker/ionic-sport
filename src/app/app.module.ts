@@ -6,15 +6,10 @@ import { MyApp } from './app.component';
  * library
  */
 import { TextMaskModule } from 'angular2-text-mask';
-/**
- * pages import
- */
 import {SmsVerifyPage, AuthenticationPage, DashboardPage,
         BookInfoPage, MainSportChoosePage, TimeSelectPage,
         PlaceChoosePage, PlacePage, OrderSubmitPage} from '../pages/pages';
-/**
- * import providers
- */
+
 import {AuthService} from '../providers/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
 import {DashboardService} from "../pages/dashboard/dashboard.service";

@@ -5,6 +5,7 @@ import {DashboardService} from "../dashboard/dashboard.service";
 import {PaymentPage} from "../payment/payment";
 import {TimeSelectPage} from "../time-select/time-select";
 import {MapPage} from "../map/map";
+import {SocialShare} from "../../components/SocialShare/SocicalShare";
 
 @Component({
   selector: 'page-book-info',
@@ -15,15 +16,15 @@ export class BookInfoPage {
   book: Booking = null;
   id: string;
   loader: Loading;
+  socialShare: SocialShare;
+  private Err: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public dashBoardService: DashboardService,
               public alertCtrl: AlertController,
               public loadingCtrl: LoadingController) {
-  }
-
-  ionViewWillEnter() {
+    this.socialShare = new SocialShare();
   }
 
   ionViewDidLoad() {
@@ -31,8 +32,12 @@ export class BookInfoPage {
 
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
       this.book = res;
-      console.log(this.book);
-    }));
+      // console.log(this.book);
+    }), (err) => {
+
+      // if error go back to list
+      this.navCtrl.pop();
+    });
   }
 
   goToPayment() {
@@ -55,7 +60,7 @@ export class BookInfoPage {
     });
   }
 
-  showAlert() : void {
+  showAlert(): void {
     let alert = this.alertCtrl.create({
       title: 'Ошибка',
       subTitle: 'Спортивный центр не найден',
@@ -64,14 +69,26 @@ export class BookInfoPage {
     alert.present();
   }
 
-  presentLoading() : void {
+  presentLoading(): void {
     this.loader = this.loadingCtrl.create({
       content: "Пожалуйста, подождите..."
     });
     this.loader.present();
   }
 
-  dismissLoading() : void {
+  dismissLoading(): void {
     this.loader.dismissAll();
+  }
+
+  sendMail(): void {
+    this.socialShare.sendMailBooking(this.id, this.book);
+  }
+
+  shareToFriend(): void {
+    this.socialShare.shareToFriend();
+  }
+
+  sendSuppotMail(): void {
+    this.socialShare.sendSuppotMail();
   }
 }
