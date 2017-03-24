@@ -6,6 +6,7 @@ import {AuthService} from "../../providers/auth.service";
 import {DashboardService} from "./dashboard.service";
 import 'rxjs';
 import {Booking} from "../../models/Booking";
+import {SocialShare} from "../../components/SocialShare/SocicalShare";
 
 @Component({
   selector: 'page-dashboard',
@@ -18,6 +19,7 @@ export class DashboardPage implements OnInit {
   booked: Booking[] = [];
   loading: Loading;
   currentBooking : Booking;
+  socialShare: SocialShare;
 
   ngOnInit(): void {
 
@@ -39,12 +41,10 @@ export class DashboardPage implements OnInit {
               public dashBoardService: DashboardService,
               public loadingCtrl: LoadingController) {
 
+    this.socialShare = new SocialShare();
     this.user = AuthService.getCurrentUser();
   }
 
-  ionViewDidLoad() {
-    // this.loading.present();
-  }
 
   getBooking(id: number) {
     this.navCtrl.push(BookInfoPage, {'id': id});
@@ -52,5 +52,9 @@ export class DashboardPage implements OnInit {
 
   goToDashboard() {
 
+  }
+
+  emailToSupport() {
+    this.socialShare.sendSuppotMail();
   }
 }

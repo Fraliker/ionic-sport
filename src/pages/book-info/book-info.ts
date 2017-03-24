@@ -17,7 +17,6 @@ export class BookInfoPage {
   id: string;
   loader: Loading;
   socialShare: SocialShare;
-  private Err: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,

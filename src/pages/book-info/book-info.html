@@ -28,13 +28,12 @@
         <p class='action-button' (click)="goToMapRout()">Схема проезда</p>
         <p class='action-button' (click)="sendMail()">Отправить на email</p>
         <p class='action-button' (click)="shareToFriend()">Пригласить друга</p>
-        <p class='action-button' (click)="sendSuppotMail()">Обратиться в поддержку</p>
       </div>
     </div>
   </div>
 
-  <div class="book-info_wrap" *ngIf="book != null">
-    <div *ngIf="book.submit === 0" class="book-info">
+  <div class="book-info_wrap" *ngIf="book != null && book.submit === 0">
+    <div class="book-info">
       <img class="image-info" src="assets/images/error-book.png">
       <h2 class="info info_red">Ваше бронирование не подтверждено</h2>
       <p class="book-info__text_grey">
@@ -44,5 +43,4 @@
       <p class='action-button' (click)="goToMainPage()">На главный экран</p>
     </div>
   </div>
-
 </ion-content>

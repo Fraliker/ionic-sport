@@ -3,12 +3,9 @@ import {socialText} from './socialText';
 import {Booking} from "../../models/Booking";
 
 export class SocialShare extends SocialSharing {
-// export class SocialShare {
-  // private socialSharing: SocialSharing = new SocialSharing();
 
   constructor() {
     super();
-    console.log(this.canShareViaEmail());
   }
 
   public sendSuppotMail() {
