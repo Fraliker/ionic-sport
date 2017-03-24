@@ -84,7 +84,7 @@ export class BookInfoPage {
   }
 
   shareToFriend(): void {
-    this.socialShare.shareToFriend();
+    this.socialShare.shareToFriend(this.book.date);
   }
 
   sendSuppotMail(): void {

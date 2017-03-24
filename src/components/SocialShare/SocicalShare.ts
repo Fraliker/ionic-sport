@@ -29,14 +29,17 @@ export class SocialShare extends SocialSharing {
     return this.shareWithOptions(options);
   }
 
-  public shareToFriend() {
-    let options = {
-      message: socialText.userMessage, // not supported on some apps (Facebook, Instagram)
-      subject: socialText.invitationSubject, // fi. for email
-      chooserTitle: socialText.inviteFriend // Android only, you can override the default share sheet title
-    };
+  /**
+   * Send sms with
+   * @return {Promise<any>}
+   */
+  public shareToFriend(date: Date) {
 
-    return this.shareWithOptions(options);
+    let text =
+      `${socialText.shareToFriend.message} ${date.getDate()}.${date.getMonth()}.${date.getFullYear()} 
+      ${socialText.shareToFriend.hrefMarket}  ${socialText.shareToFriend.hrefAppStore}`;
+
+    return this.shareViaSMS(text, null);
   }
 }
 
