@@ -14,7 +14,7 @@ export class SmsVerifyPage {
   phone: string;
   testCode: string;
   testCodeLength: number = 4;
-  inputCode: string;
+  inputCode: string = '';
   validCode: boolean = true;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: AuthService,
@@ -56,6 +56,10 @@ export class SmsVerifyPage {
   //   }
   // }
 
+  codeInput() {
+    this.validCode = true;
+  }
+
   verifyCode() {
     this.validCode = true;
 
@@ -77,9 +81,7 @@ export class SmsVerifyPage {
           this.validCode = false;
         });
 
-    } else if ((this.inputCode.length === this.testCodeLength && this.inputCode !== this.testCode)
-      || this.inputCode.length >= this.testCodeLength) {
-
+    } else if ((this.inputCode.length === this.testCodeLength) || this.inputCode.length >= this.testCodeLength) {
       this.validCode = false;
     }
   }

@@ -9,10 +9,10 @@
 
     <div class="input-wrap">
     <input placeholder="Введите код" type="text" [ngClass]="{'invalid' : !validCode}"
-           [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="verifyCode()">
+           [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="codeInput()">
 
       <p class="input-wrap__code" *ngIf="testCode != true">{{testCode}}</p>
-      <p class="input-wrap__code" *ngIf="!validCode">Проверьте код</p>
+      <p class="input-wrap__code" *ngIf="!validCode">Проверьте правильность кода</p>
     </div>
 
     <div class="controls">
@@ -21,3 +21,7 @@
     </div>
   </div>
 </ion-content>
+
+<ion-footer class="footer footer__padding">
+  <button class="submit-button" (click)="verifyCode()" ion-button full>Продолжить</button>
+</ion-footer>

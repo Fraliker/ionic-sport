@@ -45,7 +45,9 @@ sms-code {
     border: 0;
 
     &.invalid {
-      color: red;
+      background: #ececec;
+      border: 1px solid #ff5f68;
+      border-radius: 3px;
     }
 
     &::placeholder {
@@ -79,7 +81,15 @@ sms-code {
       bottom: 0;
       text-align: center;
       width: 100%;
-      color: red;
+      color: #f36775;
     }
   }
+
+  .footer {
+
+    &__padding {
+      padding: 5px;
+    }
+  }
+
 }
