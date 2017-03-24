@@ -50,4 +50,11 @@ page-authentication {
   .submit-button {
     margin: 0;
   }
+
+  .footer {
+
+    &__padding {
+      padding: 5px;
+    }
+  }
 }
