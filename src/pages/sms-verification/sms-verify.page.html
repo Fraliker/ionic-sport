@@ -17,7 +17,7 @@
 
     <div class="controls">
       <p class='action-button' (click)="goBackToAuth()">Изменить номер телефона</p>
-      <p class='action-button' (click)="sendNewCode()">Отправить код повторно</p>
+      <p class='action-button'*ngIf="smsSendtimeout" (click)="sendNewCode()">Отправить код повторно</p>
     </div>
   </div>
 </ion-content>

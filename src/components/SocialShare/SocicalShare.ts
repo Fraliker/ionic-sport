@@ -1,6 +1,7 @@
 import {SocialSharing} from '@ionic-native/social-sharing';
 import {socialText} from './socialText';
 import {Booking} from "../../models/Booking";
+import {PDFGenerator} from "../PDFGenerator/PDFGenerator";
 
 export class SocialShare extends SocialSharing {
 
@@ -14,16 +15,20 @@ export class SocialShare extends SocialSharing {
 
   public sendMailBooking(id: string, booking: Booking) {
 
+    let pdf = new PDFGenerator();
+    let file = pdf.generateBase64PDF(booking);
+
+    console.log('file', file);
     let title = `Подтверждение бронирования №${id}”Текст письма: детали бронирования`;
-    let bookingInfo = `В спортивном центе ${booking.sportCenter}, по адресу ${booking.address}, 
-    ${booking.date.getDate()} ${booking.date.getMonth()} ${booking.date.getFullYear()}года.
+    let bookingInfo = `В спортивном центе ${booking.sportCenter}, по адресу ${booking.address},${booking.date.getDate()} ${booking.date.getMonth()} ${booking.date.getFullYear()}года.
      Стоимостью ${booking.playFieldPrice}`;
 
     let options = {
       message: bookingInfo, // not supported on some apps (Facebook, Instagram)
       subject: 'Бронирование', // fi. for email
       url: 'https://www.website.com/foo/#bar?a=b',
-      chooserTitle: title // Android only, you can override the default share sheet title
+      chooserTitle: title, // Android only, you can override the default share sheet title,
+      files: [file]
     };
 
     return this.shareWithOptions(options);
@@ -36,11 +41,9 @@ export class SocialShare extends SocialSharing {
   public shareToFriend(date: Date) {
 
     let text =
-      `${socialText.shareToFriend.message} ${date.getDate()}.${date.getMonth()}.${date.getFullYear()} 
-      ${socialText.shareToFriend.hrefMarket}  ${socialText.shareToFriend.hrefAppStore}`;
+      `${socialText.shareToFriend.message} ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}.
+       Присоединяйся. ${socialText.shareToFriend.hrefMarket}  ${socialText.shareToFriend.hrefAppStore}`;
 
     return this.shareViaSMS(text, null);
   }
 }
-
-

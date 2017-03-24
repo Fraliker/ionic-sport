@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import {AuthService} from '../../providers/auth.service';
 import {User} from "../../models/user.model";
@@ -8,7 +8,7 @@ import {TimeSelectPage} from "../time-select/time-select";
   templateUrl: 'sms-verify.page.html',
   selector: 'sms-code',
 })
-export class SmsVerifyPage {
+export class SmsVerifyPage implements OnInit {
 
   name: string;
   phone: string;
@@ -16,6 +16,7 @@ export class SmsVerifyPage {
   testCodeLength: number = 4;
   inputCode: string = '';
   validCode: boolean = true;
+  smsSendtimeout: boolean = false;
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private auth: AuthService,
               private loadingCtrl: LoadingController) {
@@ -23,6 +24,13 @@ export class SmsVerifyPage {
     this.phone = navParams.get('phone');
     this.testCode = navParams.get('code');
   }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.smsSendtimeout = true;
+    }, 30000);
+  }
+
 
   goBackToAuth() {
     this.navCtrl.pop();
