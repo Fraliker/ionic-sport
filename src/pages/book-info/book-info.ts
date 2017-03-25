@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {AlertController, Loading, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Booking} from "../../models/Booking";
 import {DashboardService} from "../dashboard/dashboard.service";
@@ -14,6 +14,7 @@ import {PDFGenerator} from "../../components/PDFGenerator/PDFGenerator";
 })
 export class BookInfoPage {
 
+  @ViewChild('contentnode') contentNode: ElementRef;
   book: Booking = null;
   id: string;
   loader: Loading;
@@ -80,7 +81,23 @@ export class BookInfoPage {
   }
 
   sendMail(): void {
-    this.socialShare.sendMailBooking(this.id, this.book);
+    this.loader = this.loadingCtrl.create({
+      content: "Пожалуйста, подождите..."
+    });
+    this.loader.present();
+
+    this.socialShare.sendMailBooking(this.id, this.book, this.contentNode).then(() => {
+      this.dismissLoading();
+    }).catch(() => {
+      this.dismissLoading();
+
+      let alert = this.alertCtrl.create({
+        title: 'Ошибка',
+        subTitle: 'Спортивный центр не найден',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
   }
 
   shareToFriend(): void {

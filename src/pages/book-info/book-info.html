@@ -7,23 +7,24 @@
 <ion-content padding>
   <div *ngIf="book != null">
     <div *ngIf="book.submit !== 0" class="book-info">
-      <img class="image-info" src="assets/images/success-book-icon.png">
-      <h2 class="info">Ваше бронирование подтверждено</h2>
+      <div #contentnode>
+        <img class="image-info" src="assets/images/success-book-icon.png">
+        <h2 class="info">Ваше бронирование подтверждено</h2>
 
-      <p class="book-info__text book-info__text_bold">Номер бронирования: {{book.id}}</p>
-      <p class="book-info__text">{{book.sportCenter}}</p>
-      <p class="book-info__text">Время посещения: {{book.date.getDay()}} {{book.month}} в {{book.hour}}:00 </p>
-      <p class="book-info__text">Адрес: {{book.address}}</p>
+        <p class="book-info__text book-info__text_bold">Номер бронирования: {{book.id}}</p>
+        <p class="book-info__text">{{book.sportCenter}}</p>
+        <p class="book-info__text">Время посещения: {{book.date.getDay()}} {{book.month}} в {{book.hour}}:00 </p>
+        <p class="book-info__text">Адрес: {{book.address}}</p>
 
-      <div class="order-list">
-        <ul class="order-list__list">
-          <li>{{book.playingField}}</li>
-          <li *ngFor="let service of book.orderSevices"></li>
-        </ul>
+        <div class="order-list">
+          <ul class="order-list__list">
+            <li>{{book.playingField}}</li>
+            <li *ngFor="let service of book.orderSevices"></li>
+          </ul>
+        </div>
+
+        <p class="total-price">Общая стоимость: {{book.playFieldPrice}}p</p>
       </div>
-
-      <p class="total-price">Общая стоимость: {{book.playFieldPrice}}p</p>
-
       <div class="submite-buttons">
         <p class='action-button' (click)="goToMapRout()">Схема проезда</p>
         <p class='action-button' (click)="sendMail()">Отправить на email</p>

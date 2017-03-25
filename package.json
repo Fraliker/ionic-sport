@@ -24,6 +24,7 @@
     "@ionic/storage": "1.1.7",
     "@types/jspdf": "^1.1.31",
     "angular2-text-mask": "^5.0.0",
+    "dom-to-image": "^2.5.2",
     "geolib": "^2.0.22",
     "ionic-angular": "2.0.0",
     "ionic-native": "2.4.1",

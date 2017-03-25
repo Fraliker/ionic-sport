@@ -2,6 +2,7 @@ import {SocialSharing} from '@ionic-native/social-sharing';
 import {socialText} from './socialText';
 import {Booking} from "../../models/Booking";
 import {PDFGenerator} from "../PDFGenerator/PDFGenerator";
+import {ElementRef} from "@angular/core";
 
 export class SocialShare extends SocialSharing {
 
@@ -13,25 +14,23 @@ export class SocialShare extends SocialSharing {
     return this.shareViaEmail(socialText.email, socialText.email, [socialText.suppotEmail]);
   }
 
-  public sendMailBooking(id: string, booking: Booking) {
+  public sendMailBooking(id: string, booking: Booking, node: ElementRef) {
 
     let pdf = new PDFGenerator();
-    let file = pdf.generateBase64PDF(booking);
 
-    console.log('file', file);
     let title = `Подтверждение бронирования №${id}”Текст письма: детали бронирования`;
-    let bookingInfo = `В спортивном центе ${booking.sportCenter}, по адресу ${booking.address},${booking.date.getDate()} ${booking.date.getMonth()} ${booking.date.getFullYear()}года.
-     Стоимостью ${booking.playFieldPrice}`;
+    let bookingInfo = `В спортивном центе ${booking.sportCenter}, по адресу ${booking.address},${booking.date.getDate()} ${booking.date.getMonth()} ${booking.date.getFullYear()}года. Стоимостью ${booking.playFieldPrice}`;
 
-    let options = {
-      message: bookingInfo, // not supported on some apps (Facebook, Instagram)
-      subject: 'Бронирование', // fi. for email
-      url: 'https://www.website.com/foo/#bar?a=b',
-      chooserTitle: title, // Android only, you can override the default share sheet title,
-      files: [file]
-    };
-
-    return this.shareWithOptions(options);
+    return pdf.generateBase64PDF(booking, node).then((res) => {
+      let options = {
+        message: bookingInfo,
+        subject: 'Бронирование',
+        url: 'https://www.website.com/foo/#bar?a=b',
+        chooserTitle: title,
+        files: [res]
+      };
+      this.shareWithOptions(options)
+    });
   }
 
   /**
