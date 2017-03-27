@@ -17,6 +17,7 @@ export class PaymentPage {
   maskDate = [/[0-1]/, /[0-9]/, '/', /[1-5]/, /[0-9]/];
   maskCVV = [/\d/, /\d/, /\d/];
   mask = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  private formObj = {}; // mask value bigfix
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,8 +28,9 @@ export class PaymentPage {
     this.payForm = fb.group({
       'cardNumber': ['', [Validators.required, Validators.minLength(19)]],
       'date': ['', [Validators.required, Validators.pattern(/(1[0-2]|0[1-9]|\d)\/(\d{2}|0(?!0)\d|[1-9]\d)/)]],
-      'cvv': ['', [Validators.required, Validators.pattern(/\d{3}/)]],
-      'submit': [false, Validators.required]
+      // 'cvv': ['', [Validators.required, Validators.pattern(/\d{3}/)]],
+      'name': ['', Validators.required],
+      'submit': [true, [Validators.required, Validators.pattern('true')]]
     });
 
     this.id = this.navParams.get("id");
@@ -43,12 +45,18 @@ export class PaymentPage {
   }
 
   formSubmit() {
-    this.payService.sendPayment(this.id).subscribe((res) => {
+
+    let reqObj = {};
+    Object.assign(reqObj, this.formObj);
+    reqObj['submit'] =  this.payForm.value.submit;
+    reqObj['id'] = this.id;
+
+    this.payService.sendPayment(reqObj).subscribe((res) => {
 
       this.showAlert("Спасибо", "Ваш платеж принят");
       this.navCtrl.setPages([TimeSelectPage, DashboardPage]);
-    }, (err) => {
 
+    }, (err) => {
       this.showAlert();
     });
   }
@@ -61,4 +69,9 @@ export class PaymentPage {
     });
     alert.present();
   }
+
+  private inputChange(name: string, value): void {
+    this.formObj[name] = value;
+  }
+
 }

@@ -23,8 +23,8 @@ export class PaymentService {
    * POST
    * send payment
    */
-  public sendPayment(id : string): Observable<boolean> {
-    return this.http.post(`${this.API_URL}bookings/payment`, {id : id}, {headers: this.headers})
+  public sendPayment(obj : Object): Observable<boolean> {
+    return this.http.post(`${this.API_URL}bookings/payment`, obj, {headers: this.headers})
       .map((res: Response) => {
         return true;
       });

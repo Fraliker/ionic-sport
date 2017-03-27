@@ -19,24 +19,28 @@
       Сразу после обработки платежа мы вышлем Вам подтверждение заказа</h4>
 
     <div class="input-container input-container__number">
-      <input type="text" placeholder="Номер банковской карты" [textMask]="{mask: maskCardNumber}"
-             [formControl]="payForm.controls['cardNumber']">
+      <input #cardNumber
+             type="text" placeholder="Номер банковской карты" [textMask]="{mask: maskCardNumber}"
+             [formControl]="payForm.controls['cardNumber']"
+             (keyup)="inputChange('cardNumber' , cardNumber.value)">
     </div>
 
     <div class="input-container input-container__year">
-      <input type="text" placeholder="Месяц/Год" [textMask]="{mask: maskDate}"
-             [formControl]="payForm.controls['date']">
-    </div>
-
-    <div class="input-container input-container__cvv">
-      <input type="text" placeholder="CVV" [textMask]="{mask: maskCVV}"
-             [formControl]="payForm.controls['cvv']">
+      <input #date type="text" placeholder="Месяц/Год" [textMask]="{mask: maskDate}"
+             [formControl]="payForm.controls['date']"
+             (keyup)="inputChange('date' , date.value)">
     </div>
 
     <!--<div class="input-container input-container__cvv">-->
-      <!--<input type="text" placeholder="CVV"-->
-             <!--[formControl]="payForm.controls['cvv']">-->
+    <!--<input type="text" placeholder="CVV" [textMask]="{mask: maskCVV}"-->
+    <!--[formControl]="payForm.controls['cvv']">-->
     <!--</div>-->
+
+    <div class="input-container input-container__cvv">
+      <input #name type="text" placeholder="Имя Фамилия"
+             [formControl]="payForm.controls['name']"
+             (keyup)="inputChange('name' , name.value)">
+    </div>
 
     <div class="garantee">
       <img class="garantee__shield" src="assets/images/varaity.png">
@@ -45,7 +49,10 @@
     </div>
 
     <div class="submit-content">
-      <input [id]="'submit'" name="submit" value="submit" type="checkbox" [formControl]="payForm.controls['submit']">
+      <input #submit
+             [id]="'submit'" name="submit" value="submit" type="checkbox"
+             [formControl]="payForm.controls['submit']"
+             (keyup)="inputChange('submit' , submit.value)">
       <label [attr.for]="'submit'">Совершая бронирование, я принимаю условия</label>
     </div>
   </form>
