@@ -1,6 +1,5 @@
 import jsPDF from 'jspdf';
 import {Booking} from "../../models/Booking";
-import {Base64} from './base64Encoder';
 import domtoimage from 'dom-to-image';
 import {ElementRef} from "@angular/core";
 
