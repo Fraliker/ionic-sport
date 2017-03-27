@@ -9,8 +9,8 @@ export class PDFGenerator {
 
   public generateBase64PDF(booking: Booking, node: ElementRef) {
     let doc = new jsPDF('p', 'mm', 'a4');
-    // let width = doc.internal.pageSize.width;
-    // let height = doc.internal.pageSize.height;
+    let width = doc.internal.pageSize.width;
+    let height = doc.internal.pageSize.height;
     doc.setProperties({
       'title': 'Бронирование',
       'subject': 'Ваше бронирование',
@@ -18,8 +18,26 @@ export class PDFGenerator {
       'keywords': 'pdf'
     });
 
-    return domtoimage.toPng(node.nativeElement).then((imgData) => {
-      doc.addImage(imgData, 'PNG', 10, 25);
+    // return domtoimage.toPng(node.nativeElement).then((imgData) => {
+    //   doc.addImage(imgData, 'PNG', 10, 25);
+    //   return doc.output('dataurlstring');
+    // }).catch((err) => {
+    //   console.log("Error in DomToImage", err);
+    // });
+
+    // return domtoimage.toSvg(node.nativeElement).then((imgData) => {
+    //   // doc.addImage(imgData, 'SVG', 10, 25);
+    //   doc.addSVG(imgData, 10, 25, width, height);
+    //   // console.log(imgData);
+    //   console.log(doc.output('dataurlstring'));
+    //   return doc.output('dataurlstring');
+    // }).catch((err) => {
+    //   console.log("Error in DomToImage", err);
+    // });
+
+    return domtoimage.toJpeg(node.nativeElement).then((imgData) => {
+      doc.addImage(imgData, 'JPEG', 10, 25);
+      // console.log(doc.output('dataurlstring'));
       return doc.output('dataurlstring');
     }).catch((err) => {
       console.log("Error in DomToImage", err);
