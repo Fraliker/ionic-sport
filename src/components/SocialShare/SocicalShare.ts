@@ -21,15 +21,16 @@ export class SocialShare extends SocialSharing {
     let title = `Подтверждение бронирования №${id}”Текст письма: детали бронирования`;
     let bookingInfo = `В спортивном центе ${booking.sportCenter}, по адресу ${booking.address},${booking.date.getDate()} ${booking.date.getMonth()} ${booking.date.getFullYear()}года. Стоимостью ${booking.playFieldPrice}`;
 
+
     return pdf.generateBase64PDF(booking, node).then((res) => {
       let options = {
         message: bookingInfo,
         subject: 'Бронирование',
-        url: 'https://www.website.com/foo/#bar?a=b',
+        url: socialText.shareToFriend.hrefAppStore,
         chooserTitle: title,
         files: [res]
       };
-      this.shareWithOptions(options)
+      this.shareWithOptions(options);
     });
   }
 

@@ -86,6 +86,8 @@ export class BookInfoPage {
     });
     this.loader.present();
 
+
+    // this.socialShare.sendMailBooking(this.id, this.book, this.contentNode);
     this.socialShare.sendMailBooking(this.id, this.book, this.contentNode).then(() => {
       this.dismissLoading();
     }).catch(() => {

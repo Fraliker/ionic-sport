@@ -19,6 +19,7 @@ export const socialText = {
     subject: "Бронирование",
     url: "",
     chooserTitle: "",
+    "hrefAppStore" : "http://letmesport.dev.rgt.by/"
   },
 
   "shareToFriend": {
