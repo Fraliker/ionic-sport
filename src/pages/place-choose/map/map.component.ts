@@ -6,12 +6,11 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Geolocation} from 'ionic-native';
 import {Place} from "../../../models/place.model";
 
-declare var ymaps;
-
 @Component({
   selector: 'yandex-map',
   templateUrl: 'map.template.html'
 })
+
 export class YandexMap implements OnInit, OnChanges {
 
   @ViewChild('map') mapElement: ElementRef;
@@ -61,13 +60,16 @@ export class YandexMap implements OnInit, OnChanges {
 
   drawPointers() {
     if (this.places != null) {
-
       this.places.forEach((place) => {
         if (place.latitude === 0 && place.longitude === 0) {
           console.debug('Map ignored place ---- bacause of coordinates', place);
         } else {
           this.map.geoObjects.add(this.createPlacemark(place, this.placemarkClick));
         }
+      });
+
+      this.map.evnents.add('click', (e) => {
+        console.log(e.get('domEvent'));
       });
     }
   }
@@ -82,26 +84,34 @@ export class YandexMap implements OnInit, OnChanges {
   createPlacemark(place: Place, eventEmitter: any): any {
 
     let placemark = new ymaps.Placemark([place.latitude, place.longitude], {
-      balloonContent: `${place.type}</br>${place.name}`
+      balloonContent: `<div class="balloon">
+                            <div class="balloon__col1">
+                              <img class="balloon__logo" src="${place.imageLogo}">
+                            </div>
+                            <div class="balloon__col2">
+                               <h2 class="balloon__header">${place.name}</h2>
+                               <p>${place.address}</p>
+                               <p class="balloon__distance">${place.distance.toFixed(0)} км от Вас</p>
+                            </div>
+                       </div>
+                       <div class="balloon__button">
+                          Выбрать площадку
+                       </div>`
     }, {
-      preset: 'islands#icon',
-      // Опции.
-      // Необходимо указать данный тип макета.
+      preset: 'islands#governmentCircleIcon',
       iconLayout: 'default#image',
-      // Своё изображение иконки метки.
-      iconImageHref: 'assets/images/map-marker.png',
-      // Размеры метки.
-      iconImageSize: [80, 80],
-      // Смещение левого верхнего угла иконки относительно
-      // её "ножки" (точки привязки).
-      iconImageOffset: [-40, -40]
+      iconImageHref: place.imageLogo,
+      iconImageSize: [40, 40],
+      iconImageOffset: [-20, -20],
+      iconColor: '#3b5998'
     });
 
     //adding events for placemark redirect
     placemark.events.add('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      eventEmitter.emit(place);
+      // e.preventDefault();
+      // e.stopPropagation();
+      // eventEmitter.emit(place);
+      // console.log('1', e);
     });
 
     return placemark;

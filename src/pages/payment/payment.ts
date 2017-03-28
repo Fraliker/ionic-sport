@@ -73,5 +73,4 @@ export class PaymentPage {
   private inputChange(name: string, value): void {
     this.formObj[name] = value;
   }
-
 }

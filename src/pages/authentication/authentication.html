@@ -6,7 +6,7 @@
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
     <input #nameInput (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text"
            [formControl]="complexForm.controls['name']">
-    <input #phoneInput class="phone-input" [textMask]="{mask: mask, guide: true, pipe: inputMaskPipe}"
+    <input #phoneInput class="phone-input"
            placeholder="Введите телефон"
            type="tel"
            [formControl]="complexForm.controls['phone']"
