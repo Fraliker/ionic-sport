@@ -45,51 +45,14 @@ page-place-choose {
     height: 100%;
     width: 100%;
 
-    &__img {
-      max-height: 100%;
-      background-size: cover;
-      height: 100%;
-      width: 100%;
-
-      img {
-        height: 100%;
-        width: auto;
-      }
-    }
-
-    &__triangle {
-      position: absolute;
-      right: -1px;
-
-      &_up {
-        top: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 30px 75px 0;
-        border-color: transparent #ffffff transparent transparent;
-      }
-
-      &_down {
-        bottom: 0;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 0 75px 30px;
-        border-color: transparent transparent #ffffff transparent;
-      }
-    }
-
     &__logo {
-      height: 45%;
       position: absolute;
       top: 50%;
-      right: -10px;
-      transform: translate(0, -50%);
-      border-radius: 5px;
-      -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid color($colors, border);
+      max-width: 80%;
     }
 
     &__button {
@@ -109,18 +72,14 @@ page-place-choose {
   }
 
   .line {
-
     &__wrap {
       background: white;
     }
-
     &__row {
       display: flex;
       justify-content: space-between;
       min-height: 120px;
       max-height: 150px;
-      background: white;
-      border-radius: 5px;
       overflow: hidden;
     }
 
@@ -133,18 +92,13 @@ page-place-choose {
       }
 
       &_2 {
-        width: 50%;
+        width: 70%;
         padding-left: 5px;
 
         p {
           white-space: normal;
           margin: 0;
         }
-      }
-
-      &_3 {
-        width: 20%;
-        max-width: 30px;
       }
     }
   }
@@ -158,8 +112,11 @@ page-place-choose {
     &__item {
       max-height: 150px;
       display: block;
-      max-width: 500px;
-      margin: 10px auto;
+      width: 500px;
+      padding: 10px auto;
+      border-bottom: 2px solid color($colors, border);
+      max-width: 95%;
+      margin: auto;
     }
   }
 
@@ -170,7 +127,6 @@ page-place-choose {
     padding: 35px 0 10px 0;
 
     &__name {
-      font-weight: bold;
       font-size: 17px;
       margin: 0;
       height: 34px;
@@ -197,6 +153,10 @@ page-place-choose {
       position: relative;
       max-height: 30px;
       overflow: hidden;
+    }
+
+    &__price {
+      font-size: 10px;
     }
   }
 
@@ -231,74 +191,37 @@ page-place-choose {
 
       &:after {
         content: '';
-        background: #fff;
+        background: #d7d7d7;
         left: 0;
-        top: -15px;
         width: 100%;
-        height: 2px;
+        height: 3px;
         position: absolute;
+        bottom: -13px;
       }
 
       &.active {
+        .tabs__list, .tabs__map {
+          background: $gradient-bg;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
         &:after {
-          content: '';
-          background: #fcca31;
-          left: 0;
-          top: -15px;
-          width: 100%;
-          height: 2px;
-          position: absolute;
+          background: $gradient-bg;
         }
       }
     }
 
     &__map {
       display: inline-block;
-      padding-left: 10px;
       position: relative;
 
-      &:after {
-        content: '';
-        position: absolute;
-        background: url('../assets/images/control-sprite.png') -40px 0;
-        width: 40px;
-        height: 40px;
-        top: -10px;
-        left: -30px;
-        transform: scale(0.7);
-      }
-
-      &.active {
-        &:after {
-          top: -13px;
-          background: url('../assets/images/control-sprite.png') -40px -42px !important;
-        }
-      }
     }
 
     &__list {
 
       display: inline-block;
-      padding-left: 10px;
       position: relative;
-
-      &:after {
-        content: '';
-        transform: scale(0.7);
-        position: absolute;
-        background: url('../assets/images/control-sprite.png') 0 0;
-        width: 40px;
-        height: 40px;
-        top: -10px;
-        left: -30px;
-      }
-
-      &.active {
-        &:after {
-          top: -13px;
-          background: url('../assets/images/control-sprite.png') 0 -42px !important;
-        }
-      }
     }
   }
 }

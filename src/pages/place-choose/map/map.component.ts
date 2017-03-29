@@ -68,7 +68,8 @@ export class YandexMap implements OnInit, OnChanges {
         }
       });
 
-      this.map.evnents.add('click', (e) => {
+      console.log('map');
+      this.map.events.add('click', (e) => {
         console.log(e.get('domEvent'));
       });
     }
@@ -90,7 +91,7 @@ export class YandexMap implements OnInit, OnChanges {
                             </div>
                             <div class="balloon__col2">
                                <h2 class="balloon__header">${place.name}</h2>
-                               <p>${place.address}</p>
+                               <p class="balloon__address">${place.address}</p>
                                <p class="balloon__distance">${place.distance.toFixed(0)} км от Вас</p>
                             </div>
                        </div>
@@ -106,12 +107,18 @@ export class YandexMap implements OnInit, OnChanges {
       iconColor: '#3b5998'
     });
 
+    // addign property
+    // placemark.balloon.letMeSportPlace = place;
+
     //adding events for placemark redirect
-    placemark.events.add('click', function (e) {
+    placemark.balloon.events.add('click', function (e) {
       // e.preventDefault();
       // e.stopPropagation();
-      // eventEmitter.emit(place);
-      // console.log('1', e);
+      // eventEmitter.emit(e.get('target').balloon.letMeSportPlace);
+      eventEmitter.emit(place);
+      console.log(e);
+      console.log(e.get('target').balloon);
+      // console.log(e.get('domEvent').originalEvent.button);
     });
 
     return placemark;

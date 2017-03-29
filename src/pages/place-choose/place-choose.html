@@ -12,10 +12,10 @@
 
     <div class="tabs">
       <div class="tabs__item" (click)="segment = 'list'" [ngClass]="{active: segment === 'list'}">
-        <span class="tabs__list" [ngClass]="{active: segment === 'list'}">Список</span>
+        <span class="tabs__list">Список</span>
       </div>
       <div class="tabs__item" (click)="segment = 'map'" [ngClass]="{active: segment === 'map'}">
-        <span class="tabs__map" [ngClass]="{active: segment === 'map'}">Карта</span>
+        <span class="tabs__map">Карта</span>
       </div>
     </div>
   </ion-toolbar>
@@ -37,25 +37,19 @@
         <div class="line__row" (click)="goToPlace(place)">
           <div class="line__col line__col_1">
             <div class="place">
-              <div class="place__img" [ngStyle]="{'background-image':'url(' + place.image + ')'}"></div>
-
-              <span class="place__triangle place__triangle_up"></span>
-              <span class="place__triangle place__triangle_down"></span>
               <img class="place__logo" [src]="place.imageLogo">
             </div>
           </div>
           <div class="line__col line__col_2 club">
             <h4 class="club__name">{{place.name}}</h4>
+            <p class="club__price">
+              от 900 руб/час
+            </p>
             <p class="club__adress">
               <ion-icon class="navigate-icon" name="navigate"></ion-icon>
               {{place.address}}
             </p>
-            <p class="distance">{{place.distance | distanceKmPipe}}</p>
-          </div>
-          <div class="line__col line__col_3">
-            <button class="place__button" icon-only>
-              <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-            </button>
+            <p class="distance">{{place.distance | distanceKmPipe}} км от Вас</p>
           </div>
         </div>
 
