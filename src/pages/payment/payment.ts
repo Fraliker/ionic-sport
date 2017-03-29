@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PaymentService} from "../../providers/payment.service";
 import {TimeSelectPage} from "../time-select/time-select";
 import {DashboardPage} from "../dashboard/dashboard";
+import {InAppBrowser} from '@ionic-native/in-app-browser';
+import {BookInfoPage} from "../book-info/book-info";
 
 @Component({
   selector: 'page-payment',
@@ -23,7 +25,8 @@ export class PaymentPage {
               public navParams: NavParams,
               public fb: FormBuilder,
               public payService: PaymentService,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public iab: InAppBrowser) {
 
     this.payForm = fb.group({
       'cardNumber': ['', [Validators.required, Validators.minLength(19)]],
@@ -37,18 +40,26 @@ export class PaymentPage {
   }
 
   ionViewDidLoad() {
-
     if (this.id == null) {
       this.navCtrl.pop();
     }
     console.log('ionViewDidLoad PaymentPage', this.id);
   }
 
+  openbrowser() {
+    const browser = this.iab.create('https://payu.ru', '_blank', {location: 'yes', zoom: 'no'});
+
+    browser.on('exit').subscribe((res)=> {
+      this.navCtrl.setPages([TimeSelectPage, DashboardPage]);
+      this.navCtrl.push(BookInfoPage, {id: this.id});
+    });
+  }
+
   formSubmit() {
 
     let reqObj = {};
     Object.assign(reqObj, this.formObj);
-    reqObj['submit'] =  this.payForm.value.submit;
+    reqObj['submit'] = this.payForm.value.submit;
     reqObj['id'] = this.id;
 
     this.payService.sendPayment(reqObj).subscribe((res) => {

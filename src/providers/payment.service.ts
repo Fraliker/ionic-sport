@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import * as config from '../config/prod.config';
-import {Http, Headers, Response, URLSearchParams} from "@angular/http";
+import {Http, Headers, Response} from "@angular/http";
 import 'rxjs';
 import {AuthService} from "./auth.service";
 
@@ -9,7 +9,6 @@ import {AuthService} from "./auth.service";
 export class PaymentService {
 
   private API_URL: string = config.default.API_PATH;
-  private API_ERR: string = config.default.API_ERROR;
   private headers: Headers = new Headers();
   private token: string = AuthService.getCurrentUser().token;
 

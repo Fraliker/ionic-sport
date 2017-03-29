@@ -32,7 +32,6 @@ export class BookInfoPage {
 
     this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
       this.book = res;
-      // console.log(this.book);
     }), (err) => {
       // if error go back to list
       this.navCtrl.pop();
@@ -107,5 +106,18 @@ export class BookInfoPage {
 
   sendSuppotMail(): void {
     this.socialShare.sendSuppotMail();
+  }
+
+  checkPayment() : void {
+    this.presentLoading();
+
+    this.dashBoardService.getBooking(this.id).subscribe(((res: Booking) => {
+      this.book = res;
+      this.dismissLoading();
+    }), (err) => {
+      // if error go back to list
+      this.navCtrl.pop();
+      this.dismissLoading();
+    });
   }
 }

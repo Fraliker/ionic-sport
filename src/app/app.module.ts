@@ -17,6 +17,7 @@ import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.
 import {PaymentService} from "../providers/payment.service";
 import {MapPage} from "../pages/map/map";
 import {DatePipeTemplate} from "../components/pipes/date.pipe";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {DatePipeTemplate} from "../components/pipes/date.pipe";
     AuthService,
     DashboardService,
     SportCenterService,
-    PaymentService
+    PaymentService,
+    InAppBrowser
   ]
 })
 export class AppModule {}
