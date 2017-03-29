@@ -4,7 +4,6 @@ import {Place} from "../../models/place.model";
 import {DashboardPage} from "../dashboard/dashboard";
 import {PlacePage} from "../place/place";
 import {SportCenterService} from "../../providers/sport-center.service";
-import {GeolocationService} from "../../providers/geolocation.service";
 
 @Component({
   selector: 'page-place-choose',

@@ -6,7 +6,6 @@ import {PaymentPage} from "../payment/payment";
 import {TimeSelectPage} from "../time-select/time-select";
 import {MapPage} from "../map/map";
 import {SocialShare} from "../../components/SocialShare/SocicalShare";
-import {PDFGenerator} from "../../components/PDFGenerator/PDFGenerator";
 
 @Component({
   selector: 'page-book-info',

@@ -57,4 +57,8 @@ export class DashboardPage implements OnInit {
   emailToSupport() {
     this.socialShare.sendSuppotMail();
   }
+
+  inviteFriend() {
+    this.socialShare.inviteFriend();
+  }
 }

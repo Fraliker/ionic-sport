@@ -1,6 +1,5 @@
 import jsPDF from 'jspdf';
 import {Booking} from "../../models/Booking";
-import domtoimage from 'dom-to-image';
 import {ElementRef} from "@angular/core";
 
 export class PDFGenerator {
@@ -54,11 +53,5 @@ export class PDFGenerator {
       position.y += 20;
       ctx.fillText(`Номер бронирования: ${booking.id}`, position.x, position.y);
     }
-  }
-
-  private generateHTML(booking: Booking): string {
-    return `<h1>${booking.sportCenter}</h1>
-            <h3>${booking.playingField}</h3>
-             <h4>${booking.day}.${booking.month}.${booking.year}</h4>`;
   }
 }

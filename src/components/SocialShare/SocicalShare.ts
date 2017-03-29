@@ -46,4 +46,10 @@ export class SocialShare extends SocialSharing {
 
     return this.shareViaSMS(text, null);
   }
+
+  public inviteFriend() {
+    let text = 'Я импользую приложение LetMeSport, бронируй вместе со мной';
+
+    return this.shareViaSMS(text, null);
+  }
 }

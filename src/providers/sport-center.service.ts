@@ -7,7 +7,6 @@ import {Place} from "../models/place.model";
 import {AuthService} from "./auth.service";
 import {Order} from "../models/order.model";
 import {Geolocation} from 'ionic-native';
-import {async} from "@angular/core/testing";
 
 @Injectable()
 export class SportCenterService {

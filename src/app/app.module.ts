@@ -2,9 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-/**
- * library
- */
+
 import { TextMaskModule } from 'angular2-text-mask';
 import {SmsVerifyPage, AuthenticationPage, DashboardPage,
         BookInfoPage, MainSportChoosePage, TimeSelectPage,
@@ -14,12 +12,11 @@ import {AuthService} from '../providers/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
 import {DashboardService} from "../pages/dashboard/dashboard.service";
 import {SportCenterService} from "../providers/sport-center.service";
-import {DynamicFormComponent} from "../pages/place/dynamic-form/dynamic-form";
-import {DynamicFormQuestionComponent} from "../pages/place/dynamic-form/dynamic-form-question.component";
 import {PaymentPage} from "../pages/payment/payment";
 import {DistanceKmPipe, DistancePlaceSort} from "../pages/place-choose/distance.pipe";
 import {PaymentService} from "../providers/payment.service";
 import {MapPage} from "../pages/map/map";
+import {DatePipeTemplate} from "../components/pipes/date.pipe";
 
 @NgModule({
   declarations: [
@@ -36,6 +33,7 @@ import {MapPage} from "../pages/map/map";
     OrderSubmitPage,
     PaymentPage,
     DistanceKmPipe,
+    DatePipeTemplate,
     DistancePlaceSort,
     MapPage
   ],

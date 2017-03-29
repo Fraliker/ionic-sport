@@ -5,3 +5,7 @@
   background: linear-gradient(135deg, #b4ddb4 27%,#61c390 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#61c390',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
+.toolbar-title {
+  font-weight: 400 !important;
+}

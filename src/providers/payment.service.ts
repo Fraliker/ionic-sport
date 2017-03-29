@@ -3,9 +3,7 @@ import {Observable} from "rxjs";
 import * as config from '../config/prod.config';
 import {Http, Headers, Response, URLSearchParams} from "@angular/http";
 import 'rxjs';
-import {Place} from "../models/place.model";
 import {AuthService} from "./auth.service";
-import {Order} from "../models/order.model";
 
 @Injectable()
 export class PaymentService {

@@ -3,9 +3,8 @@ import * as config from '../../config/prod.config';
 import {Http, Headers, Response, URLSearchParams} from "@angular/http";
 import 'rxjs';
 import {AuthService} from "../../providers/auth.service";
-import {Observer, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Booking} from "../../models/Booking";
-import {User} from "../../models/user.model";
 
 @Injectable()
 export class DashboardService {
