@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import {AuthService} from '../../providers/auth.service';
 import {User} from "../../models/user.model";

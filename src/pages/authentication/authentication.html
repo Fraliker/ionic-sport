@@ -4,10 +4,10 @@
   <h1>Делаем спорт доступным</h1>
 
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm)">
-    <input #nameInput (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text"
+    <input #nameInput class="login-input" (focus)="setNamePlaceholer(nameInput)" placeholder="Введите имя" type="text"
            [formControl]="complexForm.controls['name']">
     <!--<input #phoneInput class="phone-input" [textMask]="{mask: mask, guide: true, pipe: inputMaskPipe}"-->
-    <input #phoneInput class="phone-input"
+    <input #phoneInput class="login-input phone-input"
            placeholder="Введите телефон"
            type="tel"
            [formControl]="complexForm.controls['phone']"

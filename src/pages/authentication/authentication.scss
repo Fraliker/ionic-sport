@@ -23,14 +23,17 @@ page-authentication {
     width: 80%;
     padding: 20px 0;
     margin-bottom: 20px;
-    background: #f1f1f1;
     color: #202020;
     text-align: center;
-    border: 0;
 
     &::placeholder {
       color: #000;
     }
+  }
+
+  .login-input {
+    border: 1px solid color($colors, border);
+    border-radius: 30px;
   }
 
   .sticky-footer {
@@ -49,6 +52,8 @@ page-authentication {
 
   .submit-button {
     margin: 0;
+    background: $grafient-button;
+    border-radius: 25px;
   }
 
   .footer {

@@ -4,12 +4,16 @@
   </div>
 
   <div class="content-info">
-    <h4>{{name}}, мы отправили проверочный код Вам на номер</h4>
+    <h4 class="content-info__head">{{name}}, мы отправили проверочный код Вам на номер</h4>
     <h2>+{{phone}}</h2>
 
     <div class="input-wrap">
-    <input placeholder="Введите код" type="text" [ngClass]="{'invalid' : !validCode}"
-           [attr.maxlength]="inputMaxLength" pattern="\d*" [(ngModel)]="inputCode" (input)="codeInput()">
+    <input placeholder="Введите код" type="text"
+           [ngClass]="{'on-input' : inputCode.length !== 0}"
+           [ngClass]="{'invalid' : !validCode}"
+           [attr.maxlength]="inputMaxLength" pattern="\d*"
+           [(ngModel)]="inputCode"
+           (input)="codeInput()">
 
       <p class="input-wrap__code" *ngIf="testCode != true">{{testCode}}</p>
       <p class="input-wrap__code" *ngIf="!validCode">Проверьте правильность кода</p>

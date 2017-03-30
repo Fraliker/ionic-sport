@@ -5,6 +5,7 @@ import {StatusBar, Splashscreen} from 'ionic-native';
 import {AuthenticationPage} from "../pages/pages";
 import {AuthService} from '../providers/auth.service';
 import {TimeSelectPage} from "../pages/time-select/time-select";
+import {SmsVerifyPage} from "../pages/sms-verification/sms-verify.page";
 
 @Component({
   templateUrl: 'app.html',
