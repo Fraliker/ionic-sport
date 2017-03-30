@@ -30,18 +30,21 @@ page-order-submit {
   .order-submit-footer {
     display: flex;
     justify-content: flex-end;
+    margin: 20px 10px 0;
 
     &__button {
       padding: 20px 0;
       flex-grow: 1;
       margin: 0;
+      background: $gradient-bg;
+      border-radius: 25px;
     }
   }
 
   .add-comment {
     width: 100%;
     min-height: 45px;
-    color: #329bdc;
+    color: color($colors, primary);
     border-top: 1px solid #dcdcdc;
     border-bottom: 1px solid #dcdcdc;
     display: flex;
@@ -73,7 +76,7 @@ page-order-submit {
 
   .book-info {
 
-    background: #fdf1cb;
+    background: #e2f4f3;
     padding: 10px;
 
     &__list {

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>Подтвердить заказ</ion-title>
+    <ion-title text-center>Подтверждение заказа</ion-title>
   </ion-navbar>
   <ion-toolbar>
     <ion-grid>
@@ -16,12 +16,12 @@
   <div class="margin">
     <h3>{{order.place.type}} {{order.place.name}}</h3>
     <p>Адрес: {{order.place.address}}</p>
-    <p>Время посещения: с {{time.getHours()}} до {{time.getHours() + 1}} </p>
+    <p>Время посещения: с {{time | datePipe}} до {{time.getHours() + 1}} </p>
   </div>
 
-  <div class="book-info">
+  <div class="margin book-info">
     <ul class="book-info__list">
-      <li> {{order.playground}} </li>
+      <li> {{order.playground}}</li>
       <li *ngFor="let items of order.orderList">{{items}}</li>
     </ul>
   </div>
@@ -29,7 +29,7 @@
   <div class="guest margin">
     <p class="guest__name">Имя гостя: {{order.user.name}}</p>
     <p class="guest__contacts">Контактный телефон: <input class="guest__input" [(ngModel)]="order.user.phone">
-      <ion-icon ios="ios-create" md="md-create" class="edit-icon"></ion-icon>
+      <ion-icon color="primary" ios="ios-create" md="md-create" class="edit-icon"></ion-icon>
     </p>
   </div>
 
@@ -44,8 +44,11 @@
     Общая стоимость {{order.price}} рублей
   </div>
 
+  <div class="order-submit-footer">
+    <button class="order-submit-footer__button" ion-button (click)="submitOrder()">Забронировать</button>
+  </div>
 </ion-content>
 
-<ion-footer class="order-submit-footer">
-  <button class="order-submit-footer__button" ion-button (click)="submitOrder()">Подтвердить заказ</button>
-</ion-footer>
+<!--<ion-footer class="order-submit-footer">-->
+<!--<button class="order-submit-footer__button" ion-button (click)="submitOrder()">Подтвердить заказ</button>-->
+<!--</ion-footer>-->

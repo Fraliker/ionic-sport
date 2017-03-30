@@ -1,7 +1,5 @@
 import {Component, trigger, transition, style, animate} from '@angular/core';
 import {NavController, NavParams, LoadingController, ToastController} from 'ionic-angular';
-
-import {Place} from "../../models/place.model";
 import {Order} from "../../models/order.model";
 import {PaymentPage} from "../payment/payment";
 import {SportCenterService} from "../../providers/sport-center.service";
