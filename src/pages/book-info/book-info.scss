@@ -1,5 +1,4 @@
 page-book-info {
-
   .header-ios .toolbar-ios:last-child .toolbar-background-ios {
     border: none;
     background: white;
@@ -110,12 +109,10 @@ page-book-info {
   }
 
   .button {
-
     &__container {
       text-align: center;
       margin-bottom: 20px;
     }
-
     &_try {
       display: inline-block;
       max-width: 100%;

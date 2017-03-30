@@ -14,14 +14,21 @@ page-place {
     }
   }
 
-  .place-info__text_blue {
-    color: #007aff;
-    border-bottom: 2px dotted #007aff;
-  }
+  .place-info__text {
 
-  .place-info__text_black {
-    color: #000;
-    border-bottom: 2px dotted #000;
+    &_underline {
+      text-decoration: underline;
+    }
+
+    &_blue {
+      color: #007aff;
+      border-bottom: 2px dotted #007aff;
+    }
+
+    &_black {
+      color: #000;
+      border-bottom: 2px dotted #000;
+    }
   }
 
   .white {
@@ -71,11 +78,11 @@ page-place {
 
     &__logo {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      bottom: -25px;
+      width: 75px;
+      height: 75px;
+      bottom: -37px;
       left: 25px;
-      border-radius: 5px;
+      border-radius: 50%;
       -webkit-box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.75);
       box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.75);
@@ -122,7 +129,7 @@ page-place {
     }
   }
 
-  .advantages{
+  .advantages {
 
     &__head {
       font-size: 1.3em;
@@ -240,7 +247,7 @@ page-place {
     bottom: 10px;
     right: 20px;
     background: rgba(0, 0, 0, 0.6);
-    border-radius: 3px;
+    border-radius: 5px;
     color: white;
     font-size: 0.7em;
     padding: 3px;
@@ -299,7 +306,7 @@ page-place {
         height: 40px;
       }
     }
-    &__text{
+    &__text {
       text-align: center;
       font-size: 0.7em;
       margin: 0;
@@ -308,5 +315,10 @@ page-place {
   .radio, .checkbox {
     font-size: 15px;
     line-height: 15px;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    color: white;
+    background: white;
   }
 }

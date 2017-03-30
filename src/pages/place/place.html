@@ -1,6 +1,6 @@
 <ion-content>
   <ion-navbar class="shadow">
-    <ion-title text-center>Выберите услуги</ion-title>
+    <ion-title text-center *ngIf="place != null">{{place.name}}</ion-title>
     <ion-buttons end>
       <button (click)="goToDashboard()" ion-button icon-only>
         <ion-icon class="white" ios="ios-contact" md="md-contact" right></ion-icon>
@@ -17,24 +17,34 @@
 
   <div *ngIf="place != null">
     <div class="image-container">
-      <ion-slides>
+      <ion-slides [pager]="true">
         <ion-slide *ngFor="let img of place.images">
           <div class="image" [ngStyle]="{'background-image':'url(' + img + ')'}"></div>
         </ion-slide>
       </ion-slides>
 
       <img class="image__logo" [src]="place.imageLogo">
-      <p class="distance" *ngIf="place.distance"> {{place.distance | distanceKmPipe}}</p>
+      <p class="distance" *ngIf="place.distance"> {{place.distance | distanceKmPipe}} км.</p>
     </div>
 
     <div class="place-info">
       <h3 class="place-info__head">{{place.type}} {{place.name}}</h3>
 
-      <p class="place-info__text">Адрес: {{place.address}} <span
-        class="place-info__text_blue" (click)="placeOnMap()">(показать на карте)</span></p>
+      <p class="place-info__text" *ngIf="!place.roundTheClock">
+        <ion-icon name="ios-time-outline" color="primary"></ion-icon>
+        Время работы: с {{place.startWorkTime}} до
+        {{place.endWorkTime}}
+      </p>
+      <p class="place-info__text" *ngIf="place.roundTheClock">
+        <ion-icon name="ios-time-outline" color="primary"></ion-icon>
+        Время работы: Круглосуточно
+      </p>
 
-      <p class="place-info__text" *ngIf="!place.roundTheClock">Часы работы: с {{place.startWorkTime}} до {{place.endWorkTime}}</p>
-      <p class="place-info__text" *ngIf="place.roundTheClock">Часы работы: Круглосуточно</p>
+      <p class="place-info__text place-info__text_underline" (click)="placeOnMap()">
+        <ion-icon name="ios-time-outline" color="primary"></ion-icon>
+        Адрес: {{place.address}}
+        <!--<span class="place-info__text_blue" >(показать на карте)</span>-->
+      </p>
 
       <p class="place-info__description" *ngIf="!description" (click)="description = !description">
         {{place.descriptionShort}} <span

@@ -6,6 +6,7 @@ import {TimeSelectPage} from "../time-select/time-select";
 import {DashboardPage} from "../dashboard/dashboard";
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {BookInfoPage} from "../book-info/book-info";
+import * as  configURL from "../../config/prod.config";
 
 @Component({
   selector: 'page-payment',
@@ -20,6 +21,7 @@ export class PaymentPage {
   maskCVV = [/\d/, /\d/, /\d/];
   mask = ['+', '7', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   private formObj = {}; // mask value bigfix
+  browserURL: string = configURL.default.paymentURL;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -49,12 +51,16 @@ export class PaymentPage {
   }
 
   openbrowser() {
-    const browser = this.iab.create('https://payu.ru', '_blank', {location: 'yes', zoom: 'no'});
+    const browser = this.iab.create(`${this.browserURL}?id=${this.id}`, '_blank', {location: 'yes'});
 
-    browser.on('exit').subscribe((res)=> {
-      this.navCtrl.setPages([TimeSelectPage, DashboardPage]);
-      this.navCtrl.push(BookInfoPage, {id: this.id});
+    browser.on('exit').subscribe((res) => {
+      this.goToBooking();
     });
+  }
+
+  goToBooking() {
+    this.navCtrl.setPages([TimeSelectPage, DashboardPage]);
+    this.navCtrl.push(BookInfoPage, {id: this.id});
   }
 
   formSubmit() {
