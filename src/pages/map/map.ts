@@ -3,6 +3,8 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Place} from "../../models/place.model";
 import {SportCenterService} from "../../providers/sport-center.service";
 
+declare var ymaps;
+
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html'

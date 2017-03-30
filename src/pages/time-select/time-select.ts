@@ -23,8 +23,6 @@ export class TimeSelectPage {
               public navParams: NavParams,
               public toastCtrl: ToastController,
               public sportCenters: SportCenterService) {
-
-    console.log(this.day);
     /**
      * setting max date
      * @type {Date}

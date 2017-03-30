@@ -44,6 +44,8 @@ export class PaymentPage {
       this.navCtrl.pop();
     }
     console.log('ionViewDidLoad PaymentPage', this.id);
+
+    this.openbrowser();
   }
 
   openbrowser() {

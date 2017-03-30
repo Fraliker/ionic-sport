@@ -5,6 +5,7 @@ import {
 import {NavController, NavParams} from 'ionic-angular';
 import {Geolocation} from 'ionic-native';
 import {Place} from "../../../models/place.model";
+declare var ymaps;
 
 @Component({
   selector: 'yandex-map',
