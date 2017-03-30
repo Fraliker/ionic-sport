@@ -21,6 +21,8 @@ page-time-select {
     padding: 10px 0;
 
     &__date {
+      padding-top: 15px;
+      padding-bottom: 15px;
       //width: 60%;
     }
 
@@ -55,19 +57,19 @@ page-time-select {
     &__head {
       text-align: center;
       padding: 15px 0;
-      font-weight: 600;
       font-size: 24px;
       margin: 0;
     }
 
     &__text {
       text-align: center;
-      font-weight: 600;
     }
 
     &__button {
       margin-top: 10px;
-      min-height: 45px;
+      min-height: 50px;
+      background: $grafient-button;
+      border-radius: 25px;
     }
   }
   ion-datetime {
@@ -77,13 +79,16 @@ page-time-select {
 
   .ion-datetime-wrap {
     position: relative;
+    border: 1px solid color($colors, border);
+    border-radius: 25px;
+    padding: 0 5px;
 
     &__arrow {
       position: absolute;
-      right: 5px;
+      right: 15px;
       top: 50%;
       transform: translate(0, -50%);
-      color: #364f66;
+      color: #6eca8e;
     }
   }
 

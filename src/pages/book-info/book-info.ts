@@ -46,6 +46,10 @@ export class BookInfoPage {
     this.navCtrl.setRoot(TimeSelectPage);
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
   goToMapRout() {
     this.presentLoading();
 

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title center>
+    <ion-title left>
       <img class="header-logo" src="assets/images/logo.png">
     </ion-title>
 
@@ -19,28 +19,29 @@
 
     <ion-grid class="date">
       <ion-row class="inputs-background">
-        <ion-col width-75 class="ion-datetime-wrap">
+        <ion-col width-100 class="ion-datetime-wrap ">
           <ion-datetime #dateSelect class="date__date"
                         [min]="minDate"
                         [max]="maxDate"
-                        displayFormat="DDD. DD, MMMM"
+                        displayFormat="в DDDD DD MMMM с HH:00"
                         [monthNames]="monthNames"
                         [dayShortNames]="dayShortNames"
+                        [dayNames] = "dayNames"
                         [(ngModel)]="day">
           </ion-datetime>
           <ion-icon (click)="dateSelect.open()" name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
         </ion-col>
-        <ion-col width-25 class="ion-datetime-wrap">
-          <ion-datetime #hourSelect class="date__time border-left"
-                        [min]="minDate"
-                        [max]="maxDate"
-                        displayFormat="HH:00"
-                        pickerFormat="HH:00"
-                        [(ngModel)]="day">
-          </ion-datetime>
+        <!--<ion-col width-25 class="ion-datetime-wrap">-->
+          <!--<ion-datetime #hourSelect class="date__time border-left"-->
+                        <!--[min]="minDate"-->
+                        <!--[max]="maxDate"-->
+                        <!--displayFormat="HH:00"-->
+                        <!--pickerFormat="HH:00"-->
+                        <!--[(ngModel)]="day">-->
+          <!--</ion-datetime>-->
 
-          <ion-icon (click)="hourSelect.open()" name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>
-        </ion-col>
+          <!--<ion-icon (click)="hourSelect.open()" name="arrow-down" md="ios-arrow-down" class="ion-datetime-wrap__arrow"></ion-icon>-->
+        <!--</ion-col>-->
       </ion-row>
     </ion-grid>
     <button ion-button class="time-content__button" (click)="goToPlaceChoose()">Подобрать корт</button>

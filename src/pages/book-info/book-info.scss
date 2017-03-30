@@ -15,7 +15,8 @@ page-book-info {
   }
 
   .order-list {
-    background: #fdf1cb;
+    background: #e2f4f3;
+    border-radius: 5px;
     padding: 10px;
 
     &__list {
@@ -48,10 +49,13 @@ page-book-info {
 
   .image-info {
     text-align: center;
+    max-width: 100px;
+    width: 100%;
   }
 
   .book-info {
     text-align: center;
+    margin-top: 15px;
 
     &__text {
       text-align: left;
@@ -63,6 +67,14 @@ page-book-info {
       &_grey {
         color: #8e9093;
       }
+
+      &_sport-center {
+        font-size: 1.3em;
+      }
+
+      &_book {
+        color: color($colors, primary);
+      }
     }
 
     &_wrap {
@@ -71,18 +83,50 @@ page-book-info {
       justify-content: center;
       flex-flow: column wrap;
     }
+    &__head {
+      display: flex;
+
+      &_col-1 {
+        width: 30%;
+      }
+      &_col-2 {
+        padding-left: 10px;
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: row column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   .info {
+    text-align: left;
+
     &_red {
       color: #d66060;
+    }
+  }
+
+  .button {
+
+    &__container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    &_try {
+      display: inline-block;
+      max-width: 100%;
+      width: 250px;
+      border-radius: 25px;
+      background: $grafient-button;
     }
   }
 
   .total-price {
     text-align: left;
     fonr-size: 1.2em;
-    font-weight: bold;
   }
-
 }

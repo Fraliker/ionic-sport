@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>Ваши бронирования</ion-title>
+    <ion-title text-center *ngIf="book != null && book.submit !== 0">Подтверждение бронирования</ion-title>
+    <ion-title text-center *ngIf="book != null && book.submit === 0">Ошибка бронирования</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,12 +9,18 @@
   <div *ngIf="book != null">
     <div *ngIf="book.submit !== 0" class="book-info">
       <div #contentnode>
-        <img class="image-info" src="assets/images/success-book-icon.png">
-        <h2 class="info">Ваше бронирование подтверждено</h2>
+        <div class="book-info__head">
+          <div class="book-info__head_col-1">
+            <img class="image-info" src="assets/images/booking-ok.png">
+          </div>
+          <div class="book-info__head_col-2">
+            <h2 class="info">Ваше бронирование подтверждено</h2>
+            <p class="book-info__text book-info__text_book book-info__text_bold">Номер бронирования: {{book.id}}</p>
+          </div>
+        </div>
 
-        <p class="book-info__text book-info__text_bold">Номер бронирования: {{book.id}}</p>
-        <p class="book-info__text">{{book.sportCenter}}</p>
-        <p class="book-info__text">Время посещения: {{book.date.getDay()}} {{book.month}} в {{book.hour}}:00 </p>
+        <p class="book-info__text book-info__text_sport-center">{{book.sportCenter}}</p>
+        <p class="book-info__text">Время посещения: {{book.date | datePipe}}</p>
         <p class="book-info__text">Адрес: {{book.address}}</p>
 
         <div class="order-list">
@@ -35,14 +42,23 @@
 
   <div class="book-info_wrap" *ngIf="book != null && book.submit === 0">
     <div class="book-info">
-      <img class="image-info" src="assets/images/error-book.png">
-      <h2 class="info info_red">Ваше бронирование не подтверждено</h2>
-      <p class="book-info__text_grey">
+      <div class="book-info__head">
+        <div class="book-info__head_col-1">
+          <img class="image-info" src="assets/images/booking-error.png">
+        </div>
+        <div class="book-info__head_col-2">
+          <h2 class="info info_red">Ваше бронирование не подтверждено</h2>
+        </div>
+      </div>
+      <p class="">
         Пожалуйста, проверьте реквизиты и убедитесь, что на вашем счете достаточно средств для бронирования
       </p>
-      <button class="go-to-book" ion-button full (click)="checkPayment()">Проверить бронирование</button>
-      <button class="go-to-book" ion-button full (click)="goToPayment()">Перейти к оплате</button>
-      <p class='action-button' (click)="goToMainPage()">На главный экран</p>
+      <div class="button__container">
+        <button class="button button_try" ion-button full (click)="goToPayment()">Попробовать еще раз</button>
+      </div>
+      <p class='action-button' (click)="checkPayment()">Проверить бронирование</p>
+      <p class='action-button' (click)="goBack()">Список бронирований</p>
+      <p class='action-button' (click)="sendSuppotMail()">Связаться со службой поддержки</p>
     </div>
   </div>
 </ion-content>

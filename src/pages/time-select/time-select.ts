@@ -4,6 +4,7 @@ import {PlaceChoosePage} from "../place-choose/place-choose";
 import {DashboardPage} from "../dashboard/dashboard";
 import {SportCenterService} from "../../providers/sport-center.service";
 import * as moment from 'moment';
+import {names} from '../../config/russian-time';
 
 @Component({
   selector: 'page-time-select',
@@ -15,7 +16,8 @@ export class TimeSelectPage {
   minDate: string = new Date().toISOString();
   maxDate: string;
   dayShortNames: string = 'Вс, Пн, Вт, Ср, Чт, Пт, Сб';
-  monthNames: string = 'январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь';
+  dayNames: string = names.dayNamesIn;
+  monthNames : string = names.monthNamesIn;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
