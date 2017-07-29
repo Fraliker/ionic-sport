@@ -1,12 +1,20 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {MyApp} from './app.component';
 
-import { TextMaskModule } from 'angular2-text-mask';
-import {SmsVerifyPage, AuthenticationPage, DashboardPage,
-        BookInfoPage, MainSportChoosePage, TimeSelectPage,
-        PlaceChoosePage, PlacePage, OrderSubmitPage} from '../pages/pages';
+import {TextMaskModule} from 'angular2-text-mask';
+import {
+  AuthenticationPage,
+  BookInfoPage,
+  DashboardPage,
+  MainSportChoosePage,
+  OrderSubmitPage,
+  PlaceChoosePage,
+  PlacePage,
+  SmsVerifyPage,
+  TimeSelectPage
+} from '../pages/pages';
 
 import {AuthService} from '../providers/auth.service';
 import {YandexMap} from "../pages/place-choose/map/map.component";
@@ -69,4 +77,5 @@ import {InAppBrowser} from "@ionic-native/in-app-browser";
     InAppBrowser
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,11 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
 import {Nav, Platform} from 'ionic-angular';
-import {StatusBar, Splashscreen} from 'ionic-native';
+import {Splashscreen, StatusBar} from 'ionic-native';
 
 import {AuthenticationPage} from "../pages/pages";
 import {AuthService} from '../providers/auth.service';
 import {TimeSelectPage} from "../pages/time-select/time-select";
-import {SmsVerifyPage} from "../pages/sms-verification/sms-verify.page";
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +14,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform,
               public auth: AuthService) {
