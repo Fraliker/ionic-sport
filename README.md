@@ -1,7 +1,10 @@
-## LetMeSport mobile app 
-Ionic Angular2 
+## PWA andoid ios app 
+**Cordova Ionic2 Angular2** 
 
-npm install -g ionic cordova 
+Customers project for booking sports grounds
+
 ### How to start 
+npm install -g ionic cordova 
+
 * npm install
 * ionic serve 
